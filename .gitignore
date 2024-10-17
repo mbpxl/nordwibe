@@ -10,7 +10,6 @@
 /coverage
 
 # next.js
-/.next/
 /out/
 
 # production
@@ -25,17 +24,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# local env files
-.env*.local
-.env
-
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
-
 # IDE
 .vscode/
 .idea/
@@ -48,5 +36,4 @@ log.json
 *.css.map
 /src/service/secret.ts
 
-TODO.md
 openapi.json

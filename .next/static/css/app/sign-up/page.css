@@ -1,0 +1,125 @@
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[12].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[12].oneOf[9].use[5]!./src/components/SignInSocial/styles.module.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.styles_or__PwnLs {
+  margin: 0.8rem;
+  font-size: 0.8rem;
+}
+
+.styles_links__cqb1M {
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+}
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[12].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[12].oneOf[9].use[5]!./src/components/Form/styles.module.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.styles_form__tuAUO {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-align: center;
+      align-items: center;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 40px;
+  max-width: 400px;
+  font-size: 1rem;
+}
+.styles_form__tuAUO.styles_signin__65Mre {
+  height: 430px;
+}
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[12].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[12].oneOf[9].use[5]!./src/components/Form/TextInput/styles.module.scss ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.styles_input__OQUxT {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  border-radius: 5px;
+  height: 3.5rem;
+  font-size: 1rem;
+  width: 100%;
+  padding: 0.5rem;
+  font-weight: 400;
+  margin: 0.5rem 0;
+}
+
+.styles_input__OQUxT::-webkit-input-placeholder {
+  color: white;
+  font-weight: 300;
+  opacity: 0.5;
+}
+
+.styles_input__OQUxT::-moz-placeholder {
+  color: white;
+  font-weight: 300;
+  opacity: 0.5;
+}
+
+.styles_input__OQUxT:-ms-input-placeholder {
+  color: white;
+  font-weight: 300;
+  opacity: 0.5;
+}
+
+.styles_input__OQUxT::-ms-input-placeholder {
+  color: white;
+  font-weight: 300;
+  opacity: 0.5;
+}
+
+.styles_input__OQUxT::placeholder {
+  color: white;
+  font-weight: 300;
+  opacity: 0.5;
+}
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[12].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[12].oneOf[9].use[5]!./src/components/Button/styles.module.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.styles_button__dr0t2 {
+  font-family: inherit;
+  margin-top: auto;
+  margin-bottom: 30px;
+  width: 100%;
+  font-size: 1rem;
+  padding: 1rem;
+  background-color: white;
+  border: 2px solid white;
+  border-radius: 5px;
+  color: var(--backgroundColor);
+  font-weight: 600;
+  cursor: pointer;
+}
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[12].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[12].oneOf[9].use[5]!./src/components/Form/Message/styles.module.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.styles_message__uEYZU {
+  margin-bottom: 2rem;
+  text-align: center;
+  text-wrap: balance;
+}
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[12].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[12].oneOf[9].use[5]!./src/page/Sign/styles.module.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.styles_haveAccount__fVKFk {
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.2rem;
+}
+
+.styles_link__mlqKY {
+  color: white;
+  font-weight: 500;
+}
+.styles_link__mlqKY.styles_noUnderLine__9TlWc {
+  text-decoration: none;
+}
+.styles_link__mlqKY.styles_noUnderLine__9TlWc:hover {
+  text-decoration: underline;
+}
+
+.styles_mar1__3bA4Q {
+  margin: 1rem 0;
+}

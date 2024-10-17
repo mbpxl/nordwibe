@@ -1,0 +1,46 @@
+{
+  "pages": {
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/page.css",
+      "static/chunks/app/page.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
+    ],
+    "/sign-in/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/sign-in/page.css",
+      "static/chunks/app/sign-in/page.js"
+    ],
+    "/sign-in/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/sign-in/layout.css",
+      "static/chunks/app/sign-in/layout.js"
+    ],
+    "/sign-up/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/sign-up/page.css",
+      "static/chunks/app/sign-up/page.js"
+    ],
+    "/sign-up/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/sign-up/layout.css",
+      "static/chunks/app/sign-up/layout.js"
+    ],
+    "/sign-in/phone-confirmation/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/sign-in/phone-confirmation/page.css",
+      "static/chunks/app/sign-in/phone-confirmation/page.js"
+    ]
+  }
+}
