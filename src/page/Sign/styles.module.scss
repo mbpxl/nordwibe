@@ -1,0 +1,24 @@
+.haveAccount {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.link {
+  color: white;
+  font-weight: 500;
+
+  &.noUnderLine {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.captcha {
+}
+
+.mar1 {
+  margin: 1rem 0;
+}

@@ -1,0 +1,9 @@
+.age div {
+  display: flex;
+  align-items: center;
+}
+.age div h4 {
+  margin-right: 10px;
+  font-size: 18px;
+  width: 30px;
+}/*# sourceMappingURL=styles.module.css.map */

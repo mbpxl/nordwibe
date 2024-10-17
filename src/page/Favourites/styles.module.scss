@@ -1,0 +1,28 @@
+.favourites {
+  width: 100%;
+  padding: 30px 20px;
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .blocks {
+    .block {
+      margin-top: 30px;
+
+      .articles {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2rem;
+        max-width: 800px;
+        margin-inline: auto;
+
+        @media screen and (min-width: 800px) {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    }
+  }
+}

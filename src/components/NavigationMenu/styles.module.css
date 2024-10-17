@@ -1,0 +1,29 @@
+.navigationMenu {
+  position: absolute;
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  padding: 20px 10px;
+  top: 60px;
+  background: #FFF;
+  box-shadow: 0 0 20px #000;
+}
+.navigationMenu ul li {
+  color: var(--backgroundColor);
+  font-size: 18px;
+}
+.navigationMenu ul li:not(:first-child) {
+  margin-top: 10px;
+}
+@media (min-width: 700px) {
+  .navigationMenu {
+    padding: 10px 10px;
+    width: -moz-max-content;
+    width: max-content;
+    border-radius: 10px;
+    border: 1px solid var(--backgroundColor);
+    top: 70px;
+    right: 30px;
+    box-shadow: none;
+  }
+}/*# sourceMappingURL=styles.module.css.map */

@@ -1,0 +1,64 @@
+.cities {
+  max-width: 800px;
+  margin-inline: auto;
+  font-size: 1.5rem;
+  padding: 1rem;
+
+  h1 {
+    display: none;
+  }
+
+  input {
+    margin: 2rem 0;
+    width: 100%;
+    border-radius: 5px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255);
+    padding: 1rem;
+    color: white;
+    text-align: center;
+
+    &::placeholder {
+      color: white;
+      opacity: 0.5;
+    }
+  }
+
+  .citiesList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    h2 {
+      padding: 0.5rem;
+      cursor: pointer;
+      font-weight: 400;
+      color: #fff;
+      text-align: center;
+      border-radius: 5px;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+
+  @media screen and (min-width: 800px) {
+    h1 {
+      display: block;
+      font-size: 2rem;
+      text-align: center;
+      margin: 2rem;
+    }
+
+    input {
+      margin-top: 0;
+    }
+
+    .citiesList {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}

@@ -1,0 +1,30 @@
+.navigationMenu {
+  position: absolute;
+  width: 100%;
+  height: max-content;
+  padding: 20px 10px;
+  top: 60px;
+  background: #FFF;
+  box-shadow: 0 0 20px #000;
+
+  ul {
+    li {
+      color: var(--backgroundColor);
+      font-size: 18px;
+
+      &:not(:first-child) {
+        margin-top: 10px;
+      }
+    }
+  }
+
+  @media(min-width: 700px) {
+    padding: 10px 10px;
+    width: max-content;
+    border-radius: 10px;
+    border: 1px solid var(--backgroundColor);
+    top: 70px;
+    right: 30px;
+    box-shadow: none;
+  }
+}

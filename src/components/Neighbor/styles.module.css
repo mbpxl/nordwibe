@@ -1,0 +1,80 @@
+.neighbor {
+  width: 98%;
+  height: -moz-max-content;
+  height: max-content;
+  border-radius: 10px;
+  background: #FFF;
+  padding: 10px 10px;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.neighbor .containerUser {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.neighbor .containerUser .userCard {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+}
+.neighbor .containerUser .userCard .avatar {
+  min-width: 70px;
+  min-height: 70px;
+  border-radius: 100%;
+  background: #55A3C4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.neighbor .containerUser .userCard .avatar img {
+  width: 30px;
+  height: auto;
+}
+.neighbor .containerUser .userCard .userInformation {
+  margin-left: 10px;
+}
+.neighbor .containerUser .userCard .userInformation h4 {
+  color: var(--backgroundColor);
+}
+.neighbor .containerUser h1 {
+  color: var(--backgroundColor);
+  font-size: 19px;
+  font-weight: 600;
+}
+.neighbor .userInfo {
+  margin-top: 10px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  position: relative;
+  left: -5px;
+}
+.neighbor .userInfo h4 {
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: 1px solid var(--backgroundColor);
+  margin-top: 10px;
+  color: var(--backgroundColor);
+  font-weight: 500;
+  margin-left: 5px;
+  text-align: center;
+  grid-column: 1/-1;
+}
+.neighbor .buttons {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+.neighbor .buttons button {
+  padding: 10px 25px;
+  border-radius: 30px;
+  background: var(--backgroundColor);
+}/*# sourceMappingURL=styles.module.css.map */

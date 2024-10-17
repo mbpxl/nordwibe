@@ -1,0 +1,34 @@
+.checkbox_parent {
+  width: 350px;
+  height: 60px;
+  background: #fff;
+  border: 1px solid #5755c4;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+
+  label {
+    color: #5755c4;
+    font-weight: 600;
+    font-size: 18px;
+    transition: 0.3s ease-in-out;
+  }
+
+  .checkbox {
+    display: none;
+  }
+}
+
+#active {
+  background: #5755c4;
+  border: 1px solid #fff;
+
+  label {
+    color: #fff;
+  }
+}

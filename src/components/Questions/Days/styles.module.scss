@@ -1,0 +1,84 @@
+.days_content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  gap: 2px;
+  span {
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .choose_days {
+    width: 100%;
+    padding: 15px 20px 0px 20px ;
+    background: #fff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 20px;
+    .wrapper {
+      width: 100%;
+      height: 3rem;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+      &::before,
+      &::after {
+        display: block;
+        color: #fff;
+        text-align: center;
+        font-size: 1.5rem;
+        line-height: 1;
+        padding: 0.75rem 0;
+        pointer-events: none;
+      }
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      background-color: rgba(#fff, 0.2);
+      margin: 0;
+      padding: 0;
+      width: 90%;
+      height: 20px;
+      border-radius: 7px;
+      border: 1px solid #5755c4;
+      overflow: hidden;
+      cursor: pointer;
+
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 0;
+        box-shadow: -20rem 0 0 20rem #5755c4;
+      }
+    }
+
+    .count{
+        font-size: 18px;
+        font-weight: 500;
+        width: 27px;
+        color: #5755c4;
+    }
+  }
+  .less_than_a_month_bttn {
+    all: unset;
+    padding: 10px 20px;
+    background: #fff;
+    border: 1px solid #5755c4;
+    border-radius: 10px;
+    color: #5755c4;
+    font-weight: 500;
+    font-size: 16px;
+    transition: .3s ease;
+    cursor: pointer;
+  }
+  .active_month_bttn{
+    background: #5755c4;
+    color: #fff;
+  }
+}

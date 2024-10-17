@@ -1,0 +1,40 @@
+.article {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+.article .image {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.article .image img {
+  width: auto;
+  height: auto;
+}
+.article p {
+  font-size: 13px;
+  font-weight: 200;
+  color: var(--backgroundColor);
+}
+.article h2 {
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--backgroundColor);
+}
+.article h4 {
+  font-weight: 400;
+  font-size: 17px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: var(--backgroundColor);
+}
+
+@media screen and (min-width: 800px) {
+  .article {
+    max-width: 800px;
+  }
+}/*# sourceMappingURL=styles.module.css.map */

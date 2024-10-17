@@ -1,0 +1,23 @@
+.specification {
+  margin-top: 20px;
+  margin-left: 30px;
+  margin-right: 30px;
+
+  h1 {
+    font-weight: 500;
+    font-size: 23px;
+  }
+
+  .inputs {
+    margin-top: 5px;
+    margin-left: 5px;
+
+    .input {
+      display: flex;
+
+      h4 {
+        margin-left: 10px;
+      }
+    }
+  }
+}

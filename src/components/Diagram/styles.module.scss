@@ -1,0 +1,51 @@
+.diagram {
+  width: 100%;
+  height: max-content;
+  position: relative;
+
+  h1 {
+    width: max-content;
+    height: max-content;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    font-size: 20px;
+  }
+
+  .circularProgress {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    --size: 100%;
+    --half-size: calc(var(--size) / 2);
+    --stroke-width: 25px;
+    --radius: calc((var(--size) - var(--stroke-width)) / 2);
+    --circumference: calc(var(--radius) * 3.1415926535 * 2);
+    --dash: calc((var(--progress) * var(--circumference)) / 100);
+
+    circle {
+      cx: var(--half-size);
+      cy: var(--half-size);
+      r: var(--radius);
+      stroke-width: var(--stroke-width);
+      fill: none;
+      stroke-linecap: round;
+
+      &.bg {
+        stroke: #ddd;
+      }
+
+      &.fg {
+        transform: rotate(-90deg);
+        transform-origin: var(--half-size) var(--half-size);
+        stroke-dasharray: var(--dash) calc(var(--circumference) - var(--dash));
+        transition: stroke-dasharray 1s linear 0s;
+        stroke: #9C9AFF;
+      }
+    }
+  }
+}

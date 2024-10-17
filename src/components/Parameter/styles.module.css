@@ -1,0 +1,34 @@
+.parameter {
+  width: 100%;
+  margin-top: 20px;
+}
+.parameter h1 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.parameter div {
+  width: 100%;
+  height: 50px;
+  padding: 10px 10px;
+  border-radius: 5px;
+  background: #FFF;
+  display: flex;
+  justify-content: space-between;
+}
+.parameter div h4 {
+  color: var(--backgroundColor);
+  font-size: 20px;
+}
+.parameter div .change_input {
+  all: unset;
+  width: 90%;
+  height: 100%;
+  color: #000;
+  background: rgba(255, 255, 255, 0);
+  font-size: 20px;
+  font-weight: 500;
+}
+.parameter div img {
+  width: 30px;
+  height: auto;
+}/*# sourceMappingURL=styles.module.css.map */

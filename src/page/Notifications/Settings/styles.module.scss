@@ -1,0 +1,39 @@
+.settings {
+  padding: 30px 15px;
+
+  .inputs {
+    .inputContainer {
+      margin-top: 15px;
+
+      h3 {
+        font-size: 19px;
+      }
+
+      .input {
+        position: relative;
+        width: 80px;
+        height: 40px;
+        border-radius: 20px;
+        overflow: hidden;
+        background: transparent;
+        border: 1px solid #FFF;
+        margin-top: 10px;
+
+        .circle {
+          position: absolute;
+          top: 4px;
+          left: 7px;
+          height: 30px;
+          width: 30px;
+          border-radius: 100%;
+          transition: all .5s ease;
+          background: #FFF;
+
+          &.active {
+            margin-left: calc(80px - 5px * 2 - 32px);
+          }
+        }
+      }
+    }
+  }
+}

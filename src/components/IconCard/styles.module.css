@@ -1,0 +1,21 @@
+.iconCard {
+  width: 95%;
+  height: 95%;
+  margin-top: 10px;
+  border-radius: 10px;
+  background: var(--backgroundColor);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 10px;
+}
+.iconCard img {
+  width: 30px;
+}
+.iconCard h2 {
+  margin-top: 10px;
+}
+.iconCard p {
+  font-size: 10px;
+}/*# sourceMappingURL=styles.module.css.map */

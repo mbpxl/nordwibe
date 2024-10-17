@@ -1,0 +1,24 @@
+.favourites {
+  width: 100%;
+  padding: 30px 20px;
+}
+.favourites h1 {
+  font-size: 20px;
+}
+.favourites .blocks .block {
+  margin-top: 30px;
+}
+.favourites .blocks .block .articles {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 800px;
+  margin-inline: auto;
+}
+@media screen and (min-width: 800px) {
+  .favourites .blocks .block .articles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}/*# sourceMappingURL=styles.module.css.map */

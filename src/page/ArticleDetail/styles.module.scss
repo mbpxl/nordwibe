@@ -1,0 +1,65 @@
+.articleDetail {
+  width: 100%;
+  height: auto;
+  padding: 30px 15px;
+  color: #fff;
+
+  .image {
+    width: 100%;
+    height: auto;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+
+    img {
+      width: 60%;
+      height: auto;
+    }
+  }
+
+  h6 {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  h2 {
+    font-weight: 500;
+    font-size: 20px;
+    margin-top: 5px;
+  }
+
+  h4 {
+    font-weight: 400;
+    font-size: 17px;
+    margin-top: 5px;
+  }
+
+  p {
+    margin-top: 15px;
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .articleDetail {
+    max-width: 800px;
+    margin-inline: auto;
+    margin-bottom: 30vh;
+
+    h6 {
+      text-align: end;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    h4 {
+      font-size: 1.3rem;
+    }
+  }
+}

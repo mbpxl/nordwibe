@@ -1,0 +1,50 @@
+.nav {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  height: 4rem;
+  position: relative;
+
+  .navigation_filter {
+    max-width: 35px;
+    max-height: 35px;
+    position: absolute;
+    right: 20px;
+    top: 20%;
+  }
+
+  .logo {
+    margin: 1rem;
+  }
+
+  ul {
+    display: flex;
+  }
+
+  li {
+    color: var(--backgroundColor);
+    display: flex;
+    align-items: center;
+
+    a {
+      padding: 1.5rem clamp(1rem, 2vw, 1.5rem);
+      text-wrap: nowrap;
+      font-weight: 600;
+    }
+
+    .big {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+.filter_logo{
+  position: absolute;
+  right:30px;
+  top: 30%;
+  cursor: pointer;
+}

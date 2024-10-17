@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --backgroundColor: #5755c4;
+  --progress: 0;
+  --bigScreen: 800px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  height: 100svh;
+  overflow-x: hidden;
+  position: relative;
+  background: var(--backgroundColor);
+}
+
+a {
+  text-decoration: none;
+}
+
+input,
+textarea {
+  &:focus {
+    outline: none;
+  }
+}

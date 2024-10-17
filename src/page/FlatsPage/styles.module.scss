@@ -1,0 +1,20 @@
+.flats {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  .container {
+    display: flex;
+    gap: 30px;
+    width: 750px;
+    flex-wrap: wrap;
+    justify-content: center;
+    .flat{
+      width: 350px;
+      
+    }
+    // grid-template-columns: repeat(1, 1fr);
+  }
+}

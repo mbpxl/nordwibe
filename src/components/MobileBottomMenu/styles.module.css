@@ -1,0 +1,26 @@
+.mobileBottomMenu {
+  background: #fff;
+  width: 100%;
+  height: 70px;
+  position: sticky;
+  margin-top: auto;
+  bottom: 0;
+  padding: 1rem;
+}
+@media screen and (min-width: 800px) {
+  .mobileBottomMenu {
+    display: none;
+  }
+}
+.mobileBottomMenu ul {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 17px;
+}
+.mobileBottomMenu ul li a img {
+  height: 30px;
+  width: auto;
+}/*# sourceMappingURL=styles.module.css.map */

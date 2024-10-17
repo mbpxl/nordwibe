@@ -1,0 +1,23 @@
+.fileUploader .label {
+  color: var(--backgroundColor);
+  background-color: white;
+  padding: 1rem;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+}
+.fileUploader .fileInput {
+  display: none;
+}
+.fileUploader .fileInput {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+.fileUploader .fileInputWrapper {
+  overflow: hidden;
+  position: relative;
+}/*# sourceMappingURL=styles.module.css.map */

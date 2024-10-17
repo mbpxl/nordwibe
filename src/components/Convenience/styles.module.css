@@ -1,0 +1,11 @@
+.convenience {
+  width: 95%;
+  height: 95%;
+  border-radius: 5px;
+  background: var(--backgroundColor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  font-size: 15px;
+}/*# sourceMappingURL=styles.module.css.map */

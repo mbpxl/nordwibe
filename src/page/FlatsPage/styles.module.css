@@ -1,0 +1,18 @@
+.flats {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.flats .container {
+  display: flex;
+  gap: 30px;
+  width: 750px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.flats .container .flat {
+  width: 350px;
+}/*# sourceMappingURL=styles.module.css.map */

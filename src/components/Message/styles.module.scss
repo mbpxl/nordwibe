@@ -1,0 +1,45 @@
+.message {
+  display: flex;
+  margin-top: 15px;
+  z-index: -1;
+
+  .avatar {
+    min-width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background: #55A3C4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 30px;
+      height: auto;
+    }
+  }
+
+  .text {
+    margin-left: 10px;
+    width: auto;
+
+    h3 {
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    p {
+      margin-top: 5px;
+      padding: 10px 10px;
+      width: auto;
+      border-radius: 5px;
+      background: #FFF;
+      color: rgb(3 7 18 / 1);
+
+      span {
+        color: rgb(99, 104, 117);
+        font-size: 13px;
+        font-weight: light;
+      }
+    }
+  }
+}

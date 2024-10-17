@@ -1,0 +1,15 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  // height: 330px;
+  margin: 0 auto;
+  margin-top: 40px;
+  max-width: 400px;
+  font-size: 1rem;
+  &.signin {
+    height: 430px;
+  }
+}

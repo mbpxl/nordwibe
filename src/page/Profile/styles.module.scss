@@ -1,0 +1,283 @@
+.profile {
+  width: min(100%, 1000px);
+  margin-inline: auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+
+  .userCard {
+    grid-row: span 2;
+    display: flex;
+    gap: 1rem;
+
+    .avatar {
+      min-width: 115px;
+      min-height: 115px;
+      border-radius: 100%;
+      background: rgb(random(255), random(255), random(255));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0px 0px 12px 5px rgba(255, 255, 255, 0.2);
+
+      img {
+        width: 50%;
+        height: auto;
+      }
+    }
+
+    .userInformation {
+      margin-left: 1rem;
+
+      h1 {
+        font-size: 22px;
+        font-weight: 600;
+      }
+    
+    }
+  }
+
+  .parameters {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    li {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      img {
+        width: 28px;
+        height: auto;
+      }
+
+      p {
+        margin-left: 10px;
+        font-size: 18px;
+      }
+    }
+  }
+
+  .cards {
+    gap: 1rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .housing {
+    h4 {
+      font-weight: 500;
+      font-size: 20px;
+      margin-bottom: -20px;
+      text-align: center;
+    }
+
+    .cards {
+      margin-top: 30px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      @media(min-width: 800px) {
+        width: 50%;
+      }
+    }
+  }
+
+  .compatibility {
+    h4 {
+      font-size: 20px;
+      font-weight: 400;
+      text-align: center;
+      margin: 1rem 0;
+    }
+  }
+
+  .profileLinksList {
+    h4 {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 1rem 0;
+
+      li {
+        display: flex;
+        align-items: center;
+
+        div {
+          display: flex;
+          position: relative;
+
+          .new_messages_count {
+            width: 23px;
+            height: 23px;
+            background: #f51717;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            font-size: 90%;
+
+          }
+        }
+
+
+
+        p {
+          margin-left: 1rem;
+          font-size: 20px;
+        }
+
+        svg {
+          width: 35px;
+          height: auto;
+        }
+      }
+    }
+  }
+
+  .flats {
+    h4 {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    a {
+      margin-top: 0;
+    }
+
+    p {
+      text-align: center;
+    }
+
+    .button {
+      font-family: inherit;
+      margin-top: 1rem;
+      width: 100%;
+      font-size: 1rem;
+      padding: 1rem;
+      background-color: white;
+      border: 2px solid white;
+      border-radius: 5px;
+      color: var(--backgroundColor);
+      font-weight: 600;
+      cursor: pointer;
+    }
+  }
+
+  .usersCols {
+    margin-bottom: 10px;
+
+    h4 {
+      font-weight: 500;
+      font-size: 20px;
+      text-align: center;
+    }
+
+
+  }
+
+  .buttons {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+
+    button {
+      padding: 10px 25px;
+      border-radius: 30px;
+      border-width: 2px;
+      border-color: #ffffff8a;
+      background: var(--backgroundColor);
+      box-shadow: 0px 0px 12px 3px rgba(255, 255, 255, 0.2);
+    }
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .profile {
+    .general {
+      display: grid;
+      grid-template-columns: 1fr 30%;
+
+      .userCard {
+        .avatar {
+          height: 100%;
+          width: unset;
+          aspect-ratio: 1/1;
+        }
+
+        .userInformation {
+          font-size: 1.5rem;
+
+          h1 {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+
+    .cards {
+      display: flex;
+      justify-content: space-between;
+
+      a {
+        width: 25%;
+      }
+    }
+
+    .compatibility {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      .diagram {
+        grid-row: span 2;
+      }
+
+      h4 {
+        align-self: flex-end;
+        font-size: 1.5rem;
+      }
+
+      .button {
+        width: 60%;
+        margin-inline: auto;
+        align-self: start;
+      }
+    }
+
+    .profileLinksList {
+      h4 {
+        font-size: 2rem;
+      }
+
+      ul {
+        margin: 3rem 0;
+        width: 80%;
+        margin-inline: auto;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+
+      .button {
+        width: 50%;
+        margin-inline: auto;
+      }
+    }
+  }
+}

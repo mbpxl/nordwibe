@@ -1,0 +1,48 @@
+.occupation {
+  padding: 15px 15px;
+
+  .imageContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .image {
+      width: 100%;
+      height: auto;
+      background: #FFF;
+      border-radius: 10px;
+      overflow: hidden;
+      padding: 15px 0;
+      display: flex;
+      justify-content: center;
+
+      img {
+        width: 60%;
+        height: auto;
+      }
+
+      @media (min-width:600px) {
+        width: 70%;
+      }
+
+      @media (min-width:800px) {
+        width: 40%;
+      }
+    }
+  }
+
+  .diagram {
+    margin-top: 30px;
+
+    h4 {
+      text-align: center;
+      font-weight: 500;
+      font-size: 20px;
+    }
+  }
+
+  p {
+    margin-top: 15px;
+  }
+}

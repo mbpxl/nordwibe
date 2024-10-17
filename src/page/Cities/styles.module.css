@@ -1,0 +1,59 @@
+.cities {
+  max-width: 800px;
+  margin-inline: auto;
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+.cities h1 {
+  display: none;
+}
+.cities input {
+  margin: 2rem 0;
+  width: 100%;
+  border-radius: 5px;
+  background: transparent;
+  border: 2px solid rgb(255, 255, 255);
+  padding: 1rem;
+  color: white;
+  text-align: center;
+}
+.cities input::-moz-placeholder {
+  color: white;
+  opacity: 0.5;
+}
+.cities input::placeholder {
+  color: white;
+  opacity: 0.5;
+}
+.cities .citiesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.cities .citiesList h2 {
+  padding: 0.5rem;
+  cursor: pointer;
+  font-weight: 400;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+.cities .citiesList h2:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+@media screen and (min-width: 800px) {
+  .cities h1 {
+    display: block;
+    font-size: 2rem;
+    text-align: center;
+    margin: 2rem;
+  }
+  .cities input {
+    margin-top: 0;
+  }
+  .cities .citiesList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}/*# sourceMappingURL=styles.module.css.map */

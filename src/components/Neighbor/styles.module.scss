@@ -1,0 +1,89 @@
+.neighbor {
+  width: 98%;
+  height: max-content;
+  border-radius: 10px;
+  background: #FFF;
+  padding: 10px 10px;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+
+  .containerUser {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .userCard {
+      display: flex;
+      align-items: center;
+      margin-right: 30px;
+
+      .avatar {
+        min-width: 70px;
+        min-height: 70px;
+        border-radius: 100%;
+        background: #55A3C4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+          width: 30px;
+          height: auto;
+        }
+      }
+
+      .userInformation {
+        margin-left: 10px;
+
+        h4 {
+          color: var(--backgroundColor);
+        }
+      }
+    }
+
+    h1 {
+      color: var(--backgroundColor);
+      font-size: 19px;
+      font-weight: 600;
+    }
+  }
+
+  .userInfo {
+    margin-top: 10px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    position: relative;
+    left: -5px;
+
+    h4 {
+      font-size: 16px;
+      padding: 10px 20px;
+      border-radius: 20px;
+      border: 1px solid var(--backgroundColor);
+      margin-top: 10px;
+      color: var(--backgroundColor);
+      font-weight: 500;
+      margin-left: 5px;
+      text-align: center;
+      grid-column: 1 / -1;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+
+    button {
+      padding: 10px 25px;
+      border-radius: 30px;
+      background: var(--backgroundColor);
+    }
+  }
+}

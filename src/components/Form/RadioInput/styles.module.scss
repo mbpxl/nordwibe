@@ -1,0 +1,33 @@
+$primary: #5755c4;
+
+.button {
+  position: relative;
+  margin: 0.5rem 0;
+  height: fit-content;
+  .radio {
+    appearance: none;
+    background-color: white;
+
+    color: white;
+    border-radius: 5px;
+    height: 3.5rem;
+    font-size: 1rem;
+    width: 100%;
+    padding: 0.5rem;
+    font-weight: 400;
+  }
+
+  .label {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: $primary;
+    font-weight: 600;
+    z-index: 2;
+  }
+
+  &.notActive {
+    opacity: 0.5;
+  }
+}

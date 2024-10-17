@@ -1,0 +1,162 @@
+.chatDetail {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin-bottom: 250px;
+
+  .noneMessages {
+    font-size: 17px;
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  .supportMessage {
+    width: 100%;
+    height: auto;
+    padding: 1rem 0.5rem;
+    background: #FFF;
+    position: relative;
+    margin-top: -10px;
+    border-radius: 10px;
+
+    a {
+      text-decoration: underline;
+      text-decoration-style: dashed;
+    }
+
+    p {
+      color: #000;
+    }
+  }
+
+  .messages {
+    margin-top: 20px;
+    padding: 0 10px;
+  }
+
+  .anxiety {
+    width: max-content;
+    height: auto;
+    position: fixed;
+    bottom: 90px;
+    left: 10px;
+    background: #F64141;
+    padding: 15px 30px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+
+    h1 {
+      font-weight: 600;
+      font-size: 17px;
+    }
+  }
+
+  .buttons {
+    width: 95%;
+    height: auto;
+    position: fixed;
+    z-index: 100;
+    padding-bottom: 20px;
+    bottom: 60px;
+    background: #FFF;
+    left: 0;
+    right: 0;
+    border-radius: 10px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    @media(min-width: 650px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media(min-width: 900px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media(min-width: 1250px) {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    h4 {
+      margin-top: 10px;
+      color: #000;
+      overflow-wrap: normal;
+      white-space: nowrap;
+      padding: 5px 10px;
+      border-radius: 20px;
+      border: 1px solid #000;
+      font-size: 11px;
+      font-weight: 500;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+
+  .filesMenu {
+    width: 100%;
+    height: max-content;
+    padding: 0px 15px;
+    padding-bottom: 15px;
+    background: #FFF;
+    position: fixed;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    z-index: 101;
+
+    .input {
+      width: 100%;
+      height: 100%;
+      position: relative;
+
+      input {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+      }
+    }
+  }
+
+  .input {
+    width: 100%;
+    height: 70px;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    z-index: 102;
+
+    .icon {
+      position: absolute;
+      height: max-content;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+
+      img {
+        width: 30px;
+        height: auto;
+      }
+
+      &.file {
+        left: 10px;
+      }
+
+      &.send {
+        right: 10px;
+      }
+    }
+
+    input {
+      padding: 0 60px;
+      border: 0;
+      width: 100%;
+      height: 100%;
+      background: #8a88ff;
+    }
+  }
+}

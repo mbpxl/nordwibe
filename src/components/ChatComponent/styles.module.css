@@ -1,0 +1,51 @@
+.chatComponent {
+  width: 50%;
+  height: auto;
+  padding: 10px 10px;
+  background: #FFF;
+  margin: 20px auto;
+  border-radius: 10px;
+  display: flex;
+}
+.chatComponent .image {
+  min-width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  background: #55C48F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chatComponent .image img {
+  width: 35px;
+  height: auto;
+}
+.chatComponent .text {
+  margin-left: 15px;
+}
+.chatComponent .text h1 {
+  color: var(--backgroundColor);
+  font-weight: 600;
+  font-size: 20px;
+}
+.chatComponent .text h4 {
+  color: var(--backgroundColor);
+  font-size: 16px;
+}
+
+@media (max-width: 1200px) {
+  .chatComponent {
+    width: 60%;
+  }
+}
+@media (max-width: 1000px) {
+  .chatComponent {
+    width: 70%;
+  }
+}
+@media (max-width: 800px) {
+  .chatComponent {
+    width: 100%;
+    margin: 10px 0px;
+  }
+}/*# sourceMappingURL=styles.module.css.map */

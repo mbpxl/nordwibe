@@ -1,0 +1,32 @@
+.settings {
+  padding: 30px 15px;
+}
+.settings .inputs .inputContainer {
+  margin-top: 15px;
+}
+.settings .inputs .inputContainer h3 {
+  font-size: 19px;
+}
+.settings .inputs .inputContainer .input {
+  position: relative;
+  width: 80px;
+  height: 40px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: transparent;
+  border: 1px solid #FFF;
+  margin-top: 10px;
+}
+.settings .inputs .inputContainer .input .circle {
+  position: absolute;
+  top: 4px;
+  left: 7px;
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  transition: all 0.5s ease;
+  background: #FFF;
+}
+.settings .inputs .inputContainer .input .circle.active {
+  margin-left: 38px;
+}/*# sourceMappingURL=styles.module.css.map */

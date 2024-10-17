@@ -1,0 +1,20 @@
+.page {
+  height: 100%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+
+  main {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  footer {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 0.8rem;
+    opacity: 0.6;
+  }
+}

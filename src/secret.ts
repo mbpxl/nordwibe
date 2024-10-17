@@ -1,0 +1,1 @@
+export const YANDEX_API_KEY="ysc1_deyxdcGi35zUW1DVACdN6l8pr6eIJwIlay2QJg6Cd347a430";
