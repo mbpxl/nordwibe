@@ -23,24 +23,6 @@
       "static/chunks/main-app.js",
       "static/css/app/sign-in/layout.css",
       "static/chunks/app/sign-in/layout.js"
-    ],
-    "/sign-up/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/sign-up/page.css",
-      "static/chunks/app/sign-up/page.js"
-    ],
-    "/sign-up/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/sign-up/layout.css",
-      "static/chunks/app/sign-up/layout.js"
-    ],
-    "/sign-in/phone-confirmation/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/sign-in/phone-confirmation/page.css",
-      "static/chunks/app/sign-in/phone-confirmation/page.js"
     ]
   }
 }

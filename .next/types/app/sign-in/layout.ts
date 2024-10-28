@@ -1,4 +1,4 @@
-// File: P:\Nordwibe\nordwibe-app\src\app\sign-in\layout.tsx
+// File: C:\_projects\nordwibe\nordwibe\src\app\sign-in\layout.tsx
 import * as entry from '../../../../src/app/sign-in/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

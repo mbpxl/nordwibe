@@ -18,32 +18,40 @@ import { QueryStatus } from "@reduxjs/toolkit/query";
 
 export default function SignIn() {
   const dispatch = useDispatch<AppDispatch>();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const router = useRouter();
+  const [username, setUsername] = useState(""); // имя пользователя
+  const [password, setPassword] = useState(""); // пароль
+  const router = useRouter(); // получаем роутер
+
+  /**
+   * trigger - функция которая запускает запрос, определённый в 
+   * authApi.endpoints.login. Её можно вызвать с любыми нужными параметрами, 
+   * когда это требуется, например, при нажатии кнопки
+   */
+
   const [trigger, result, lastPromiseInfo] =
     authApi.endpoints.login.useLazyQuery();
   const [userTrigger, userResult] = usrApi.endpoints.getMe.useLazyQuery();
+
   const handleClick = async () => {
-    const token = btoa(username + ":" + password);
-    dispatch(setAuth({ user: null, token }));
-    const loginResponse = await trigger();
-    console.log(loginResponse);
-    if (loginResponse.isSuccess) {
-      const userResponse = await userTrigger();
-      if (userResponse.isSuccess) {
+    const token = btoa(username + ":" + password); // кодируем токен
+    console.log(token);
+    dispatch(setAuth({ user: username, token })); // Отправляем в state (authSlice) данные
+    const loginResponse = await trigger(); // Запускаем запрос, вызываем функцию login()
+    console.log(loginResponse); // output
+
+    if (loginResponse.isSuccess) { // если всё ок, то:
+      const userResponse = await userTrigger(); // отправляем запрос на getMe() _ получаем пользователя
+      if (userResponse.isSuccess) { // если всё ок, то:
         dispatch(
           setAuth({
             user: userResponse.data ? userResponse.data : null,
             token,
-          })
+          }) // отправляем в state (authSlice) данные
         );
-        // console.log(loginResponse)
-        // console.log(userResponse)
-        router.push("/");
+        router.push("/"); // перенаправляем в главную страницу
       }
     } else {
-      dispatch(setAuth({ user: null, token: "" }));
+      dispatch(setAuth({ user: null, token: "" })); // если всё пошло по пизде, то обнуляем данные
     }
   };
 
