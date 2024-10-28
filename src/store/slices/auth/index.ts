@@ -6,7 +6,7 @@ import { Cookie } from "next/font/google";
 import { serialize } from "v8";
 
 export type AuthState = {
-  user: IRealUserMe | null;
+  user: IRealUserMe | null | string;
   token: string | null;
   cookie: string | null;
   isAuth: boolean;
@@ -22,11 +22,11 @@ const authSlice = createSlice({
       state,
       {
         payload: { user, token },
-      }: PayloadAction<{ user: IRealUserMe | null; token: string }>
+      }: PayloadAction<{ user: IRealUserMe | null | string; token: string }>
     ) => {
       state.user = user;
       state.token = token;
-      state.isAuth = !!token;
+      state.isAuth = !!user;
     },
     logout: (state) => {
       state.user = null;

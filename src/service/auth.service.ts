@@ -1,7 +1,7 @@
 import { ICreateUser, IRealUserMe } from "@/interfaces/user.interface";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "@/store";
-const API_BASE = "https://3133319-bo35045.twc1.net/api/v0/users";
+const API_BASE = "https://3133319-bo35045.twc1.net/api/v0/";
 
 export interface LoginRequest {
   username: string;

@@ -14,18 +14,20 @@ import Stories from "react-insta-stories";
 import Checkbox from "@/components/Form/Checkbox";
 import { useSelector } from "react-redux";
 import { AuthState } from "@/store/slices/auth";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
+import { RootState } from "@/store";
 
 const Home = () => {
+  //* получаем состояние авторизованности пользователя (true/false)
+  const isAuth = useSelector((state: RootState) => state.authSlice.isAuth);
+  const router = useRouter();
+
   const [openStories, setOpenStories] = useState(false);
   const calcNewMessages = useRef<number>(0);
   const [resCount, setResCount] = useState(0);
   let messages: IUser | null = null;
   const swipeStart = useRef(0);
   messages = useTypedSelector((selector) => selector.userSlice.user);
-
-  //* Получаем данные о том, авторизован ли пользователь (true/false)
-  const isAuth = useSelector((state: AuthState) => state.isAuth);
 
   const CloseStoriesWithSwipe = (end: number) => {
     if (end + 150 < swipeStart.current) {
@@ -37,6 +39,12 @@ const Home = () => {
   };
 
   useEffect(() => {
+    if(!isAuth) {
+      router.push("/sign-in")
+    }
+  }, [isAuth])
+
+  useEffect(() => {
     calcNewMessages.current = 0;
     messages.notifications.map((n) => {
       if (n[0] == 1) {
@@ -46,13 +54,6 @@ const Home = () => {
 
     setResCount(calcNewMessages.current);
   }, [messages.notifications]);
-
-  //* Логика редиректа на страницу входа, если пользователь не авторизован
-  useEffect(() => {
-    if (!isAuth) {
-      redirect("/sign-in");
-    }
-  }, [isAuth]);
 
   return (
     <div className={`${styles.home}`}>
