@@ -1,13 +1,14 @@
 import Articles from "@/page/Articles";
 import { Metadata } from "next";
+import { memo } from "react";
 
 export const metadata: Metadata = {
   title: "Articles | Nordwibe",
-  description: "A page with information and posts about us"
-}
+  description: "A page with information and posts about us",
+};
 
 const ArticlesPage = () => {
-  return <Articles />
-}
+  return <Articles />;
+};
 
-export default ArticlesPage;
+export default memo(ArticlesPage);

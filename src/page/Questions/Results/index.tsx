@@ -43,7 +43,7 @@ function toBoolArray(value: string | string[] | null): boolean[] {
   return array.map((item) => item.key);
 }
 
-export default function Results() {
+export default React.memo(function Results() {
   const [house, { error }] = useCreateHouseMutation();
   const [img, { error: imgError }] = useUploadImagesMutation();
   const [editHouse, { error: editHouseError }] = useEditHouseMutation();
@@ -73,7 +73,7 @@ export default function Results() {
   const { answers, files } = useContext(QuestionsContext);
   // console.log(answers);
   // console.log(files);
-  
+
   const p: IHouseGeneral = {
     address: convertToString(answers[0].content),
     type: "UK",
@@ -146,5 +146,4 @@ export default function Results() {
       </div>
     </>
   );
-}
-
+});

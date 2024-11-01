@@ -27,6 +27,9 @@ const authSlice = createSlice({
       state.user = user;
       state.token = token;
       state.isAuth = !!user;
+      if (token) {
+        localStorage.setItem('authToken', token);
+      }
     },
     logout: (state) => {
       state.user = null;
@@ -38,8 +41,12 @@ const authSlice = createSlice({
       state,
       { payload: { cookie } }: PayloadAction<{ cookie: string }>
     ) => {
+      const token = localStorage.getItem('authToken');
+      if (token) {
+        state.token = token;
+        state.isAuth = true;
+      }
       state.cookie = cookie;
-      state.isAuth = true;
     },
   },
 });

@@ -10,15 +10,14 @@ type FormInputProps = {
   // setFile:(file: File)=>void;
 };
 
-export default function FileInput(props: FormInputProps) {
+export default React.memo(function FileInput(props: FormInputProps) {
   const [file, setFile] = useState<File | null>(null);
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    
     const inputValue = e.target.value;
     const target = e.target;
     const formFile = target.files?.[0];
-    if(formFile){
-      setFile(formFile)
+    if (formFile) {
+      setFile(formFile);
     }
     props.onChange && props.onChange(inputValue);
   }
@@ -35,8 +34,7 @@ export default function FileInput(props: FormInputProps) {
         type="file"
         id={props.id}
         onChange={(e) => handleChange(e)}
-        
       />
     </>
   );
-}
+});

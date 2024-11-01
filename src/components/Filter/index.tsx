@@ -20,6 +20,7 @@ import {
   soundIsolation,
 } from "@/config";
 import { IFilterResult } from "@/interfaces/filter_answer.interface";
+import React from "react";
 
 interface IFilter {
   setFilter?: Dispatch<SetStateAction<boolean>>;
@@ -466,6 +467,7 @@ const Filter: FC<IFilter> = ({ setFilter }) => {
               {repair.map((tog, ind) => {
                 return (
                   <div
+                    key={ind}
                     className={`${styles.toggle} ${
                       activeRepair === ind ? styles.choosen_toggle : ""
                     }`}
@@ -483,6 +485,7 @@ const Filter: FC<IFilter> = ({ setFilter }) => {
               {houseType.map((tog, ind) => {
                 return (
                   <div
+                    key={ind}
                     className={`${styles.toggle} ${
                       activeBuild === ind ? styles.choosen_toggle : ""
                     }`}
@@ -500,6 +503,7 @@ const Filter: FC<IFilter> = ({ setFilter }) => {
               {soundIsolation.map((tog, ind) => {
                 return (
                   <div
+                    key={ind}
                     className={`${styles.toggle} ${
                       activeSound === ind ? styles.choosen_toggle : ""
                     }`}
@@ -517,6 +521,7 @@ const Filter: FC<IFilter> = ({ setFilter }) => {
               {soundIsolation.map((tog, ind) => {
                 return (
                   <div
+                    key={ind}
                     className={`${styles.toggle} ${
                       activeRepair === ind ? styles.choosen_toggle : ""
                     }`}
@@ -535,6 +540,7 @@ const Filter: FC<IFilter> = ({ setFilter }) => {
                   {comfort.map((tog, ind) => {
                     return (
                       <div
+                        key={ind}
                         className={`${styles.toggle} ${styles.choosen_toggle}`}
                       >
                         {tog}
@@ -560,6 +566,7 @@ const Filter: FC<IFilter> = ({ setFilter }) => {
                   {appliances.map((tog, ind) => {
                     return (
                       <div
+                        key={ind}
                         className={`${styles.toggle} ${styles.choosen_toggle}`}
                       >
                         {tog}
@@ -599,4 +606,4 @@ const Filter: FC<IFilter> = ({ setFilter }) => {
   );
 };
 
-export default Filter;
+export default React.memo(Filter);

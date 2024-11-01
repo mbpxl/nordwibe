@@ -4,7 +4,7 @@ import FormHeading from "@/components/Form/Heading";
 import TextInput from "@/components/Form/TextInput";
 import Button from "@/components/Button";
 
-export default function PasswordInput() {
+export default React.memo(function PasswordInput() {
   return (
     <Form>
       <FormHeading for="password">ПРИДУМАЙТЕ ПАРОЛЬ</FormHeading>
@@ -26,4 +26,4 @@ export default function PasswordInput() {
       <Button type="submit">Продолжить</Button>
     </Form>
   );
-}
+});

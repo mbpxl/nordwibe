@@ -1,5 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 
-export default function AddApartmentPage() {
-  return <div></div>;
-}
+const AddApartmentPage = () => {
+  <></>;
+};
+
+export default AddApartmentPage;

@@ -1,7 +1,8 @@
 import Favourites from "@/page/Favourites";
+import React from "react";
 
 const FavouritesPage = () => {
-  return <Favourites />
-}
+  return <Favourites />;
+};
 
-export default FavouritesPage;
+export default React.memo(FavouritesPage);

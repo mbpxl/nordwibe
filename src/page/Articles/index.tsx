@@ -1,6 +1,7 @@
 import Article from "@/components/Article";
 import { articles } from "@/config";
 import styles from "@/page/Articles/styles.module.scss";
+import React from "react";
 
 const Articles = () => {
   return (
@@ -15,5 +16,4 @@ const Articles = () => {
   );
 };
 
-export default Articles;
-
+export default React.memo(Articles);

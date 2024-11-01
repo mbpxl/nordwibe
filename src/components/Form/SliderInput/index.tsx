@@ -9,7 +9,7 @@ type FormInputProps = {
   onChange?: (value: string) => void;
 };
 
-export default function SliderInput(props: FormInputProps) {
+export default React.memo(function SliderInput(props: FormInputProps) {
   const [value, setValue] = useState<number>(0);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -36,4 +36,4 @@ export default function SliderInput(props: FormInputProps) {
       />
     </>
   );
-}
+});

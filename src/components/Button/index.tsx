@@ -5,13 +5,13 @@ type LabelProps = {
   children: React.ReactNode;
   type?: "button" | "submit" | "reset";
   onSubmit?: any;
-  onClick?:any
+  onClick?: any;
 };
 
-export default function Button(props: LabelProps) {
+export default React.memo(function Button(props: LabelProps) {
   return (
     <button
-    onClick={props.onClick}
+      onClick={props.onClick}
       onSubmit={props.onSubmit}
       className={styles.button}
       type={props.type}
@@ -19,4 +19,4 @@ export default function Button(props: LabelProps) {
       {props.children}
     </button>
   );
-}
+});

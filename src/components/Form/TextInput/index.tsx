@@ -8,12 +8,12 @@ type FormInputProps = {
   type: "tel" | "text" | "password" | "number" | "checkbox";
   placeholder: string;
   id: string;
-  value?:string;
+  value?: string;
   onChange?: (value: string) => void;
 };
 
-export default function TextInput(props: FormInputProps) {
-  const [value, setValue] = useState<string>(props.value||"");
+export default React.memo(function TextInput(props: FormInputProps) {
+  const [value, setValue] = useState<string>(props.value || "");
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const inputValue = e.target.value;
@@ -23,9 +23,8 @@ export default function TextInput(props: FormInputProps) {
   }
 
   return (
-
     <input
-    className={styles.input}
+      className={styles.input}
       name={props.name}
       type={props.type}
       id={props.id}
@@ -35,4 +34,4 @@ export default function TextInput(props: FormInputProps) {
       required
     />
   );
-}
+});

@@ -14,16 +14,16 @@ type QuestionProps = {
   onAnswer: (answer: string[] | null) => void;
 };
 
-export default function MultiFileQuestion(props: QuestionProps) {
+export default React.memo(function MultiFileQuestion(props: QuestionProps) {
   const [answers, setAnswers] = useState<string[]>([]);
   const { addFile } = useContext(QuestionsContext);
 
   function handleFileChange(files: FileList) {
     if (files) {
       const fileArray = Array.from(files);
-      fileArray.forEach(f=>{
-        addFile(f)}
-      );
+      fileArray.forEach((f) => {
+        addFile(f);
+      });
       const fileNames = fileArray.map((file) => file.name);
       setAnswers(fileNames);
     }
@@ -57,4 +57,4 @@ export default function MultiFileQuestion(props: QuestionProps) {
       <Button>Продолжить</Button>
     </Form>
   );
-}
+});

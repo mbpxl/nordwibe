@@ -9,7 +9,6 @@ import TextInput from "@/components/Form/TextInput";
 import Button from "@/components/Button";
 import { SmartCaptcha } from "@yandex/smart-captcha";
 
-
 import FormMessage from "@/components/Form/Message";
 import { notFound, redirect } from "next/navigation";
 import { ICreateUser } from "@/interfaces/user.interface";
@@ -31,7 +30,7 @@ type RegisterStatus =
   | "required data"
   | "other";
 
-export default function PhoneInput() {
+export default React.memo(function PhoneInput() {
   const user = useTypedSelector((selector) => selector.userSlice.user);
   const [token, setToken] = useState("");
   const [userSecret, setUserSecret] = useState("");
@@ -129,7 +128,7 @@ export default function PhoneInput() {
           {showErrorMessage && <p>ВВЕДИТЕ КАПЧУ</p>}
           <div className={styles.captcha}>
             <SmartCaptcha
-              sitekey={process.env.REACT_APP_YANDEX_API_KEY||YANDEX_API_KEY}
+              sitekey={process.env.REACT_APP_YANDEX_API_KEY || YANDEX_API_KEY}
               onSuccess={(t) => {
                 setToken(t);
                 console.log(t);
@@ -205,5 +204,4 @@ export default function PhoneInput() {
       <Button type="submit">Продолжить</Button>
     </Form>
   );
-}
-
+});

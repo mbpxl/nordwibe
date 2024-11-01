@@ -12,18 +12,19 @@ import {
 import { useGetMeQuery } from "@/service/userApi.service";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import React from "react";
 import { FC, FormEvent, useState } from "react";
 
-export interface MessageShow{
-  message: IMessage,
-  type : "your" | "his";
+export interface MessageShow {
+  message: IMessage;
+  type: "your" | "his";
 }
 
 const ChatDetail: FC<{ id: string }> = ({ id }) => {
   // if (id != "support" && !users.find(u => u.id === Number(id))) return notFound()
   const { data: chatList } = useListchatQuery();
-  const [sendMessage, {error}] =  useSendMessageMutation();
-  const {data: user} = useGetMeQuery()
+  const [sendMessage, { error }] = useSendMessageMutation();
+  const { data: user } = useGetMeQuery();
   if (id != "support")
     console.log(
       chatList?.filter(
@@ -91,24 +92,24 @@ const ChatDetail: FC<{ id: string }> = ({ id }) => {
   const messageList: Array<MessageShow> | null = chat
     ? chat.messages.map((c) => ({
         message: c,
-        type: c.sender_id==Number(id)?"your":"his"
+        type: c.sender_id == Number(id) ? "your" : "his",
       }))
     : null;
-   
+
   const type = id === "support" ? "support" : "user";
 
-  const onSubmit =async (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if(user&&chat){
-      let msg:ISendMessage={
+    if (user && chat) {
+      let msg: ISendMessage = {
         sender_id: user.id,
-        recipient_id: id=="support"? 0:Number(id),
-        type:"TX",
-        text:value,
-        is_from_app:false,
-        is_urgently:false
-      } 
-      const msgResponse = await sendMessage({chatId:chat.id, message:msg});
+        recipient_id: id == "support" ? 0 : Number(id),
+        type: "TX",
+        text: value,
+        is_from_app: false,
+        is_urgently: false,
+      };
+      const msgResponse = await sendMessage({ chatId: chat.id, message: msg });
     }
     // setMessages([
     //   ...messages,
@@ -125,7 +126,7 @@ const ChatDetail: FC<{ id: string }> = ({ id }) => {
 
   return (
     <div className={styles.chatDetail}>
-      {messageList&&messageList.length === 0 && id != "support" && (
+      {messageList && messageList.length === 0 && id != "support" && (
         <h1 className={styles.noneMessages}>
           Чат пуст. Ну же. Сделайте первый шаг
         </h1>
@@ -142,9 +143,10 @@ const ChatDetail: FC<{ id: string }> = ({ id }) => {
         </div>
       )}
       <div className={styles.messages}>
-        {messageList&&messageList.map((message) => (
-          <Message {...message} />
-        ))}
+        {messageList &&
+          messageList.map((message, index) => (
+            <Message {...message} key={index} />
+          ))}
       </div>
       {/* type === "support" && !isFilesMenu && (
       <div className={styles.anxiety}>
@@ -154,10 +156,13 @@ const ChatDetail: FC<{ id: string }> = ({ id }) => {
       {type === "user" &&
         !isFilesMenu &&
         value.length === 0 &&
-        messageList&&messageList.length === 0 && (
+        messageList &&
+        messageList.length === 0 && (
           <div className={styles.buttons}>
-            {words.map((word) => (
-              <h4 onClick={() => setValue(word)}>{word}</h4>
+            {words.map((word, index) => (
+              <h4 onClick={() => setValue(word)} key={index}>
+                {word}
+              </h4>
             ))}
           </div>
         )}
@@ -214,5 +219,4 @@ const ChatDetail: FC<{ id: string }> = ({ id }) => {
   );
 };
 
-export default ChatDetail;
-
+export default React.memo(ChatDetail);

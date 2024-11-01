@@ -12,13 +12,13 @@ type QuestionProps = {
   question: QuestionType;
   onAnswer: (answer: string) => void;
   values?: {
-    first: string,
-    second: string,
-    third: string,
-  }
+    first: string;
+    second: string;
+    third: string;
+  };
 };
 
-export default function ThreeOptionQuestion(props: QuestionProps) {
+export default React.memo(function ThreeOptionQuestion(props: QuestionProps) {
   const [checked, setChecked] = useState<string>();
   const [answer, setAnswer] = useState<string>();
 
@@ -42,7 +42,7 @@ export default function ThreeOptionQuestion(props: QuestionProps) {
         <RadioInput
           id="0"
           name={props.question.id.toString()}
-          value={props.values?props.values.first:"Да"}
+          value={props.values ? props.values.first : "Да"}
           checked={checked}
           onChange={handleChange}
         ></RadioInput>
@@ -50,7 +50,7 @@ export default function ThreeOptionQuestion(props: QuestionProps) {
         <RadioInput
           id="1"
           name={props.question.id.toString()}
-          value={props.values?props.values.second:"Нет"}
+          value={props.values ? props.values.second : "Нет"}
           checked={checked}
           onChange={handleChange}
         ></RadioInput>
@@ -58,7 +58,7 @@ export default function ThreeOptionQuestion(props: QuestionProps) {
         <RadioInput
           id="2"
           name={props.question.id.toString()}
-          value={props.values?props.values.third:"Не уверен"}
+          value={props.values ? props.values.third : "Не уверен"}
           checked={checked}
           onChange={handleChange}
         ></RadioInput>
@@ -67,4 +67,4 @@ export default function ThreeOptionQuestion(props: QuestionProps) {
       <Button type="submit">Продолжить</Button>
     </Form>
   );
-}
+});

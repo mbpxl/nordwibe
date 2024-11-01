@@ -13,7 +13,7 @@ type QuestionProps = {
   onAnswer: (answer: string) => void;
 };
 
-export default function SliderQuestion(props: QuestionProps) {
+export default React.memo(function SliderQuestion(props: QuestionProps) {
   const [answer, setAnswer] = useState<string>("0");
 
   function handleSubmit() {
@@ -34,4 +34,4 @@ export default function SliderQuestion(props: QuestionProps) {
       <Button>Продолжить</Button>
     </Form>
   );
-}
+});

@@ -2,6 +2,7 @@ import styles from "@/components/MobileBottomMenu/styles.module.scss";
 import { bigScreenSize, mobileBottomMenuIcons } from "@/config";
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 
 const MobileBottomMenu = () => {
   return (
@@ -25,4 +26,4 @@ const MobileBottomMenu = () => {
   );
 };
 
-export default MobileBottomMenu;
+export default React.memo(MobileBottomMenu);

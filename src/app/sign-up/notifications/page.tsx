@@ -4,9 +4,9 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Включить уведомления | Nordwibe",
-  description: "Страница включения уведомлений"
-}
+  description: "Страница включения уведомлений",
+};
 
-export default function EnableNotificationsPage() {
+export default React.memo(function EnableNotificationsPage() {
   return <EnableNotifications />;
-}
+});

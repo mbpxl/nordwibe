@@ -1,5 +1,6 @@
-"use client"
-import { useState, useEffect } from 'react';
+"use client";
+import React from "react";
+import { useState, useEffect } from "react";
 
 interface AddressInputProps {
   apiKey: string;
@@ -10,18 +11,18 @@ interface Address {
 }
 
 const AddressInput: React.FC<AddressInputProps> = ({ apiKey }) => {
-  const [address, setAddress] = useState<Address>({ value: '' });
+  const [address, setAddress] = useState<Address>({ value: "" });
   const [map, setMap] = useState<ymaps.Map | null>(null);
 
   useEffect(() => {
-    const script = document.createElement('script');
+    const script = document.createElement("script");
     script.src = `https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=${apiKey}`;
     script.async = true;
     document.body.appendChild(script);
 
     script.onload = () => {
       const ymaps = (window as any).ymaps;
-      const mapElement = document.getElementById('map');
+      const mapElement = document.getElementById("map");
       if (mapElement) {
         const mapInstance = new ymaps.Map(mapElement, {
           center: [55.76, 37.64],
@@ -45,4 +46,4 @@ const AddressInput: React.FC<AddressInputProps> = ({ apiKey }) => {
   );
 };
 
-export default AddressInput;
+export default React.memo(AddressInput);

@@ -9,12 +9,13 @@ import { noNavbarsPages, profileCircleProgress } from "@/config";
 import { useEffect, useState } from "react";
 import { useTypedSelector } from "@/hooks/selector.hook";
 import Filter from "@/components/Filter";
+import React from "react";
 const chatRegex = /^\/chat\/.+/;
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
   const [filter, setFilter] = useState(false);
-  
+
   useEffect(() => {
     document
       .querySelector("html")!
@@ -24,12 +25,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <Providers>
       <div className={styles.layout}>
-      {filter && <Filter setFilter={setFilter}/>}
-    
+        {filter && <Filter setFilter={setFilter} />}
+
         <Navigation filter={filter} setFilter={setFilter} />
-        <main className={styles.main}>
-          {children}
-        </main>
+        <main className={styles.main}>{children}</main>
 
         {!noNavbarsPages.some((path) => pathname.includes(path)) &&
         !chatRegex.test(pathname) ? (
@@ -42,4 +41,4 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default Layout;
+export default React.memo(Layout);

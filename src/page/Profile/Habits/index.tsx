@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import styles from "./styles.module.scss";
 
-export default function Habits({ id }: { id: string }) {
+export default React.memo(function Habits({ id }: { id: string }) {
   const user = users.find((u) => u.id === Number(id));
 
   if (!user) return notFound();
@@ -30,4 +30,4 @@ export default function Habits({ id }: { id: string }) {
       </div>
     </div>
   );
-}
+});

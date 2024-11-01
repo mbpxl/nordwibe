@@ -11,6 +11,7 @@
     "deploy": "echo \"Error: deploy scripts are not implemented\" && exit 1"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^15.0.2",
     "@pbe/react-yandex-maps": "^1.2.5",
     "@reduxjs/toolkit": "^2.2.7",
     "@types/yandex-maps": "^2.1.36",

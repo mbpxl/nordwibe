@@ -1,6 +1,7 @@
 import styles from "@/components/Article/styles.module.scss";
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 import { FC } from "react";
 
 interface IArticle {
@@ -34,4 +35,4 @@ const Article: FC<IArticle> = ({ image, subtitle, time, title, id }) => {
   );
 };
 
-export default Article;
+export default React.memo(Article);

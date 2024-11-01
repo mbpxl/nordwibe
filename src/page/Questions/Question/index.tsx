@@ -22,11 +22,12 @@ type QuestionProps = {
   id: string;
 };
 
-export default function Question({ id }: QuestionProps) {
+export default React.memo(function Question({ id }: QuestionProps) {
   const router = useRouter();
   const pathName = usePathname();
   const questionId = Number.parseFloat(id);
-  const { questions, addAnswer, setCurrentId, addFile } = useContext(QuestionsContext);
+  const { questions, addAnswer, setCurrentId, addFile } =
+    useContext(QuestionsContext);
   const question = questions.find((question) => question.id === questionId);
   const answers = useState([
     { adress: "" },
@@ -41,10 +42,12 @@ export default function Question({ id }: QuestionProps) {
   useEffect(() => {
     setCurrentId(Number.parseInt(id) - 1);
   }, [id, setCurrentId]);
-  function handleFileAnswer(answer: string[] | string | null | any, file: File|null){
+  function handleFileAnswer(
+    answer: string[] | string | null | any,
+    file: File | null
+  ) {
     addAnswer({ id: questionId, content: answer });
-    if(file)
-      addFile(file)
+    if (file) addFile(file);
     const nextQuestionId = questionId + 1;
 
     const currentUrl = pathName.substring(0, pathName.lastIndexOf("/"));
@@ -133,7 +136,10 @@ export default function Question({ id }: QuestionProps) {
           onAnswer={handleAnswer}
           question={question}
           placeholder={
-            question.placeholder || { all: "Ваш ответ", floor: "Ваш ответ" }
+            question.placeholder || {
+              all: "Стоимость комуналки",
+              floor: "Стоимость аренды",
+            }
           }
           answer={question.answer}
         ></TwoNumberInput>
@@ -181,4 +187,4 @@ export default function Question({ id }: QuestionProps) {
       )}
     </>
   );
-}
+});

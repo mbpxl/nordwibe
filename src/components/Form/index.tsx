@@ -7,7 +7,7 @@ type FormProps = {
   children: React.ReactNode;
 };
 
-export default function Form(props: FormProps) {
+export default React.memo(function Form(props: FormProps) {
   return (
     <form
       className={`${styles.form} ${
@@ -18,4 +18,4 @@ export default function Form(props: FormProps) {
       {props.children}
     </form>
   );
-}
+});

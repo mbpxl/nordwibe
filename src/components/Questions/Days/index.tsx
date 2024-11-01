@@ -6,13 +6,14 @@ import Button from "@/components/Button";
 import styles from "./styles.module.scss";
 import { QuestionType } from "@/page/Questions/Provider";
 import { useState } from "react";
+import React from "react";
 
 interface QuestionProps {
   question: QuestionType;
   onAnswer: (answer: string) => void;
   answer?: any;
 }
-export default function Days(props: QuestionProps) {
+export default React.memo(function Days(props: QuestionProps) {
   const [minMonth, setMinMonth] = useState("1");
   const [maxMonth, setMaxMonth] = useState("1");
   const [minLessMonth, setMinLessMonth] = useState(true);
@@ -96,4 +97,4 @@ export default function Days(props: QuestionProps) {
       <Button onClick={() => setAction(true)}>Продолжить</Button>
     </Form>
   );
-}
+});

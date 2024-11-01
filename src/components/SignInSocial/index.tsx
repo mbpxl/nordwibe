@@ -4,7 +4,7 @@ import VKLOGO from "../../../public/svgs/vk";
 import YandexLogo from "../../../public/svgs/yandex";
 import styles from "./styles.module.scss";
 
-export default function SignWith() {
+export default React.memo(function SignWith() {
   return (
     <>
       <div className={styles.or}>или</div>
@@ -18,4 +18,4 @@ export default function SignWith() {
       </div>
     </>
   );
-}
+});

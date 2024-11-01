@@ -7,6 +7,8 @@ import { hApi } from "@/service/houseApi.service";
 import authSlice from "@/store/slices/auth"
 import { authApi } from "@/service/auth.service";
 import { chatApi } from "@/service/chat.service";
+import { storiesSlice } from "./slices/stories";
+import { storiesApi } from "@/service/stories.service";
 
 const reducer = combineReducers({
   userSlice,
@@ -14,6 +16,7 @@ const reducer = combineReducers({
   filtersSlice,
   [usrApi.reducerPath]: usrApi.reducer,
   [hApi.reducerPath]:hApi.reducer,
+  [storiesApi.reducerPath]: storiesApi.reducer,
   authSlice,
   [authApi.reducerPath]: authApi.reducer,
   [chatApi.reducerPath]: chatApi.reducer
@@ -22,7 +25,7 @@ const reducer = combineReducers({
 export const store = configureStore({
   reducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(usrApi.middleware).concat(hApi.middleware).concat(authApi.middleware).concat(chatApi.middleware),
+    getDefaultMiddleware().concat(usrApi.middleware).concat(hApi.middleware).concat(authApi.middleware).concat(chatApi.middleware).concat(storiesApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

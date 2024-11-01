@@ -5,7 +5,7 @@ import FormHeading from "@/components/Form/Heading";
 import FormMessage from "@/components/Form/Message";
 import Button from "@/components/Button";
 
-export default function EnableNotifications() {
+export default React.memo(function EnableNotifications() {
   return (
     <Form>
       <FormHeading>УВЕДОМЛЕНИЯ</FormHeading>
@@ -16,4 +16,4 @@ export default function EnableNotifications() {
       <Button type="submit">Разрешить</Button>
     </Form>
   );
-}
+});

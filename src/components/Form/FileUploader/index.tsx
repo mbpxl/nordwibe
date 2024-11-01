@@ -41,4 +41,4 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onChange, accept }) => {
   );
 };
 
-export default FileUploader;
+export default React.memo(FileUploader);

@@ -1,23 +1,22 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import Article from "@/components/Article";
 import LinkCard from "@/components/LinkCard";
-import Post from "@/components/Post";
-import { LinkCards, articles, posts, storyList } from "@/config";
+import { LinkCards, articles, storyList } from "@/config";
 import styles from "@/page/Home/styles.module.scss";
 import Link from "next/link";
 import NOTIFICATIONLOGO from "../../../public/svgs/notification";
-import { useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { IUser } from "@/interfaces/user.interface";
 import { useTypedSelector } from "@/hooks/selector.hook";
 import Stories from "react-insta-stories";
-import Checkbox from "@/components/Form/Checkbox";
 import { useSelector } from "react-redux";
-import { AuthState } from "@/store/slices/auth";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { RootState } from "@/store";
+//import { useGetStoriesQuery } from "@/service/stories.service";
 
-const Home = () => {
+export const Home = () => {
   //* получаем состояние авторизованности пользователя (true/false)
   const isAuth = useSelector((state: RootState) => state.authSlice.isAuth);
   const router = useRouter();
@@ -29,6 +28,13 @@ const Home = () => {
   const swipeStart = useRef(0);
   messages = useTypedSelector((selector) => selector.userSlice.user);
 
+  //@ts-ignore
+  //TODO: const { data: stories, error, isLoading } = useGetStoriesQuery();
+
+  // useEffect(() => {
+  //   console.log(stories);
+  // }, [stories]);
+
   const CloseStoriesWithSwipe = (end: number) => {
     if (end + 150 < swipeStart.current) {
       setOpenStories(false);
@@ -39,21 +45,21 @@ const Home = () => {
   };
 
   useEffect(() => {
-    if(!isAuth) {
-      router.push("/sign-in")
+    if (!isAuth) {
+      router.push("/sign-in");
     }
-  }, [isAuth])
+  }, [isAuth, router]);
 
   useEffect(() => {
     calcNewMessages.current = 0;
-    messages.notifications.map((n) => {
+    messages?.notifications.map((n) => {
       if (n[0] == 1) {
         calcNewMessages.current += 1;
       }
     });
 
     setResCount(calcNewMessages.current);
-  }, [messages.notifications]);
+  }, [messages?.notifications]);
 
   return (
     <div className={`${styles.home}`}>
@@ -69,10 +75,11 @@ const Home = () => {
           )}
         </a>
       )}
+      {/* //! Поменять storyList на полученное из АПИ */}
       <div className={`${styles.stories}`}>
-        {storyList.map((story, i) => (
+        {storyList.map((story, index) => (
           <div
-            key={i}
+            key={index}
             className={styles.card}
             onClick={() => {
               setOpenStories(true);
@@ -95,7 +102,7 @@ const Home = () => {
               loop
               keyboardNavigation
               defaultInterval={2000}
-              stories={storyList}
+              stories={storyList} //! поменять на полученное из АПИ
               width={320}
               height={"90%"}
               onAllStoriesEnd={() => setOpenStories(false)}
@@ -161,5 +168,4 @@ const Home = () => {
   );
 };
 
-export default Home;
-
+export default memo(Home);

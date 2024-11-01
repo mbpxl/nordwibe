@@ -11,10 +11,10 @@ type QuestionProps = {
   question: QuestionType;
 
   onAnswer: (answer: string) => void;
-  answerVal?: any
+  answerVal?: any;
 };
 
-export default function Description(props: QuestionProps) {
+export default React.memo(function Description(props: QuestionProps) {
   const [answer, setAnswer] = useState<string>();
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -37,4 +37,4 @@ export default function Description(props: QuestionProps) {
       <Button>Продолжить</Button>
     </Form>
   );
-}
+});

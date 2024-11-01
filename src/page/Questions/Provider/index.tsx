@@ -48,7 +48,7 @@ export type AnswerType = {
 type ContextProps = {
   questions: QuestionType[];
   files: File[];
-  addFile: (f: File)=>void;
+  addFile: (f: File) => void;
   addAnswer: (answer: AnswerType) => void;
   currentId?: number;
   setCurrentId: (id: number) => void;
@@ -65,19 +65,19 @@ export const QuestionsContext = createContext<ContextProps>({
   questions: [],
   answers: [],
   files: [],
-  addFile: ()=>{},
+  addFile: () => {},
   addAnswer: () => {},
   setCurrentId: () => {},
 });
 
-export default function QuestionProvider(props: ProviderProps) {
+export default React.memo(function QuestionProvider(props: ProviderProps) {
   const [answers, setAnswers] = useState<AnswerType[]>([]);
   const [currentId, setCurrentId] = useState<number>();
   const [files, setFiles] = useState<File[]>([]);
-  function addFile(f: File){
+  function addFile(f: File) {
     let filesTmp = files;
     filesTmp.push(f);
-    setFiles((prev)=>filesTmp);
+    setFiles((prev) => filesTmp);
   }
   function addAnswer(answer: AnswerType) {
     let newAnswers: AnswerType[] = [];
@@ -107,10 +107,10 @@ export default function QuestionProvider(props: ProviderProps) {
         currentId: currentId,
         setCurrentId: setCurrentId,
         files: files,
-        addFile: addFile
+        addFile: addFile,
       }}
     >
       {props.children}
     </QuestionsContext.Provider>
   );
-}
+});

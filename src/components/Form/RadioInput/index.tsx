@@ -9,7 +9,7 @@ type Props = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export default function RadioInput(props: Props) {
+export default React.memo(function RadioInput(props: Props) {
   return (
     <div
       className={`${styles.button} ${
@@ -38,4 +38,4 @@ export default function RadioInput(props: Props) {
       />
     </div>
   );
-}
+});

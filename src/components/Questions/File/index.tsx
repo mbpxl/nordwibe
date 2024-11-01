@@ -10,20 +10,20 @@ import SubHeading from "@/components/Form/Subheading";
 
 type QuestionProps = {
   question: QuestionType;
-  onAnswer: (answer: string | null, file: File|null) => void;
+  onAnswer: (answer: string | null, file: File | null) => void;
 };
 
-export default function FileQuestion(props: QuestionProps) {
+export default React.memo(function FileQuestion(props: QuestionProps) {
   const [answer, setAnswer] = useState<string>();
   const [file, setFile] = useState<File>();
   function handleSubmit() {
-    props.onAnswer(answer || null, file||null);
+    props.onAnswer(answer || null, file || null);
   }
-  function handleFileChange(event: React.ChangeEvent<HTMLInputElement>){
+  function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
     const target = event.target;
     const formFile = target.files?.[0];
-    if(formFile){
-      setFile(formFile)
+    if (formFile) {
+      setFile(formFile);
     }
   }
   return (
@@ -38,11 +38,13 @@ export default function FileQuestion(props: QuestionProps) {
 
       <FileInput
         id={props.question.id.toString()}
-        onChange={(value) => {setAnswer(value)}}
+        onChange={(value) => {
+          setAnswer(value);
+        }}
         // setFile={setFile}
       ></FileInput>
 
       <Button>Продолжить</Button>
     </Form>
   );
-}
+});

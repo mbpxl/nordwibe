@@ -1,7 +1,8 @@
 import NotificationsSettings from "@/page/Notifications/Settings";
+import React from "react";
 
 const NotificationsSettingsPage = () => {
-  return <NotificationsSettings />
-}
+  return <NotificationsSettings />;
+};
 
-export default NotificationsSettingsPage;
+export default React.memo(NotificationsSettingsPage);

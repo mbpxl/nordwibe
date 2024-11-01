@@ -22,7 +22,9 @@ const DesktopNav: FC<IFilter> = ({ filter, setFilter }) => {
   const city = useTypedSelector((selector) => selector.userSlice.user.city);
   const menu = useTypedSelector((selector) => selector.navigationSlice.menu);
   const u = useTypedSelector((selector) => selector.authSlice.user);
-  const profileId = u?u.id:1;
+  //TODO resolve
+  // @ts-ignore
+  const profileId = u ? u.id : 1;
   const dispatch = useDispatch<AppDispatch>();
   const secondIcon = navigationIcons.secondIcon.find((iconObject) =>
     iconObject.pages.includes(pathname)
@@ -103,4 +105,4 @@ const DesktopNav: FC<IFilter> = ({ filter, setFilter }) => {
   );
 };
 
-export default DesktopNav;
+export default React.memo(DesktopNav);
