@@ -9,6 +9,7 @@ import styles from "@/page/Chat/styles.module.scss";
 import { useListchatQuery } from "@/service/chat.service";
 import chatApi from "@/service/chatApi.service";
 import { useGetMeQuery } from "@/service/userApi.service";
+import React from "react";
 import { useEffect, useState } from "react";
 
 export interface ChatSchema {
@@ -31,7 +32,7 @@ const Chat = () => {
   const { data: fetchedChats } = useListchatQuery();
   const [chats, setChats] = useState<IChat[]>([]);
   const { data: user } = useGetMeQuery();
-  const id = user?user.id:0;
+  const id = user ? user.id : 0;
   return (
     <div className={styles.chat}>
       <ChatComponent
@@ -43,12 +44,11 @@ const Chat = () => {
         fetchedChats.map((chat, i) =>
           chat.second_user.first_name.includes(search) ? (
             <ChatComponent
+              key={i}
               lastMessage="Сделка еще состоится? Или ты меня решил кинуть?"
               type="user"
               user={
-                id == chat.second_user.id
-                  ? chat.first_user
-                  : chat.second_user
+                id == chat.second_user.id ? chat.first_user : chat.second_user
               }
             />
           ) : (
@@ -59,5 +59,4 @@ const Chat = () => {
   );
 };
 
-export default Chat;
-
+export default React.memo(Chat);

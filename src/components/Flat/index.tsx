@@ -2,11 +2,8 @@
 
 import styles from "@/components/Flat/styles.module.scss";
 import { useTypedSelector } from "@/hooks/selector.hook";
-import { IFlat, IRealFlat } from "@/interfaces/flat.interface";
-import { IUser } from "@/interfaces/user.interface";
+import { IRealFlat } from "@/interfaces/flat.interface";
 import { AppDispatch } from "@/store";
-import { addToFavourites } from "@/store/slices/user";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FC, useEffect, useRef, useState } from "react";
@@ -19,17 +16,18 @@ import "swiper/css/scrollbar";
 import { A11y, Navigation, Pagination, Scrollbar } from "swiper/modules";
 import { YMaps, Map, Placemark } from "@pbe/react-yandex-maps";
 import { usersList } from "@/config";
+import React from "react";
 const Flat: FC<{ flat: IRealFlat }> = ({ flat }) => {
   const dispatch = useDispatch<AppDispatch>();
   const pathname = usePathname();
   const user = useTypedSelector((selector) => selector.userSlice.user);
   const mapRef = useRef();
   const [district, setDistrict] = useState<string>("");
-  
+
   const geocode = (ymaps: any) => {
     ymaps.geocode(flat.address).then((res: any) => {
       let firstGeoObject = res.geoObjects.get(0);
-    
+
       ymaps
         .geocode(firstGeoObject.geometry._coordinates, {
           kind: "district",
@@ -44,7 +42,7 @@ const Flat: FC<{ flat: IRealFlat }> = ({ flat }) => {
 
   useEffect(() => {}, []);
   return (
-    <Link href={`/flats/${flat.id+1}`}>
+    <Link href={`/flats/${flat.id + 1}`}>
       <div className={styles.flat}>
         <div className={styles.banner}>
           <Swiper
@@ -56,31 +54,32 @@ const Flat: FC<{ flat: IRealFlat }> = ({ flat }) => {
             pagination={{ clickable: true }}
             navigation
           >
-            {flat.photos_ids&&flat.photos_ids.map((photo) => {
-              return (
-                <SwiperSlide className={styles.slide}>
-                  <div className={styles.img}>
-                    <img src={photo} alt="banner" />
-                  </div>
-                </SwiperSlide>
-              );
-            })}
+            {flat.photos_ids &&
+              flat.photos_ids.map((photo) => {
+                return (
+                  <SwiperSlide className={styles.slide}>
+                    <div className={styles.img}>
+                      <img src={photo} alt="banner" />
+                    </div>
+                  </SwiperSlide>
+                );
+              })}
           </Swiper>
         </div>
         <div className={styles.containerUser}>
           <div className={styles.userCard}>
             <div className={styles.avatar}>
-                <img
-                  src={
-                    usersList[flat.creator_id]&&
-                    usersList[flat.creator_id].avatar
-                      ? usersList[flat.creator_id].avatar
-                      : "/icons/userProfile.svg"
-                  }
-                  alt="avatar"
-                  width={"100%"}
-                  height={"100%"}
-                />
+              <img
+                src={
+                  usersList[flat.creator_id] &&
+                  usersList[flat.creator_id].avatar
+                    ? usersList[flat.creator_id].avatar
+                    : "/icons/userProfile.svg"
+                }
+                alt="avatar"
+                width={"100%"}
+                height={"100%"}
+              />
             </div>
             <div className={styles.userInformation}>
               <h1>{usersList[flat.creator_id].first_name}</h1>
@@ -122,12 +121,7 @@ const Flat: FC<{ flat: IRealFlat }> = ({ flat }) => {
               <ul>
                 <li>Адрес:</li>
                 <li>
-                  Район:{" "}
-                  {
-                    district.split(",")
-                    [district.split(",").length - 1]
-                     
-                  }
+                  Район: {district.split(",")[district.split(",").length - 1]}
                 </li>
               </ul>
             </div>
@@ -165,4 +159,4 @@ const Flat: FC<{ flat: IRealFlat }> = ({ flat }) => {
   );
 };
 
-export default Flat;
+export default React.memo(Flat);

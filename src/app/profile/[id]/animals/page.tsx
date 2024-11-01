@@ -1,7 +1,8 @@
 import Animals from "@/page/Profile/Animals";
+import React from "react";
 
 const AnimalsPage = ({ params }: { params: { id: string } }) => {
-  return <Animals id={params.id} />
-}
+  return <Animals id={params.id} />;
+};
 
-export default AnimalsPage;
+export default React.memo(AnimalsPage);

@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import styles from "./styles.module.scss";
 
-export default function Medic({ id }: { id: string }) {
+export default React.memo(function Medic({ id }: { id: string }) {
   const user = users.find((u) => u.id === Number(id));
 
   if (!user) return notFound();
@@ -13,4 +13,4 @@ export default function Medic({ id }: { id: string }) {
       <h1>Медик {user.name}</h1>
     </div>
   );
-}
+});

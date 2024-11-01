@@ -3,12 +3,13 @@
 import Neighbor from "@/components/Neighbor";
 import { users } from "@/config";
 import { useTypedSelector } from "@/hooks/selector.hook";
-import { IRealUserMe, IUser,IRealUser } from "@/interfaces/user.interface";
+import { IRealUserMe, IUser, IRealUser } from "@/interfaces/user.interface";
 import styles from "@/page/Neighbors/styles.module.scss";
 import { useEffect, useState } from "react";
-import userApi from "@/service/userApi.service"
-import chatApi from "@/service/chatApi.service"
+import userApi from "@/service/userApi.service";
+import chatApi from "@/service/chatApi.service";
 import houseApi from "@/service/houseApi.service";
+import React from "react";
 
 const Neighbors = () => {
   const search = useTypedSelector(
@@ -52,14 +53,11 @@ const Neighbors = () => {
     //   console.log(asdasd)
     //   setFetched(asdasd)
     // })()
-    
     // const fetchedUsers =  listUsers();
     //     console.log(fetchedUsers)
     //     setNeighbors(fetchedUsers);
     //     console.log(neighbors);
-  }, [])
-  
-    
+  }, []);
 
   const hide = (id: number) => {
     setNeighbors(neighbors.filter((user) => user.id != id));
@@ -69,21 +67,24 @@ const Neighbors = () => {
     <div className={styles.neighbors}>
       <div className={styles.container}>
         {neighbors.map(
-          (user) =>
-            user.name.toLowerCase().startsWith(search.toLowerCase()) 
-          &&
+          (user, index) =>
+            user.name.toLowerCase().startsWith(search.toLowerCase()) &&
             user.age <= filters.to &&
-            user.age >= filters.from && 
-            (
-              <div className={styles.neigh}>
+            user.age >= filters.from && (
+              <div className={styles.neigh} key={index}>
                 <Neighbor user={user} hide={hide} />
               </div>
             )
         )}
-        <button onClick={()=>houseApi.getImages(["2","5"])} style={{fontSize:"72px"}}>FETCH</button>
+        <button
+          onClick={() => houseApi.getImages(["2", "5"])}
+          style={{ fontSize: "72px" }}
+        >
+          FETCH
+        </button>
       </div>
     </div>
   );
 };
 
-export default Neighbors;
+export default React.memo(Neighbors);

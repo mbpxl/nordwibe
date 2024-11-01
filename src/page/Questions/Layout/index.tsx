@@ -11,7 +11,7 @@ type QuestionProps = {
   questions: QuestionType[];
 };
 
-export default function QuestionsLayout({
+export default React.memo(function QuestionsLayout({
   children,
   questions,
 }: QuestionProps) {
@@ -25,4 +25,4 @@ export default function QuestionsLayout({
       </RegistrationView>
     </QuestionProvider>
   );
-}
+});

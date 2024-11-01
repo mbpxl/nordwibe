@@ -39,6 +39,7 @@ import {
 } from "react";
 import { createIUserFromRealUser, IUser } from "@/interfaces/user.interface";
 import { usrApi } from "@/service/userApi.service";
+import React from "react";
 
 const profileRegex = /^\/profile\/.+/;
 const articlesRegex = /^\/articles\/.+/;
@@ -96,7 +97,7 @@ const Navigation: FC<IFilter> = ({ filter, setFilter }) => {
     });
 
     setResCount(calcNewMessages.current);
-  }, []);
+  }, [messages.notifications]);
 
   return (
     <>
@@ -396,7 +397,4 @@ const Navigation: FC<IFilter> = ({ filter, setFilter }) => {
   );
 };
 
-export default Navigation;
-
-
-
+export default React.memo(Navigation);

@@ -6,10 +6,10 @@ type LabelProps = {
   for?: string;
 };
 
-export default function FormHeading(props: LabelProps) {
+export default React.memo(function FormHeading(props: LabelProps) {
   return (
     <label className={styles.heading} htmlFor={props.for}>
       {props.children}
     </label>
   );
-}
+});

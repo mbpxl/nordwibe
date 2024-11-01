@@ -1,5 +1,6 @@
 import styles from "@/components/LinkCard/styles.module.scss";
 import Image from "next/image";
+import React from "react";
 import { FC } from "react";
 
 interface ILinkCard {
@@ -20,13 +21,18 @@ const LinkCard: FC<ILinkCard> = ({ image, text, text_two }) => {
       />
       {!text_two && <span>{text}</span>}
 
-      {text_two &&
+      {text_two && (
         <div className={styles.text_content}>
-          <div><span>{text}</span></div>
-          <div><span>{text_two}</span></div>
-        </div>}
+          <div>
+            <span>{text}</span>
+          </div>
+          <div>
+            <span>{text_two}</span>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
-export default LinkCard;
+export default React.memo(LinkCard);

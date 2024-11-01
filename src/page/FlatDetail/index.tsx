@@ -21,6 +21,7 @@ import TickLOGO from "../../../public/svgs/tick";
 import { IRealFlat } from "@/interfaces/flat.interface";
 import { FlatList, users, usersList } from "@/config";
 import houseApi from "@/service/houseApi.service";
+import React from "react";
 
 const FlatDetail: FC<{ id: string }> = ({ id }) => {
   const pathname = usePathname();
@@ -42,7 +43,7 @@ const FlatDetail: FC<{ id: string }> = ({ id }) => {
   const mapRef = useRef();
   const [district, setDistrict] = useState<string>("");
   const geocode = (ymaps: any) => {
-    const address = flat&&flat.address||""
+    const address = (flat && flat.address) || "";
     ymaps.geocode(address).then((res: any) => {
       let firstGeoObject = res.geoObjects.get(0);
       setAddressCoord(firstGeoObject.geometry._coordinates);
@@ -104,9 +105,10 @@ const FlatDetail: FC<{ id: string }> = ({ id }) => {
               navigation
               className={styles.swiper_module}
             >
-              {flat.photos_ids.map((el) => {
+              {flat.photos_ids.map((el, index) => {
                 return (
                   <SwiperSlide
+                    key={index}
                     onClick={() => setOpen(true)}
                     className={styles.slide}
                   >
@@ -130,9 +132,10 @@ const FlatDetail: FC<{ id: string }> = ({ id }) => {
             pagination={{ clickable: true }}
             className={styles.swiper}
           >
-            {flat.photos_ids.map((el) => {
+            {flat.photos_ids.map((el, index) => {
               return (
                 <SwiperSlide
+                  key={index}
                   onClick={() => setOpen(true)}
                   className={styles.slide}
                 >
@@ -419,5 +422,4 @@ const FlatDetail: FC<{ id: string }> = ({ id }) => {
   );
 };
 
-export default FlatDetail;
-
+export default React.memo(FlatDetail);

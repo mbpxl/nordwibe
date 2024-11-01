@@ -1,15 +1,14 @@
 "use client";
 
 import Flat from "@/components/Flat";
-import { FlatList, flats } from "@/config";
+import { FlatList } from "@/config";
 import { useTypedSelector } from "@/hooks/selector.hook";
 import { IRealFlat } from "@/interfaces/flat.interface";
 import styles from "@/page/FlatsPage/styles.module.scss";
 import { useEffect, useState } from "react";
 import houseApi from "@/service/houseApi.service";
-import userApi, { usrApi } from "@/service/userApi.service";
-import { IRealUser } from "@/interfaces/user.interface";
-import { userAgentFromString } from "next/server";
+import { usrApi } from "@/service/userApi.service";
+import React from "react";
 
 const Flats = () => {
   const search = useTypedSelector(
@@ -38,7 +37,7 @@ const Flats = () => {
               <Flat flat={flat} />
             </div>
           )
-          
+
           // )
         )}
       </div>
@@ -52,5 +51,4 @@ const Flats = () => {
   );
 };
 
-export default Flats;
-
+export default React.memo(Flats);

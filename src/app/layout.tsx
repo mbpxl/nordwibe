@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
-import { Inter, Montserrat } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "@/base.scss";
 import Layout from "@/components/Layout";
-import auth from "@/store/slices/auth";
-import { useTypedSelector } from "@/hooks/selector.hook";
-import { RootState } from "@/store";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -14,12 +11,16 @@ export const metadata: Metadata = {
   keywords: ["dwellings", "flats", "neighbours"],
   robots: {
     follow: true,
-    index: true
-  }
+    index: true,
+  },
 };
 
-export default ({ children, params }: { children: React.ReactNode, params: any }) => {
-  
+const MyComponent = ({
+  children,
+}: {
+  children: React.ReactNode;
+  params: any;
+}) => {
   return (
     <html lang="ru">
       <body className={montserrat.className}>
@@ -28,3 +29,5 @@ export default ({ children, params }: { children: React.ReactNode, params: any }
     </html>
   );
 };
+
+export default MyComponent;

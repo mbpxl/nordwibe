@@ -4,9 +4,11 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Результат | Nordwibe",
-  description: "Результат добавления квартиры"
-}
+  description: "Результат добавления квартиры",
+};
 
-export default function ResultsPage() {
+const ResultsPage = () => {
   return <Results />;
-}
+};
+
+export default React.memo(ResultsPage);

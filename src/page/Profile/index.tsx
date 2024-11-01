@@ -31,6 +31,7 @@ import {
 import Neighbor from "@/components/Neighbor";
 import userApi, { usrApi } from "@/service/userApi.service";
 import { hApi } from "@/service/houseApi.service";
+import React from "react";
 
 const Profile: FC<{ id: string }> = ({ id }) => {
   // const user = users.find((user) => user.id === Number(id));
@@ -364,5 +365,4 @@ const Profile: FC<{ id: string }> = ({ id }) => {
   );
 };
 
-export default Profile;
-
+export default React.memo(Profile);

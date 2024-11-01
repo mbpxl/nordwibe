@@ -1,5 +1,6 @@
 import { FC } from "react";
 import styles from "../FilterToggle/styles.module.scss";
+import React from "react";
 
 interface IFilterToggle {
   text: string;
@@ -17,4 +18,4 @@ const FitlerToggle: FC<IFilterToggle> = ({ text }) => {
   );
 };
 
-export default FitlerToggle;
+export default React.memo(FitlerToggle);

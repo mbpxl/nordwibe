@@ -16,15 +16,15 @@ import { usrApi } from "@/service/userApi.service";
 import { useRouter } from "next/navigation";
 import { QueryStatus } from "@reduxjs/toolkit/query";
 
-export default function SignIn() {
+export default React.memo(function SignIn() {
   const dispatch = useDispatch<AppDispatch>();
   const [username, setUsername] = useState(""); // имя пользователя
   const [password, setPassword] = useState(""); // пароль
   const router = useRouter(); // получаем роутер
 
   /**
-   * trigger - функция которая запускает запрос, определённый в 
-   * authApi.endpoints.login. Её можно вызвать с любыми нужными параметрами, 
+   * trigger - функция которая запускает запрос, определённый в
+   * authApi.endpoints.login. Её можно вызвать с любыми нужными параметрами,
    * когда это требуется, например, при нажатии кнопки
    */
 
@@ -39,9 +39,11 @@ export default function SignIn() {
     const loginResponse = await trigger(); // Запускаем запрос, вызываем функцию login()
     console.log(loginResponse); // output
 
-    if (loginResponse.isSuccess) { // если всё ок, то:
+    if (loginResponse.isSuccess) {
+      // если всё ок, то:
       const userResponse = await userTrigger(); // отправляем запрос на getMe() _ получаем пользователя
-      if (userResponse.isSuccess) { // если всё ок, то:
+      if (userResponse.isSuccess) {
+        // если всё ок, то:
         dispatch(
           setAuth({
             user: userResponse.data ? userResponse.data : null,
@@ -100,5 +102,4 @@ export default function SignIn() {
       </Link>
     </Form>
   );
-}
-
+});

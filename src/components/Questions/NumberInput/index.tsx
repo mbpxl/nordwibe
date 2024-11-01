@@ -17,14 +17,12 @@ type QuestionProps = {
   answer: number;
 };
 
-export default function NumberInput(props: QuestionProps) {
+export default React.memo(function NumberInput(props: QuestionProps) {
   const input = useRef<HTMLInputElement>(null);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    if (input.current?.value )
-      props.onAnswer(
-        JSON.stringify(+input.current?.value)
-      );
+    if (input.current?.value)
+      props.onAnswer(JSON.stringify(+input.current?.value));
   }
 
   const handleInputChange = (inputRef: React.RefObject<HTMLInputElement>) => {
@@ -57,4 +55,4 @@ export default function NumberInput(props: QuestionProps) {
       <Button type="submit">Продолжить</Button>
     </Form>
   );
-}
+});

@@ -4,9 +4,9 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Вход | Nordwibe",
-  description: "Страница входа"
-}
+  description: "Страница входа",
+};
 
-export default function SignInPage() {
+export default React.memo(function SignInPage() {
   return <SignIn />;
-}
+});

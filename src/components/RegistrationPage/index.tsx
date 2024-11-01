@@ -2,20 +2,19 @@
 
 import React from "react";
 import styles from "./styles.module.scss";
-import { usePathname } from "next/navigation"
+import { usePathname } from "next/navigation";
 
-export default function 
-RegistrationView({
+export default React.memo(function RegistrationView({
   children,
 }: {
   children: React.ReactNode;
 }) {
   const addRegex = /^\/add-apartment\/.+/;
-  const pathname = usePathname()
+  const pathname = usePathname();
   return (
     <div className={styles.page}>
       <main>{children}</main>
       {!addRegex.test(pathname) && <footer>Nordwibe 2024</footer>}
     </div>
   );
-}
+});

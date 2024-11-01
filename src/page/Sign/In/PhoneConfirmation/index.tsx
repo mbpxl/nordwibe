@@ -5,7 +5,7 @@ import FormMessage from "@/components/Form/Message";
 import TextInput from "@/components/Form/TextInput";
 import Button from "@/components/Button";
 
-export default function PhoneConfirmation() {
+export default React.memo(function PhoneConfirmation() {
   return (
     <Form>
       <FormHeading for="phone-confirm">ПОДТВЕРДИТЕ НОМЕР</FormHeading>
@@ -22,4 +22,4 @@ export default function PhoneConfirmation() {
       <Button type="submit">Продолжить</Button>
     </Form>
   );
-}
+});

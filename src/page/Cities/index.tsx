@@ -5,7 +5,7 @@ import styles from "@/page/Cities/styles.module.scss";
 import { AppDispatch } from "@/store";
 import { setCity } from "@/store/slices/user";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
 const Cities = () => {
@@ -41,4 +41,4 @@ const Cities = () => {
   );
 };
 
-export default Cities;
+export default React.memo(Cities);

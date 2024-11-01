@@ -14,7 +14,7 @@ type QuestionProps = {
   answerVal?: any;
 };
 
-export default function TextAndMap(props: QuestionProps) {
+export default React.memo(function TextAndMap(props: QuestionProps) {
   const [answer, setAnswer] = useState<string>("");
   const [addressCoord, setAddressCoord] = useState([55.75, 37.57]);
   const mapRef = useRef();
@@ -94,4 +94,4 @@ export default function TextAndMap(props: QuestionProps) {
       <Button>Продолжить</Button>
     </Form>
   );
-}
+});

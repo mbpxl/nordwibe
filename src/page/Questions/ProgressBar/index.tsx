@@ -4,7 +4,7 @@ import styles from "../styles.module.scss";
 import { QuestionsContext } from "../Provider";
 import { usePathname } from "next/navigation";
 
-export default function ProgressBar() {
+export default React.memo(function ProgressBar() {
   const pathName = usePathname();
   const { questions, currentId } = useContext(QuestionsContext);
 
@@ -18,4 +18,4 @@ export default function ProgressBar() {
       <div className={styles.pin} style={{ left: `${progress}%` }}></div>
     </div>
   );
-}
+});

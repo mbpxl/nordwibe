@@ -4,9 +4,9 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Пароль | Nordwibe",
-  description: "Страница пароля"
-}
+  description: "Страница пароля",
+};
 
-export default function PasswordPage() {
+export default React.memo(function PasswordPage() {
   return <PasswordInput />;
-}
+});

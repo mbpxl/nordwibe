@@ -4,9 +4,9 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Sign Up | Nordwibe",
-  description: "The register page"
-}
+  description: "The register page",
+};
 
-export default function SignUpPage() {
+export default React.memo(function SignUpPage() {
   return <PhoneInput />;
-}
+});

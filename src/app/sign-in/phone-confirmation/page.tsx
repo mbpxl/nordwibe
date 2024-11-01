@@ -4,9 +4,9 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Подтверждение телефона | Nordwibe",
-  description: "Страница подтверждения телефона"
-}
+  description: "Страница подтверждения телефона",
+};
 
-export default function PhoneConfirmPage() {
+export default React.memo(function PhoneConfirmPage() {
   return <PhoneConfirmation />;
-}
+});

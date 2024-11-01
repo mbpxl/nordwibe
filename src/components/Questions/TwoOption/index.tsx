@@ -11,13 +11,13 @@ import styles from "../styles.module.scss";
 type QuestionProps = {
   question: QuestionType;
   anotherText?: {
-    first: string,
-    second: string
-  }
+    first: string;
+    second: string;
+  };
   onAnswer: (answer: string) => void;
 };
 
-export default function TwoOptionQuestion(props: QuestionProps) {
+export default React.memo(function TwoOptionQuestion(props: QuestionProps) {
   const [checked, setChecked] = useState<string>();
   const [answer, setAnswer] = useState<string>();
 
@@ -58,4 +58,4 @@ export default function TwoOptionQuestion(props: QuestionProps) {
       <Button type="submit">Продолжить</Button>
     </Form>
   );
-}
+});

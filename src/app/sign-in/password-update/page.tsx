@@ -4,9 +4,9 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Обновление пароля | Nordwibe",
-  description: "Страница обновления пароля"
-}
+  description: "Страница обновления пароля",
+};
 
-export default function PasswordUpdatePage() {
+export default React.memo(function PasswordUpdatePage() {
   return <PasswordUpdate />;
-}
+});

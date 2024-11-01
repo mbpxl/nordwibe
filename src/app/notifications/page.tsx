@@ -1,13 +1,14 @@
 import Notifications from "@/page/Notifications";
 import { Metadata } from "next";
+import React from "react";
 
 export const metadata: Metadata = {
   title: "Уведомления | Nordwibe",
-  description: "Страница с вашими уведомлениями"
-}
+  description: "Страница с вашими уведомлениями",
+};
 
 const NotificationsPage = () => {
-  return <Notifications />
-}
+  return <Notifications />;
+};
 
-export default NotificationsPage;
+export default React.memo(NotificationsPage);
