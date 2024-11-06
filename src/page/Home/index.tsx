@@ -3,7 +3,7 @@
 
 import Article from "@/components/Article";
 import LinkCard from "@/components/LinkCard";
-import { LinkCards, articles, storyList } from "@/config";
+import { LinkCards, articles } from "@/config";
 import styles from "@/page/Home/styles.module.scss";
 import Link from "next/link";
 import NOTIFICATIONLOGO from "../../../public/svgs/notification";
@@ -14,7 +14,8 @@ import Stories from "react-insta-stories";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { RootState } from "@/store";
-//import { useGetStoriesQuery } from "@/service/stories.service";
+import { BASE_DOMAIN, useGetStoriesQuery } from "@/service/stories.service";
+import houseApi from "@/service/houseApi.service";
 
 export const Home = () => {
   //* получаем состояние авторизованности пользователя (true/false)
@@ -29,11 +30,31 @@ export const Home = () => {
   messages = useTypedSelector((selector) => selector.userSlice.user);
 
   //@ts-ignore
-  //TODO: const { data: stories, error, isLoading } = useGetStoriesQuery();
+  const { data: stories, error, isLoading } = useGetStoriesQuery(); //* Получаем названия сторисов. Метод который отправляет запрос.
 
-  // useEffect(() => {
-  //   console.log(stories);
-  // }, [stories]);
+  //* useState для хранения __АЙДИ__ сторисов
+  const [storiesIds, setStoriesIds] = useState<string[]>([]);
+
+  //* Используем полученные айди выше для отправки за __НАЗВАНИЯМИ СТОРИСОВ__
+  useEffect(() => {
+    if (stories && !error && !isLoading) {
+      const allImagesIds: string[] =
+        stories.length > 0 ? stories[0].images_Ids : [];
+
+      if (allImagesIds.length > 0) {
+        houseApi
+          .getImages(allImagesIds)
+          .then((fetchedImgs) => {
+            setStoriesIds(fetchedImgs);
+          })
+          .catch((error) => console.log("Failed to fetch images: ", error));
+      }
+    }
+  }, [error, isLoading, stories]);
+
+  console.log(storiesIds);
+
+  const storyList = storiesIds.map((story) => BASE_DOMAIN + story);
 
   const CloseStoriesWithSwipe = (end: number) => {
     if (end + 150 < swipeStart.current) {
@@ -75,7 +96,6 @@ export const Home = () => {
           )}
         </a>
       )}
-      {/* //! Поменять storyList на полученное из АПИ */}
       <div className={`${styles.stories}`}>
         {storyList.map((story, index) => (
           <div
@@ -85,7 +105,7 @@ export const Home = () => {
               setOpenStories(true);
             }}
           >
-            <img src={story.url} alt="story" />
+            <img src={story} alt="story" />
           </div>
         ))}
       </div>
@@ -102,7 +122,7 @@ export const Home = () => {
               loop
               keyboardNavigation
               defaultInterval={2000}
-              stories={storyList} //! поменять на полученное из АПИ
+              stories={storyList}
               width={320}
               height={"90%"}
               onAllStoriesEnd={() => setOpenStories(false)}

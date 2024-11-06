@@ -1,7 +1,7 @@
 import React from "react";
 
 const Loader = () => {
-  return <div>Loader</div>;
+  return <div>Loading</div>;
 };
 
 export default React.memo(Loader);
