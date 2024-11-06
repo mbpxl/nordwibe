@@ -14,7 +14,7 @@ class HouseApi {
         method: "GET",
         credentials: "include",
         headers: {
-          Authorization: authDetails,
+          Authorization: `Basic ${localStorage.getItem('authToken')}`,
         },
       });
       const houses = await data.json();
@@ -43,9 +43,9 @@ class HouseApi {
   }
 
   async getImages(ids: Array<String>) {
-    const url = API_BASE + "get_images";
+    const url = API_BASE + "get_images/";
     try {
-      const data = await fetch(url + `?ids=${ids.join(" ")}`, {
+      const data = await fetch(url + `?ids=${ids.join(",")}`, {
         method: "GET",
         credentials: "include",
         headers: {

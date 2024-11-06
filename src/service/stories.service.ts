@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+export const BASE_DOMAIN = "https://3133319-bo35045.twc1.net/media/";
 const API_BASE = "https://3133319-bo35045.twc1.net/api/v0/";
 
 export const storiesApi = createApi({
