@@ -50,7 +50,7 @@ const DesktopNav: FC<IFilter> = ({ filter, setFilter }) => {
             </Link>
           </li>
           <li>
-            <Link href={"/"}>Избранное</Link>
+            <Link href={"/favourites"}>Избранное</Link>
           </li>
           <li>
             <Link href={"/chat"}>Соообщения</Link>
