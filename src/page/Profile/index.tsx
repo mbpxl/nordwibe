@@ -294,7 +294,6 @@ const Profile: FC<{ id: string }> = ({ id }) => {
               </Button>
             )}
           </div>
-
           {/* Если квартиры чела есть*/}
           {true && (
             <div className={styles.flats}>

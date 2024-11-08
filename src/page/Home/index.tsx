@@ -30,7 +30,7 @@ export const Home = () => {
   messages = useTypedSelector((selector) => selector.userSlice.user);
 
   //@ts-ignore
-  const { data: stories, error, isLoading } = useGetStoriesQuery(); //* Получаем названия сторисов. Метод который отправляет запрос.
+  const { data: stories, error, isLoading } = useGetStoriesQuery(); //* Получаем сторисы. Метод который отправляет запрос.
 
   //* useState для хранения __АЙДИ__ сторисов
   const [storiesIds, setStoriesIds] = useState<string[]>([]);
