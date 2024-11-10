@@ -46,7 +46,7 @@ const DesktopNav: FC<IFilter> = ({ filter, setFilter }) => {
           </li>
           <li>
             <Link className={styles.big} href={"/cities"}>
-              {`${city.toUpperCase()}>`}
+              {`${city.toUpperCase()}`}
             </Link>
           </li>
           <li>

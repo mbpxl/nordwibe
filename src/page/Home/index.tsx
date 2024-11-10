@@ -3,7 +3,7 @@
 
 import Article from "@/components/Article";
 import LinkCard from "@/components/LinkCard";
-import { LinkCards, articles } from "@/config";
+import { LinkCards } from "@/config";
 import styles from "@/page/Home/styles.module.scss";
 import Link from "next/link";
 import NOTIFICATIONLOGO from "../../../public/svgs/notification";
@@ -11,16 +11,19 @@ import { memo, useEffect, useRef, useState } from "react";
 import { IUser } from "@/interfaces/user.interface";
 import { useTypedSelector } from "@/hooks/selector.hook";
 import Stories from "react-insta-stories";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { RootState } from "@/store";
 import { BASE_DOMAIN, useGetStoriesQuery } from "@/service/stories.service";
 import houseApi from "@/service/houseApi.service";
+import { setToken } from "@/store/slices/auth";
+import { useGetPostsQuery } from "@/service/articles.service";
 
 export const Home = () => {
   //* получаем состояние авторизованности пользователя (true/false)
   const isAuth = useSelector((state: RootState) => state.authSlice.isAuth);
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const [openStories, setOpenStories] = useState(false);
   const calcNewMessages = useRef<number>(0);
@@ -28,6 +31,9 @@ export const Home = () => {
   let messages: IUser | null = null;
   const swipeStart = useRef(0);
   messages = useTypedSelector((selector) => selector.userSlice.user);
+
+  //@ts-ignore
+  const { data: articles, isLoadingPosts, errorPosts } = useGetPostsQuery();
 
   //@ts-ignore
   const { data: stories, error, isLoading } = useGetStoriesQuery(); //* Получаем сторисы. Метод который отправляет запрос.
@@ -66,10 +72,13 @@ export const Home = () => {
   };
 
   useEffect(() => {
-    if (!isAuth) {
+    const token = localStorage.getItem("authToken");
+    if (token) {
+      dispatch(setToken(token));
+    } else if (!isAuth) {
       router.push("/sign-in");
     }
-  }, [isAuth, router]);
+  }, [isAuth, router, dispatch]);
 
   useEffect(() => {
     calcNewMessages.current = 0;
@@ -81,6 +90,14 @@ export const Home = () => {
 
     setResCount(calcNewMessages.current);
   }, [messages?.notifications]);
+
+  if (isLoadingPosts) {
+    return <div>Загрузка...</div>;
+  }
+
+  if (errorPosts) {
+    return <div>Ошибка при загрузке статей</div>;
+  }
 
   return (
     <div className={`${styles.home}`}>
@@ -178,11 +195,15 @@ export const Home = () => {
       </div>
       <h1>Журнал</h1>
       <div className={styles.articles}>
-        {articles.map((article, index) => (
-          <div key={article.id} className={styles.artic}>
-            <Article {...article} />
-          </div>
-        ))}
+        {articles && articles.length > 0 ? (
+          articles.map((article: any) => (
+            <div key={article.id} className={styles.artic}>
+              <Article {...article} />
+            </div>
+          ))
+        ) : (
+          <div>Нет доступных статей</div>
+        )}
       </div>
     </div>
   );

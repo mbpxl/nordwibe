@@ -1,5 +1,5 @@
 // pages/article/[id].tsx
-"use client"
+"use client";
 import ArticleDetail from "@/page/ArticleDetail";
 import { useGetPostByIdQuery } from "@/service/articles.service";
 import { Metadata } from "next";
@@ -11,11 +11,16 @@ const generateMetadata = async ({
   params: { id: string };
 }): Promise<Metadata> => {
   const { id } = params;
-  const { data: article } = useGetPostByIdQuery(id, { skip: typeof window === "undefined" });
+  //@ts-ignore
+  const { data: article } = useGetPostByIdQuery(id, {
+    skip: typeof window === "undefined",
+  });
 
   return {
     title: `${article ? article.title : "Loading..."} | Nordwibe`,
-    description: `Детальная страница поста под названием ${article ? article.title : "Loading..."}`,
+    description: `Детальная страница поста под названием ${
+      article ? article.title : "Loading..."
+    }`,
   };
 };
 

@@ -49,19 +49,17 @@ const Flat: FC<{ flat: IRealFlat }> = ({ flat }) => {
   const addFlatToFavourite = async (house_id: any) => {
     try {
       let response = await addHouseToFavourite(house_id);
-      if('data' in response) {
+      if ("data" in response) {
         toast.success("Добавлено в избранное!");
       }
-      
     } catch (error) {
       toast.error("Ошибка. Попробуйте позднее.");
     }
   };
 
-
   return (
     <>
-      <Link href={`/flats/${flat.id + 1}`}>
+      <Link href={`/flats/${flat.id}`}>
         <div className={styles.flat}>
           <div className={styles.banner}>
             <Swiper
