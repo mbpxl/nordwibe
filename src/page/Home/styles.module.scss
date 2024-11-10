@@ -62,14 +62,14 @@
       cursor: pointer;
     }
 
-    @media (max-width:500px) {
+    @media (max-width: 500px) {
       .exit {
         right: 10px;
         top: 10px;
       }
     }
 
-    @media (max-width:370px) {
+    @media (max-width: 370px) {
       .exit {
         right: 5px;
         top: 0px;
@@ -101,7 +101,6 @@
       justify-content: center;
       overflow: hidden;
     }
-
   }
 
   .cards {
@@ -147,13 +146,18 @@
 
   .articles {
     display: flex;
-    gap: 2rem;
+    flex-direction: column;
+    gap: 13rem;
     padding: 2rem;
     width: 50%;
     max-width: 800px;
     margin-inline: auto;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+    // &:not(:last-child) {
+    //   margin-bottom: 100px;
+    // }
 
     .artic {
       width: 270px;
@@ -173,7 +177,6 @@
       }
     }
 
-
     .cards {
       max-width: 1200px;
       display: flex;
@@ -185,7 +188,7 @@
     }
   }
 
-  @media (max-width:800px) {
+  @media (max-width: 800px) {
     .messages_icon {
       right: 25px;
       bottom: 80px;
@@ -196,18 +199,15 @@
     }
   }
 
-  @media (max-width:650px) {
-
+  @media (max-width: 650px) {
     .articles {
       width: 70%;
     }
   }
 
-  @media (max-width:450px) {
-
+  @media (max-width: 450px) {
     .articles {
       width: 80%;
     }
   }
-
 }

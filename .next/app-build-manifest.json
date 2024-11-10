@@ -12,30 +12,6 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/sign-in/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/sign-in/page.css",
-      "static/chunks/app/sign-in/page.js"
-    ],
-    "/sign-in/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/sign-in/layout.css",
-      "static/chunks/app/sign-in/layout.js"
-    ],
-    "/articles/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/articles/page.css",
-      "static/chunks/app/articles/page.js"
-    ],
-    "/articles/[id]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/articles/[id]/page.css",
-      "static/chunks/app/articles/[id]/page.js"
-    ],
     "/profile/[id]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -48,11 +24,11 @@
       "static/css/app/favourites/page.css",
       "static/chunks/app/favourites/page.js"
     ],
-    "/favourites/users/page": [
+    "/chat/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/favourites/users/page.css",
-      "static/chunks/app/favourites/users/page.js"
+      "static/css/app/chat/page.css",
+      "static/chunks/app/chat/page.js"
     ],
     "/not-found": [
       "static/chunks/webpack.js",

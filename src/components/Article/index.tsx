@@ -1,11 +1,10 @@
-"use client"
+"use client";
 
 import styles from "@/components/Article/styles.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FC } from "react";
-
 
 const API_BASE = "https://3133319-bo35045.twc1.net/api/v0/";
 type PostsType = {
@@ -16,9 +15,17 @@ type PostsType = {
   publication_date: string;
   content: string;
   is_favorite: boolean;
-}
+};
 
-const Article: FC<PostsType> = ({ lead, cover_image_id, publication_date, content, is_favorite, title, id }) => {
+const Article: FC<PostsType> = ({
+  lead,
+  cover_image_id,
+  publication_date,
+  content,
+  is_favorite,
+  title,
+  id,
+}) => {
   return (
     <Link href={`/articles/${id}`}>
       <div className={`${styles.article}`}>
@@ -32,7 +39,7 @@ const Article: FC<PostsType> = ({ lead, cover_image_id, publication_date, conten
           />
         </div>
         <h2>{title}</h2>
-        <h4>{content.slice(0, 100)}...</h4>
+        <div dangerouslySetInnerHTML={{ __html: content.slice(0, 70) }} />
       </div>
     </Link>
   );

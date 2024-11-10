@@ -297,7 +297,9 @@
 .styles_home__tNlP3 .styles_articles__snulG {
   display: -ms-flexbox;
   display: flex;
-  gap: 2rem;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  gap: 13rem;
   padding: 2rem;
   width: 50%;
   max-width: 800px;
@@ -306,6 +308,8 @@
       flex-wrap: wrap;
   -ms-flex-pack: center;
       justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
 }
 .styles_home__tNlP3 .styles_articles__snulG .styles_artic__XE_wo {
   width: 270px;

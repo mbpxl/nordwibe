@@ -22,14 +22,14 @@ const ArticleDetail: FC<{ article: Article }> = ({ article }) => {
 
   const [addPostToFavorite] = useAddPostToFavoriteMutation();
 
-  const onAddPostToFavorite = async(post_id: any) => {
+  const onAddPostToFavorite = async (post_id: any) => {
     let response: any = await addPostToFavorite(post_id);
-    if ('data' in response) {
+    if ("data" in response) {
       toast.success("Статья добавлена в избранное");
     } else {
-      toast.error("Ошибка. Попробуйте позже.")
+      toast.error("Ошибка. Попробуйте позже.");
     }
-  }
+  };
 
   return (
     <div className={styles.articleDetail}>
@@ -47,11 +47,18 @@ const ArticleDetail: FC<{ article: Article }> = ({ article }) => {
       </h6>
       <h2>{article.title}</h2>
       <div className="">
-        <button onClick={() => {onAddPostToFavorite(article.id)}}>Add</button>
-        <ToastContainer/>
+        <button
+          onClick={() => {
+            onAddPostToFavorite(article.id);
+          }}
+        >
+          Add
+        </button>
+        <ToastContainer />
       </div>
       <h4>{article.teal}</h4>
-      <p>{article.content}</p>
+      <div dangerouslySetInnerHTML={{ __html: article.content }} />
+      {/* <p>{article.content}</p> */}
     </div>
   );
 };

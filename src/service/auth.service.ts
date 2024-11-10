@@ -1,11 +1,17 @@
 import { ICreateUser, IRealUserMe } from "@/interfaces/user.interface";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "@/store";
+import { setToken } from "@/store/slices/auth";
 const API_BASE = "https://3133319-bo35045.twc1.net/api/v0/";
 
 export interface LoginRequest {
   username: string;
   password: string;
+}
+
+export interface LoginResponse {
+  token: string; // Предполагается, что сервер возвращает токен
+  user: IRealUserMe; // Допустим, сервер возвращает также информацию о пользователе
 }
 
 export interface RegistrationRequest {
@@ -26,7 +32,7 @@ export const authApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: API_BASE,
     prepareHeaders: (headers, { getState }) => {
-      const token = (getState() as RootState).authSlice.token;
+      const token = (getState() as RootState).authSlice.token || localStorage.getItem("token");
       if (token) {
         headers.set("authorization", `Basic ${token}`);
       }
@@ -37,10 +43,20 @@ export const authApi = createApi({
   reducerPath: "authApi",
 
   endpoints: (build) => ({
-    login: build.query<LoginRequest, void>({
+    login: build.query<LoginResponse, LoginRequest>({
       query: () => ({
         url: "login/",
       }),
+      async onQueryStarted(args, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          // Сохранение токена в Redux и localStorage
+          dispatch(setToken(data.token));
+          localStorage.setItem("token", data.token);
+        } catch (error) {
+          console.error("Ошибка при логине:", error);
+        }
+      },
     }),
     registration: build.mutation<IRealUserMe, ICreateUser>({
       query: (credentials) => ({
