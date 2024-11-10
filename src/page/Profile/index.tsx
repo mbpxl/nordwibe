@@ -32,6 +32,7 @@ import Neighbor from "@/components/Neighbor";
 import userApi, { usrApi } from "@/service/userApi.service";
 import { hApi } from "@/service/houseApi.service";
 import React from "react";
+import { ToastContainer } from "react-toastify";
 
 const Profile: FC<{ id: string }> = ({ id }) => {
   // const user = users.find((user) => user.id === Number(id));
@@ -299,7 +300,9 @@ const Profile: FC<{ id: string }> = ({ id }) => {
             <div className={styles.flats}>
               <h4>Предложения жилья:</h4>
               {/* Тут тащим квартиры юзера или чела чей айдишник */}
-              {flats && flats.map((f) => <Flat flat={f} key={f.id} />)}
+              {flats && flats.map((f) => <><Flat flat={f} key={f.id} />
+              <ToastContainer/>
+              </> )}
               {/* <Flat flat={flats[1]} /> */}
             </div>
           )}

@@ -1,14 +1,35 @@
-import { articles } from "@/config";
+// components/ArticleDetail.tsx
 import styles from "@/page/ArticleDetail/styles.module.scss";
+import { useAddPostToFavoriteMutation } from "@/service/favorite.service";
 import Image from "next/image";
 import { FC } from "react";
-import { notFound } from "next/navigation";
 import React from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const ArticleDetail: FC<{ id: string }> = ({ id }) => {
-  const article = articles[Number(id)];
+type Article = {
+  teal: string;
+  id: string;
+  title: string;
+  subtitle: string;
+  content: string;
+  image: string;
+  time: string;
+};
 
-  if (!article) return notFound();
+const ArticleDetail: FC<{ article: Article }> = ({ article }) => {
+  const articleTime = new Date(article.time);
+
+  const [addPostToFavorite] = useAddPostToFavoriteMutation();
+
+  const onAddPostToFavorite = async(post_id: any) => {
+    let response: any = await addPostToFavorite(post_id);
+    if ('data' in response) {
+      toast.success("Статья добавлена в избранное");
+    } else {
+      toast.error("Ошибка. Попробуйте позже.")
+    }
+  }
 
   return (
     <div className={styles.articleDetail}>
@@ -22,10 +43,14 @@ const ArticleDetail: FC<{ id: string }> = ({ id }) => {
         />
       </div>
       <h6>
-        {article.time.getHours()}:{article.time.getMinutes()}
+        {articleTime.getHours()}:{articleTime.getMinutes()}
       </h6>
       <h2>{article.title}</h2>
-      <h4>{article.subtitle}</h4>
+      <div className="">
+        <button onClick={() => {onAddPostToFavorite(article.id)}}>Add</button>
+        <ToastContainer/>
+      </div>
+      <h4>{article.teal}</h4>
       <p>{article.content}</p>
     </div>
   );
