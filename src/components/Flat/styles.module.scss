@@ -1,6 +1,41 @@
+.header {
+  color: #fff;
+  margin-top: 30px;
+  font-size: 26px;
+  text-align: center;
+}
+
+.subheader {
+  color: #fff;
+  text-align: center;
+  font-size: 20px;
+}
+
+.inActiveLink {
+  color: grey;
+}
+
+.nav_fav {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.favoritePage {
+  color: #fff;
+  width: min(100%, 1000px);
+  margin-inline: auto;
+  padding: 2rem 1rem;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 2rem;
+}
+
 .flat {
   padding-bottom: 20px;
-  margin-top: 30px;
+  margin-top: 20px;
   width: 100%;
   border-radius: 10px;
   overflow: hidden;

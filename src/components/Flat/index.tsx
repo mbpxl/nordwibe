@@ -20,12 +20,15 @@ import React from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./toast.css";
+import { useAddHouseToFavoriteMutation } from "@/service/favorite.service";
 const Flat: FC<{ flat: IRealFlat }> = ({ flat }) => {
   const dispatch = useDispatch<AppDispatch>();
   const pathname = usePathname();
   const user = useTypedSelector((selector) => selector.userSlice.user);
   const mapRef = useRef();
   const [district, setDistrict] = useState<string>("");
+
+  const [addHouseToFavourite] = useAddHouseToFavoriteMutation();
 
   const geocode = (ymaps: any) => {
     ymaps.geocode(flat.address).then((res: any) => {
@@ -43,9 +46,19 @@ const Flat: FC<{ flat: IRealFlat }> = ({ flat }) => {
     });
   };
 
-  const notifyAboutAddFabourite = () => {
-    toast.success("Добавлено в избранное");
+  const addFlatToFavourite = async (house_id: any) => {
+    try {
+      let response = await addHouseToFavourite(house_id);
+      if('data' in response) {
+        toast.success("Добавлено в избранное!");
+      }
+      
+    } catch (error) {
+      toast.error("Ошибка. Попробуйте позднее.");
+    }
   };
+
+
   return (
     <>
       <Link href={`/flats/${flat.id + 1}`}>
@@ -164,8 +177,9 @@ const Flat: FC<{ flat: IRealFlat }> = ({ flat }) => {
       </Link>
 
       <div className={styles.favourites}>
-        <button onClick={notifyAboutAddFabourite}>Добавить в избранное</button>
-        <ToastContainer />
+        <button onClick={() => addFlatToFavourite(Number(flat.id + 1))}>
+          Добавить в избранное
+        </button>
       </div>
     </>
   );

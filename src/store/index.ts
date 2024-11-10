@@ -9,6 +9,8 @@ import { authApi } from "@/service/auth.service";
 import { chatApi } from "@/service/chat.service";
 import { storiesSlice } from "./slices/stories";
 import { storiesApi } from "@/service/stories.service";
+import { favoriteApi } from "@/service/favorite.service";
+import { postsApi } from "@/service/articles.service";
 
 const reducer = combineReducers({
   userSlice,
@@ -17,15 +19,17 @@ const reducer = combineReducers({
   [usrApi.reducerPath]: usrApi.reducer,
   [hApi.reducerPath]:hApi.reducer,
   [storiesApi.reducerPath]: storiesApi.reducer,
+  [favoriteApi.reducerPath]: favoriteApi.reducer,
   authSlice,
   [authApi.reducerPath]: authApi.reducer,
-  [chatApi.reducerPath]: chatApi.reducer
+  [chatApi.reducerPath]: chatApi.reducer,
+  [postsApi.reducerPath]: postsApi.reducer,
 });
 
 export const store = configureStore({
   reducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(usrApi.middleware).concat(hApi.middleware).concat(authApi.middleware).concat(chatApi.middleware).concat(storiesApi.middleware),
+    getDefaultMiddleware().concat(usrApi.middleware).concat(hApi.middleware).concat(authApi.middleware).concat(chatApi.middleware).concat(storiesApi.middleware).concat(favoriteApi.middleware).concat(postsApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
