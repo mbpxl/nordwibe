@@ -72,7 +72,7 @@ export const Home = () => {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem("authToken");
+    const token = localStorage.getItem("token");
     if (token) {
       dispatch(setToken(token));
     } else if (!isAuth) {

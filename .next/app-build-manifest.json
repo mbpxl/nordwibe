@@ -18,22 +18,11 @@
       "static/css/app/profile/[id]/page.css",
       "static/chunks/app/profile/[id]/page.js"
     ],
-    "/favourites/page": [
+    "/flats/[id]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/favourites/page.css",
-      "static/chunks/app/favourites/page.js"
-    ],
-    "/chat/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/chat/page.css",
-      "static/chunks/app/chat/page.js"
-    ],
-    "/not-found": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/not-found.js"
+      "static/css/app/flats/[id]/page.css",
+      "static/chunks/app/flats/[id]/page.js"
     ]
   }
 }

@@ -1,7 +1,6 @@
 {
   "/page": "app/page.js",
-  "/favourites/page": "app/favourites/page.js",
   "/profile/[id]/page": "app/profile/[id]/page.js",
-  "/chat/page": "app/chat/page.js",
+  "/flats/[id]/page": "app/flats/[id]/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js"
 }

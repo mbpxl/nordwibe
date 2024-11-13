@@ -131,8 +131,6 @@
           display: flex;
           align-items: center;
           justify-content: center;
-
-          
         }
 
         .userInformation {
@@ -420,4 +418,11 @@
       }
     }
   }
+}
+
+.loadInfo {
+  text-align: center;
+  color: #fff;
+  font-size: 24px;
+  margin-top: 21px;
 }

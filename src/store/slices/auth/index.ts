@@ -28,32 +28,32 @@ const authSlice = createSlice({
       state.token = token;
       state.isAuth = !!user;
       if (token) {
-        localStorage.setItem('authToken', token);
+        localStorage.setItem('token', token);
       }
     },
     setToken: (state, action: PayloadAction<string>) => {
       state.token = action.payload;
       state.isAuth = true;
-      localStorage.setItem("authToken", action.payload);
+      localStorage.setItem("token", action.payload);
     },
     clearToken: (state) => {
       state.token = null;
       state.user = null;
       state.isAuth = false;
-      localStorage.removeItem("authToken");
+      localStorage.removeItem("token");
     },
     logout: (state) => {
       state.user = null;
       state.token = null;
       state.cookie = null;
       state.isAuth = false;
-      localStorage.removeItem("authToken");
+      localStorage.removeItem("token");
     },
     login: (
       state,
       { payload: { cookie } }: PayloadAction<{ cookie: string }>
     ) => {
-      const token = localStorage.getItem('authToken');
+      const token = localStorage.getItem('token');
       if (token) {
         state.token = token;
         state.isAuth = true;
