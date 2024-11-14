@@ -1,15 +1,16 @@
 .neighbor {
-  width: 98%;
+  box-sizing: border-box;
+  min-width: 300px;
   height: max-content;
   border-radius: 10px;
-  background: #FFF;
+  background: #fff;
   padding: 10px 10px;
   margin-top: 20px;
   margin-left: 10px;
   margin-right: 10px;
 
   .containerUser {
-    width: 100%;
+    // width: 100%;
     height: max-content;
     display: flex;
     justify-content: space-between;
@@ -24,7 +25,7 @@
         min-width: 70px;
         min-height: 70px;
         border-radius: 100%;
-        background: #55A3C4;
+        background: #55a3c4;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -86,4 +87,14 @@
       background: var(--backgroundColor);
     }
   }
+}
+
+.hotConsume {
+  font-size: 14px;
+  color: #cc33ff;
+  font-weight: 600;
+}
+
+.percents {
+  text-align: end;
 }

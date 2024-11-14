@@ -247,6 +247,16 @@ export const usrApi = createApi({
         url: "users/me",
       }),
     }),
+    getUsers: build.query({
+      query: () => ({
+        url: "users/",
+      })
+    }),
+    getCompatibleUsers: build.query({
+      query: () => ({
+        url: "get_compatible_users/",
+      }),
+    }),
     getUser: build.query<IRealUser, number>({
       query: (id) => ({
         url: `users/${id}`,
@@ -254,7 +264,7 @@ export const usrApi = createApi({
     }),
   }),
 });
-export const { useGetMeQuery, useGetUserQuery } = usrApi;
+export const { useGetMeQuery, useGetUserQuery, useGetUsersQuery, useGetCompatibleUsersQuery } = usrApi;
 
 const userApi = new Api();
 export default userApi;

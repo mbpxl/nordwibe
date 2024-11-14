@@ -6,6 +6,7 @@
 /.pnp
 .pnp.js
 .yarn/install-state.gz
+.next/cache/webpack/client-development/5.pack.gz
 
 # testing
 /coverage
