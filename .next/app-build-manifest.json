@@ -29,6 +29,12 @@
       "static/chunks/main-app.js",
       "static/css/app/notifications/page.css",
       "static/chunks/app/notifications/page.js"
+    ],
+    "/articles/[id]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/articles/[id]/page.css",
+      "static/chunks/app/articles/[id]/page.js"
     ]
   }
 }

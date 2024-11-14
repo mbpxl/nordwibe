@@ -103,7 +103,7 @@ export const Home = () => {
     <div className={`${styles.home}`}>
       {window.innerWidth > 900 && (
         <a href="/notifications" className={styles.messages_icon}>
-          <NOTIFICATIONLOGO />
+          {/* <NOTIFICATIONLOGO /> */}
           {resCount > 0 && (
             <>
               <div className={styles.new_messages_count}>{}</div>
