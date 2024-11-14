@@ -2,5 +2,6 @@
   "/page": "app/page.js",
   "/chat/page": "app/chat/page.js",
   "/chat/[id]/page": "app/chat/[id]/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js"
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/notifications/page": "app/notifications/page.js"
 }

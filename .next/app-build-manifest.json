@@ -23,6 +23,12 @@
       "static/chunks/main-app.js",
       "static/css/app/chat/[id]/page.css",
       "static/chunks/app/chat/[id]/page.js"
+    ],
+    "/notifications/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/notifications/page.css",
+      "static/chunks/app/notifications/page.js"
     ]
   }
 }

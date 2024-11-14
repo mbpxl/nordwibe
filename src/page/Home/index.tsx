@@ -106,9 +106,7 @@ export const Home = () => {
           <NOTIFICATIONLOGO />
           {resCount > 0 && (
             <>
-              <div className={styles.new_messages_count}>
-                {calcNewMessages.current}
-              </div>
+              <div className={styles.new_messages_count}>{}</div>
             </>
           )}
         </a>
