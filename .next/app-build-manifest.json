@@ -12,17 +12,17 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/profile/[id]/page": [
+    "/chat/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/profile/[id]/page.css",
-      "static/chunks/app/profile/[id]/page.js"
+      "static/css/app/chat/page.css",
+      "static/chunks/app/chat/page.js"
     ],
-    "/flats/[id]/page": [
+    "/chat/[id]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/flats/[id]/page.css",
-      "static/chunks/app/flats/[id]/page.js"
+      "static/css/app/chat/[id]/page.css",
+      "static/chunks/app/chat/[id]/page.js"
     ]
   }
 }
