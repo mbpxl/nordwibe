@@ -29,20 +29,20 @@ import {
   createIUserFromRealUser,
 } from "@/interfaces/user.interface";
 import Neighbor from "@/components/Neighbor";
-import userApi, { usrApi } from "@/service/userApi.service";
+import userApi, { useGetUserQuery, usrApi } from "@/service/userApi.service";
 import { hApi } from "@/service/houseApi.service";
 import React from "react";
 import { ToastContainer } from "react-toastify";
 
 const Profile: FC<{ id: string }> = ({ id }) => {
-  // const user = users.find((user) => user.id === Number(id));
-  // const yourUser = useTypedSelector((selector) => selector.userSlice.user);
+  const profile = useGetUserQuery(Number(id));
+
+  console.log(profile);
+
   const { data: yourUser } = usrApi.useGetMeQuery();
   const { data: user } = usrApi.useGetUserQuery(Number(id));
   const { data: flats } = hApi.useListHouseQuery();
 
-  // console.log(yourUser)
-  // console.log(user)
   const hide = (id: number) => {
     setNeighbors(neighbors.filter((user) => user.id != id));
   };
@@ -52,67 +52,11 @@ const Profile: FC<{ id: string }> = ({ id }) => {
   let messages: IUser | null = null;
   messages = useTypedSelector((selector) => selector.userSlice.user);
 
-  // const [user,setUser] = useState<IRealUserMe>()
-
-  // useEffect(()=>{
-  //   (async ()=>{
-  //     const fetched = await userApi.getMe();
-  //     setUser(fetched)
-  //     console.log(user)
-  //   })()
-  // },[])
-
-  // const [user, setUser] = useState<IRealUserMe>({
-  //   id: 0,
-  //   first_name: "Витя",
-  //   date_joined: "2024-09-11T21:44:39.177Z",
-  //   count_visits: 0,
-  //   avatar: "",
-  //   purpose: "JB",
-  //   occupation: "UK",
-  //   smoking: "U",
-  //   pets: "U",
-  //   first_aid: "U",
-  //   social_interaction: "U",
-  //   home_town: "Питер",
-  //   my_town: "Москва",
-  //   is_favorite: true,
-  //   username: "vitalik",
-  //   email: "hooll@gmail.com",
-  //   date_birthday: "2004-09-11T21:44:39.177Z",
-  //   gender: "UK",
-  //   type_auth: "NM",
-  //   is_staff: true,
-  //   is_active: true,
-  //   last_login: "2024-09-11T21:44:39.177Z",
-  //   is_superuser: true,
-  // });
   const age =
     user && yourUser && user.id === yourUser.id && yourUser.date_birthday
       ? new Date().getFullYear() -
         new Date(yourUser.date_birthday).getFullYear()
       : 0;
-
-  // if (!user) return notFound();
-  // if(user)
-  // {useEffect(() => {
-  //   calcNewMessages.current = 0;
-  //   // messages.notifications.map((n) => {
-  //   //   if (n[0] == 1) {
-  //   //     calcNewMessages.current += 1;
-  //   //   }
-  //   // });
-  //   // fetch("https://3133319-bo35045.twc1.net/api/v0/users/", {
-  //   //   method: "GET",
-  //   //   credentials: "include",
-  //   // })
-  //   //   .then((res) => res.json())
-  //   //   .then((res: IRealUserMe) => console.log(res))
-  //   //   .catch((error) => console.log(error));
-  //   if (user.social_interaction) {
-  //   }
-  //   setResCount(calcNewMessages.current);
-  // }, []);}
 
   return (
     <>
@@ -121,11 +65,8 @@ const Profile: FC<{ id: string }> = ({ id }) => {
           <div className={styles.general}>
             <div className={styles.userCard}>
               <div className={styles.avatar}>
-                {/* заглушка - на половину ширину. фотка юзера на весь размер, со скруглением */}
                 <Image
-                  src={
-                    user && user.avatar ? user.avatar : "/icons/userProfile.svg"
-                  }
+                  src={"/icons/userProfile.svg"}
                   alt="avatar"
                   width={100}
                   height={100}
@@ -134,21 +75,13 @@ const Profile: FC<{ id: string }> = ({ id }) => {
               <div className={styles.userInformation}>
                 <h1>
                   {user && user.first_name}
-                  {age ? ", " + age : ", 0"}
+                  {age ? ", " + age : ""}
                 </h1>
                 <h4>из г. {user && user.home_town}</h4>
-                {/* UNCOMMENT */}
-                {/* <h4>@{user.username}</h4> */}
               </div>
             </div>
 
             <ul className={styles.parameters}>
-              {/* {user.parameters.map((parameter, i) => (
-            <li key={i}>
-             
-              <p>{parameter.value}</p>
-            </li>
-          ))} */}
               <li>
                 <Image
                   src={`/icons/purpose.svg`}
@@ -184,16 +117,12 @@ const Profile: FC<{ id: string }> = ({ id }) => {
                 <Link href={`/chat/${id}`}>
                   <button>Написать</button>
                 </Link>
-                {/* <button onClick={() => hide(id)}>Скрыть</button> 
-                fixme*/}
                 <button>Скрыть</button>
               </div>
             )}
           </div>
 
           <div className={styles.cards}>
-            {/* {LinkCardsProfile.map((card, i) => ( */}
-            {/* // <Link key={i} href={`/profile/${id}` + card[2]}> */}
             <LinkCard
               image={LinkCardsProfile[0][0]}
               text={LinkCardsProfile[0][1]}
@@ -233,9 +162,6 @@ const Profile: FC<{ id: string }> = ({ id }) => {
                   : "Не курю"
               }
             />
-
-            {/* // </Link> */}
-            {/* // ))} */}
           </div>
 
           <div className={styles.compatibility}>
@@ -356,15 +282,6 @@ const Profile: FC<{ id: string }> = ({ id }) => {
               </ul>
             </div>
           )}
-
-          {/* {user.id != yourUser.id && (
-        <div className={styles.usersCols}>
-          <h4>Похожие пользователи</h4>
-          {neighbors.map((user) => (
-            <Neighbor user={user} hide={hide} />
-          ))}
-        </div>
-      )} */}
         </div>
       )}
     </>

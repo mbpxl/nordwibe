@@ -6,82 +6,50 @@ import { useTypedSelector } from "@/hooks/selector.hook";
 import { IRealUserMe, IUser, IRealUser } from "@/interfaces/user.interface";
 import styles from "@/page/Neighbors/styles.module.scss";
 import { useEffect, useState } from "react";
-import userApi from "@/service/userApi.service";
+import userApi, {
+  useGetCompatibleUsersQuery,
+  useGetUsersQuery,
+} from "@/service/userApi.service";
 import chatApi from "@/service/chatApi.service";
 import houseApi from "@/service/houseApi.service";
 import React from "react";
 
 const Neighbors = () => {
-  const search = useTypedSelector(
-    (selector) => selector.navigationSlice.search.users
-  );
-  const filters = useTypedSelector(
-    (selector) => selector.filtersSlice.neighbors.age
-  );
-  // let usersFetched =[];
-  const [neighbors, setNeighbors] = useState<Array<IUser>>(users);
+  //@ts-ignore
+  const {
+    data: fetchedCompatibleUsers,
+    error,
+    isLoading,
+  } = useGetCompatibleUsersQuery("");
 
-  // const requestOptions = {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify({
-  //     telephone_code: "string",
-  //     captcha_token: "string",
-  //     user_secret: "string",
-  //     username: "string",
-  //     email: "string",
-  //     first_name: "string",
-  //     date_birthday: "2024-09-08T06:02:29.880Z",
-  //     gender: "UK",
-  //     type_auth: "NM",
-  //     password: "string",
-  //     purpose: "JB",
-  //     occupation: "UK",
-  //     smoking: "U",
-  //     pets: "U",
-  //     first_aid: "U",
-  //     social_interaction: "U",
-  //     home_town: "",
-  //     my_town: "",
-  //   }),
-  // };
-  // const [fetched, setFetched] = useState<IRealUserMe|IRealUser|number|null>()
-  useEffect(() => {
-    // let asdasd
-    // (async ()=>{
-    //   asdasd = await api.complaintUser({id:16,text:"asd"});
-    //   console.log(asdasd)
-    //   setFetched(asdasd)
-    // })()
-    // const fetchedUsers =  listUsers();
-    //     console.log(fetchedUsers)
-    //     setNeighbors(fetchedUsers);
-    //     console.log(neighbors);
-  }, []);
+  const {
+    data: fetchedAllUsers,
+    error: fetchedAllUsersError,
+    isLoading: fetchedAllUsersLoading,
+  } = useGetUsersQuery("");
 
-  const hide = (id: number) => {
-    setNeighbors(neighbors.filter((user) => user.id != id));
-  };
+  if (isLoading || fetchedAllUsersLoading) return <p>Loading...</p>;
+
+  if (error || fetchedAllUsersError) return <p>Error loading users.</p>;
+
+  // Проверяем, что оба массива загружены и существуют
+  const allUsers =
+    fetchedCompatibleUsers && fetchedAllUsers
+      ? [...fetchedCompatibleUsers, ...fetchedAllUsers]
+      : [];
+
+  if (allUsers.length === 0) {
+    return null;
+  }
 
   return (
     <div className={styles.neighbors}>
       <div className={styles.container}>
-        {neighbors.map(
-          (user, index) =>
-            user.name.toLowerCase().startsWith(search.toLowerCase()) &&
-            user.age <= filters.to &&
-            user.age >= filters.from && (
-              <div className={styles.neigh} key={index}>
-                <Neighbor user={user} hide={hide} />
-              </div>
-            )
-        )}
-        <button
-          onClick={() => houseApi.getImages(["2", "5"])}
-          style={{ fontSize: "72px" }}
-        >
-          FETCH
-        </button>
+        {allUsers.map((user: any, index: number) => (
+          <div className={styles.neigh} key={index}>
+            <Neighbor comp_user={user} />
+          </div>
+        ))}
       </div>
     </div>
   );
