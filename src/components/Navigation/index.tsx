@@ -87,14 +87,12 @@ const Navigation: FC<IFilter> = ({ filter, setFilter }) => {
       ? "Поддержка"
       : companioData
       ? companioData.first_name
-      : "...";
+      : "Чат";
   const dispatch = useDispatch<AppDispatch>();
   const menu = useTypedSelector((selector) => selector.navigationSlice.menu);
 
   const { data: usr } = usrApi.useGetUserQuery(Number(params.id as string));
   const idUser = createIUserFromRealUser(usr);
-  // const idUser = users.find((u) => u.id === Number(params.id as string))!;
-  // const idUser
   const flat = flats.find((a) => a.id === Number(params.id as string))!;
   const article = articles.find((a) => a.id === Number(params.id as string))!;
   const calcNewMessages = useRef<number>(0);
