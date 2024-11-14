@@ -300,9 +300,13 @@ const Profile: FC<{ id: string }> = ({ id }) => {
             <div className={styles.flats}>
               <h4>Предложения жилья:</h4>
               {/* Тут тащим квартиры юзера или чела чей айдишник */}
-              {flats && flats.map((f) => <><Flat flat={f} key={f.id} />
-              <ToastContainer/>
-              </> )}
+              {flats &&
+                flats.map((f) => (
+                  <>
+                    <Flat flat={f} key={f.id} />
+                    <ToastContainer />
+                  </>
+                ))}
               {/* <Flat flat={flats[1]} /> */}
             </div>
           )}
@@ -332,7 +336,7 @@ const Profile: FC<{ id: string }> = ({ id }) => {
                         </div>
                       </>
                     )}
-                    <NOTIFICATIONLOGO />
+                    {/* <NOTIFICATIONLOGO /> */}
                   </div>
                   <Link href={"/notifications"}>
                     <p>Уведомления</p>

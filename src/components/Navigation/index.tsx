@@ -171,9 +171,7 @@ const Navigation: FC<IFilter> = ({ filter, setFilter }) => {
                       />
                       {resCount > 0 && (
                         <>
-                          <div className={styles.new_messages_count}>
-                            {calcNewMessages.current}
-                          </div>
+                          <div className={""}>{""}</div>
                         </>
                       )}
                     </Link>
