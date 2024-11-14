@@ -14,7 +14,7 @@ class HouseApi {
         method: "GET",
         credentials: "include",
         headers: {
-          Authorization: `Basic ${localStorage.getItem('authToken')}`,
+          Authorization: `Basic ${localStorage.getItem('token')}`,
         },
       });
       const houses = await data.json();

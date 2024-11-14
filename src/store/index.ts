@@ -31,7 +31,7 @@ const reducer = combineReducers({
 export const store = configureStore({
   reducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(usrApi.middleware).concat(hApi.middleware).concat(authApi.middleware).concat(chatApi.middleware).concat(storiesApi.middleware).concat(favoriteApi.middleware).concat(postsApi.middleware).concat(flatsApi.middleware)
+    getDefaultMiddleware().concat(usrApi.middleware).concat(hApi.middleware).concat(authApi.middleware).concat(chatApi.middleware).concat(storiesApi.middleware).concat(favoriteApi.middleware).concat(postsApi.middleware).concat(flatsApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

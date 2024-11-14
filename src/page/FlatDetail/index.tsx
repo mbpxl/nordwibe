@@ -22,20 +22,10 @@ import { IRealFlat } from "@/interfaces/flat.interface";
 import { FlatList, users, usersList } from "@/config";
 import houseApi from "@/service/houseApi.service";
 import React from "react";
+import { useGetFlatByIdQuery } from "@/service/flats.service";
 
 const FlatDetail: FC<{ id: string }> = ({ id }) => {
-  const pathname = usePathname();
-  const [flat, setFlat] = useState<IRealFlat>();
-  useEffect(() => {
-    (async () => {
-      const fetched = await houseApi.getHouse(Number(id));
-      setFlat(fetched);
-    })();
-  }, []);
-
-  // const [flat, setFlat] = useState<IRealFlat>(
-  //   FlatList[+pathname.split("/")[pathname.split("/").length - 1] - 1]
-  // );
+  const { data: flat, error, isLoading } = useGetFlatByIdQuery(id);
 
   const [open, setOpen] = useState(false);
   const [addressCoord, setAddressCoord] = useState([55.75, 37.57]);
@@ -64,12 +54,25 @@ const FlatDetail: FC<{ id: string }> = ({ id }) => {
     navigator.clipboard.writeText(url);
   };
 
-  // useEffect(() => { }, []);
+  if (isLoading) {
+    return <div className={styles.loadInfo}>Загрузка...</div>; // Показать индикатор загрузки
+  }
 
-  if (!flat) return notFound();
+  if (error) {
+    return (
+      <div className={styles.loadInfo}>
+        Произошла ошибка при загрузке данных. Обновите страницу
+      </div>
+    ); // Обработка ошибки
+  }
+
+  if (!flat) {
+    return <div className={styles.loadInfo}>Квартира не найдена</div>; // Обработка отсутствия данных
+  }
 
   return (
     <div className={styles.flat}>
+      {/* {flat.type} */}
       {open && (
         <>
           <div className={styles.module}>
@@ -105,7 +108,7 @@ const FlatDetail: FC<{ id: string }> = ({ id }) => {
               navigation
               className={styles.swiper_module}
             >
-              {flat.photos_ids.map((el, index) => {
+              {flat.photos_ids.map((el: any, index: number) => {
                 return (
                   <SwiperSlide
                     key={index}
@@ -132,7 +135,7 @@ const FlatDetail: FC<{ id: string }> = ({ id }) => {
             pagination={{ clickable: true }}
             className={styles.swiper}
           >
-            {flat.photos_ids.map((el, index) => {
+            {flat.photos_ids.map((el: any, index: number) => {
               return (
                 <SwiperSlide
                   key={index}

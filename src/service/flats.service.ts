@@ -3,7 +3,7 @@ const API_BASE = "https://3133319-bo35045.twc1.net/api/v0/";
 const authDetails = process.env.REACT_APP_AUTH_DETAILS||"";
 
 export const flatsApi = createApi({
-  reducerPath: "flatsApi",
+  reducerPath: "getMyFlatsSukaBlyat",
   baseQuery: fetchBaseQuery({ baseUrl: API_BASE }),
   endpoints: (builder) => ({
     // Метод для получения списка квартир (если он уже есть)
@@ -12,12 +12,12 @@ export const flatsApi = createApi({
     }),
     // Новый метод для получения квартиры по ID
     getFlatById: builder.query({
-      query: (house_id: string) => ({
-        url: `house/${house_id}/`,
-        method: "GET",
+      query: (house_id: any) => ({
+        url: `house/${house_id}`,
         credentials: "include",
+        method: "GET",
         headers: {
-          Authorization: authDetails,
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       }),
     }),
