@@ -6,7 +6,7 @@ import {
   navigationIcons,
   navigationTitles,
   navInputPages,
-  users,
+  // users,
   flats,
   articles,
 } from "@/config";
@@ -38,7 +38,7 @@ import {
   useState,
 } from "react";
 import { createIUserFromRealUser, IUser } from "@/interfaces/user.interface";
-import { usrApi } from "@/service/userApi.service";
+import { useGetUserQuery, usrApi } from "@/service/userApi.service";
 import React from "react";
 
 const profileRegex = /^\/profile\/.+/;
@@ -53,6 +53,19 @@ interface IFilter {
 const Navigation: FC<IFilter> = ({ filter, setFilter }) => {
   const asd = useTypedSelector((selector) => selector.authSlice.token);
   const asd1 = useTypedSelector((selector) => selector.authSlice.user);
+
+  //====================ПОЛУЧАЕМ АЙДИ ПОЛЬЗОВАТЕЛЯ ЧЕРЕЗ URL=====================================
+
+  let path = usePathname();
+  const companion_id = path?.split("/").pop();
+
+  const {
+    data: companioData,
+    error,
+    isLoading,
+  } = useGetUserQuery(Number(companion_id));
+
+  //====================ПОЛУЧАЕМ АЙДИ ПОЛЬЗОВАТЕЛЯ ЧЕРЕЗ URL=====================================
 
   const pathname = usePathname();
   const city = useTypedSelector((selector) => selector.userSlice.user.city);
@@ -72,9 +85,9 @@ const Navigation: FC<IFilter> = ({ filter, setFilter }) => {
   const chatTitle =
     chatQuery === "support"
       ? "Поддержка"
-      : users.find((u) => u.id === Number(chatQuery))
-      ? users.find((u) => u.id === Number(chatQuery))!.name
-      : "Не найдено";
+      : companioData
+      ? companioData.first_name
+      : "...";
   const dispatch = useDispatch<AppDispatch>();
   const menu = useTypedSelector((selector) => selector.navigationSlice.menu);
 

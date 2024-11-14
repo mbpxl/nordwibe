@@ -12,7 +12,7 @@ import {
 import { useGetMeQuery } from "@/service/userApi.service";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { FC, FormEvent, useState } from "react";
 
 export interface MessageShow {
@@ -21,7 +21,13 @@ export interface MessageShow {
 }
 
 const ChatDetail: FC<{ id: string }> = ({ id }) => {
-  // if (id != "support" && !users.find(u => u.id === Number(id))) return notFound()
+  const chatEndRef = useRef<HTMLDivElement | null>(null);
+  const scrollToBottom = () => {
+    if (chatEndRef.current) {
+      chatEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const { data: chatList } = useListchatQuery();
   const [sendMessage, { error }] = useSendMessageMutation();
   const { data: user } = useGetMeQuery();
@@ -96,6 +102,10 @@ const ChatDetail: FC<{ id: string }> = ({ id }) => {
       }))
     : null;
 
+  useEffect(() => {
+    scrollToBottom();
+  }, [messageList]);
+
   const type = id === "support" ? "support" : "user";
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -111,16 +121,6 @@ const ChatDetail: FC<{ id: string }> = ({ id }) => {
       };
       const msgResponse = await sendMessage({ chatId: chat.id, message: msg });
     }
-    // setMessages([
-    //   ...messages,
-    //   {
-    //     type: "your",
-    //     message: value,
-    //     sended_time: "10:55",
-    //     readed_time: "11:36",
-    //   },
-    // ]);
-
     setValue("");
   };
 
@@ -148,11 +148,6 @@ const ChatDetail: FC<{ id: string }> = ({ id }) => {
             <Message {...message} key={index} />
           ))}
       </div>
-      {/* type === "support" && !isFilesMenu && (
-      <div className={styles.anxiety}>
-        <h1>{"Срочное".toUpperCase()}</h1>
-      </div>
-    ) */}
       {type === "user" &&
         !isFilesMenu &&
         value.length === 0 &&
@@ -213,6 +208,7 @@ const ChatDetail: FC<{ id: string }> = ({ id }) => {
               </button>
             </div>
           </div>
+          <div ref={chatEndRef} className={styles.goToBottom}></div>
         </form>
       )}
     </div>
