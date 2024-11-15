@@ -1668,7 +1668,7 @@ export const navigationIcons = {
   firstIcon: [
     {
       pages: ["/"],
-      icons: [["notifications", "/notifications"]],
+      icons: [["profile", "/profile"]],
     },
     {
       pages: [

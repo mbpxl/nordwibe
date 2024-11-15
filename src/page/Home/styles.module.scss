@@ -7,39 +7,39 @@
   padding: 2rem 0;
   gap: 2rem;
 
-  .messages_icon {
-    position: absolute;
-    bottom: 20px;
-    right: 40px;
-    z-index: 100;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #5755c4;
-    border-radius: 50%;
-    border: 1px solid #fff;
-    cursor: pointer;
+  // .messages_icon {
+  //   position: absolute;
+  //   bottom: 20px;
+  //   right: 40px;
+  //   z-index: 100;
+  //   width: 60px;
+  //   height: 60px;
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   background: #5755c4;
+  //   border-radius: 50%;
+  //   border: 1px solid #fff;
+  //   cursor: pointer;
 
-    svg {
-      width: 60%;
-      height: 60%;
-    }
+  //   svg {
+  //     width: 60%;
+  //     height: 60%;
+  //   }
 
-    // .new_messages_count {
-    //   width: 23px;
-    //   height: 23px;
-    //   display: flex;
-    //   align-items: center;
-    //   justify-content: center;
-    //   background: #f51717;
-    //   border-radius: 50%;
-    //   position: absolute;
-    //   top: -3px;
-    //   right: -3px;
-    // }
-  }
+  //   // .new_messages_count {
+  //   //   width: 23px;
+  //   //   height: 23px;
+  //   //   display: flex;
+  //   //   align-items: center;
+  //   //   justify-content: center;
+  //   //   background: #f51717;
+  //   //   border-radius: 50%;
+  //   //   position: absolute;
+  //   //   top: -3px;
+  //   //   right: -3px;
+  //   // }
+  // }
 
   .stories_module {
     width: 100%;
@@ -207,7 +207,7 @@
 
   @media (max-width: 450px) {
     .articles {
-      width: 80%;
+      width: 100%;
     }
   }
 }
