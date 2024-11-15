@@ -160,28 +160,6 @@
   padding: 2rem 0;
   gap: 2rem;
 }
-.styles_home__tNlP3 .styles_messages_icon__sEiIy {
-  position: absolute;
-  bottom: 20px;
-  right: 40px;
-  z-index: 100;
-  width: 60px;
-  height: 60px;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: center;
-      justify-content: center;
-  -ms-flex-align: center;
-      align-items: center;
-  background: #5755c4;
-  border-radius: 50%;
-  border: 1px solid #fff;
-  cursor: pointer;
-}
-.styles_home__tNlP3 .styles_messages_icon__sEiIy svg {
-  width: 60%;
-  height: 60%;
-}
 .styles_home__tNlP3 .styles_stories_module__v2Hnm {
   width: 100%;
   height: 100%;
@@ -331,6 +309,6 @@
 }
 @media (max-width: 450px) {
   .styles_home__tNlP3 .styles_articles__snulG {
-    width: 80%;
+    width: 100%;
   }
 }

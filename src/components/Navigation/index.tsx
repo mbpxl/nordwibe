@@ -161,7 +161,7 @@ const Navigation: FC<IFilter> = ({ filter, setFilter }) => {
                     <Link
                       key={i}
                       href={icon[1]}
-                      className={styles.messages_icon}
+                      className={styles.profile_icon}
                     >
                       <Image
                         src={`/icons/${icon[0]}.svg`}
