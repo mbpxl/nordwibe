@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Article from "@/components/Article";
 import styles from "@/page/Articles/styles.module.scss";
@@ -13,7 +13,7 @@ type PostsType = {
   publication_date: string;
   content: string;
   is_favorite: boolean;
-}
+};
 
 const Articles = () => {
   //@ts-ignore

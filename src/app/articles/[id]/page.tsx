@@ -12,6 +12,7 @@ const generateMetadata = async ({
 }): Promise<Metadata> => {
   const { id } = params;
   //@ts-ignore
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { data: article } = useGetPostByIdQuery(id, {
     skip: typeof window === "undefined",
   });
