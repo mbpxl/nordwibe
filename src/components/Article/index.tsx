@@ -1,9 +1,11 @@
 "use client";
 
 import styles from "@/components/Article/styles.module.scss";
+import houseApi from "@/service/houseApi.service";
+import { BASE_DOMAIN } from "@/service/stories.service";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FC } from "react";
 
 const API_BASE = "https://3133319-bo35045.twc1.net/api/v0/";
@@ -26,13 +28,27 @@ const Article: FC<PostsType> = ({
   title,
   id,
 }) => {
+  // console.log(cover_image_id);
+
+  const [articlesImgUrls, setArticlesImgUrls] = useState("");
+  console.log(articlesImgUrls);
+
+  useEffect(() => {
+    houseApi
+      .getImages([cover_image_id])
+      .then((fethedImgUrls) => {
+        setArticlesImgUrls(fethedImgUrls);
+      })
+      .catch((error) => console.log("Failed to fetch images", error));
+  }, [cover_image_id]);
+
   return (
     <Link href={`/articles/${id}`}>
       <div className={`${styles.article}`}>
         <div className={styles.image}>
           <Image
             unoptimized
-            src={`${API_BASE}/articles/${cover_image_id}.png`}
+            src={BASE_DOMAIN + articlesImgUrls[0]}
             alt={title}
             width={300}
             height={300}

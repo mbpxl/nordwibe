@@ -1,8 +1,10 @@
 // components/ArticleDetail.tsx
 import styles from "@/page/ArticleDetail/styles.module.scss";
 import { useAddPostToFavoriteMutation } from "@/service/favorite.service";
+import houseApi from "@/service/houseApi.service";
+import { BASE_DOMAIN } from "@/service/stories.service";
 import Image from "next/image";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import React from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,10 +17,25 @@ type Article = {
   content: string;
   image: string;
   time: string;
+  cover_image_id: string;
 };
 
 const ArticleDetail: FC<{ article: Article }> = ({ article }) => {
-  const articleTime = new Date(article.time);
+  const [articlesImgUrl, setArticlesImgUrl] = useState("");
+
+  const coverImageId = article.cover_image_id;
+  console.log(articlesImgUrl);
+
+  useEffect(() => {
+    houseApi
+      .getImages([coverImageId])
+      .then((fethedImgUrls) => {
+        setArticlesImgUrl(fethedImgUrls);
+      })
+      .catch((error) => console.log("Failed to fetch images", error));
+  }, [coverImageId]);
+
+  const articleCoverImage = BASE_DOMAIN + articlesImgUrl[0];
 
   const [addPostToFavorite] = useAddPostToFavoriteMutation();
 
@@ -36,15 +53,13 @@ const ArticleDetail: FC<{ article: Article }> = ({ article }) => {
       <div className={styles.image}>
         <Image
           unoptimized
-          src={`/articles/${article.image}.png`}
+          src={articleCoverImage}
           alt={article.image}
           width={300}
           height={300}
         />
       </div>
-      <h6>
-        {articleTime.getHours()}:{articleTime.getMinutes()}
-      </h6>
+
       <h2>{article.title}</h2>
       <div className="">
         <button

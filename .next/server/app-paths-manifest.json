@@ -1,10 +1,6 @@
 {
-  "/not-found": "app/not-found.js",
-  "/chat/[id]/page": "app/chat/[id]/page.js",
-  "/profile/[id]/page": "app/profile/[id]/page.js",
   "/page": "app/page.js",
-  "/favourites/page": "app/favourites/page.js",
-  "/flats/page": "app/flats/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/flats/[id]/page": "app/flats/[id]/page.js"
+  "/articles/page": "app/articles/page.js",
+  "/articles/[id]/page": "app/articles/[id]/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js"
 }
