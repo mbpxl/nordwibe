@@ -1,45 +1,57 @@
 "use client";
 
 import Neighbor from "@/components/Neighbor";
-import { users } from "@/config";
-import { useTypedSelector } from "@/hooks/selector.hook";
-import { IRealUserMe, IUser, IRealUser } from "@/interfaces/user.interface";
 import styles from "@/page/Neighbors/styles.module.scss";
-import { useEffect, useState } from "react";
-import userApi, {
+import {
   useGetCompatibleUsersQuery,
   useGetUsersQuery,
 } from "@/service/userApi.service";
-import chatApi from "@/service/chatApi.service";
-import houseApi from "@/service/houseApi.service";
 import React from "react";
 
 const Neighbors = () => {
-  //@ts-ignore
+  // Получаем пользователей, которые имеют процент совместимости с нами
   const {
     data: fetchedCompatibleUsers,
     error,
     isLoading,
   } = useGetCompatibleUsersQuery("");
 
+  // Получаем всех пользователей
   const {
     data: fetchedAllUsers,
     error: fetchedAllUsersError,
     isLoading: fetchedAllUsersLoading,
   } = useGetUsersQuery("");
 
+  // Если данные загружаются
   if (isLoading || fetchedAllUsersLoading) return <p>Loading...</p>;
 
-  if (error || fetchedAllUsersError) return <p>Error loading users.</p>;
+  // Если произошла ошибка при загрузке
+  //TODO: if (error || fetchedAllUsersError) return <p>Error loading users.</p>;
 
-  // Проверяем, что оба массива загружены и существуют
-  const allUsers =
-    fetchedCompatibleUsers && fetchedAllUsers
-      ? [...fetchedCompatibleUsers, ...fetchedAllUsers]
-      : [];
+  // Если fetchedCompatibleUsers отсутствует, выводим сообщение и рендерим только fetchedAllUsers
+  if (!fetchedCompatibleUsers) {
+    return (
+      <div className={styles.neighbors}>
+        <div className={styles.info_message}>
+          <p>Нет совместимых с вами людей. Посмотрите список всех объявлений</p>
+        </div>
+        <div className={styles.container}>
+          {fetchedAllUsers?.map((user: any, index: number) => (
+            <div className={styles.neigh} key={index}>
+              <Neighbor comp_user={user} />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // Объединяем пользователей, если оба массива загружены
+  const allUsers = [...fetchedCompatibleUsers, ...(fetchedAllUsers || [])];
 
   if (allUsers.length === 0) {
-    return null;
+    return <p>No users found.</p>;
   }
 
   return (

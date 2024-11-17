@@ -1,13 +1,18 @@
 .neighbor {
-  box-sizing: border-box;
-  min-width: 300px;
-  height: max-content;
-  border-radius: 10px;
-  background: #fff;
-  padding: 10px 10px;
-  margin-top: 20px;
-  margin-left: 10px;
-  margin-right: 10px;
+  box-sizing: border-box; /* Учитываем отступы и границы */
+  width: 100%; /* Карточка будет занимать всю ширину доступной колонки */
+  max-width: 390px; /* Ограничиваем максимальную ширину для больших экранов */
+  height: auto; /* Динамическая высота для содержимого */
+  border-radius: 10px; /* Скругленные углы */
+  background: #fff; /* Белый фон */
+  padding: 10px; /* Внутренние отступы */
+  margin: 10px auto; /* Центрируем карточку и задаем вертикальные отступы */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Добавляем тень для визуального разделения */
+
+  @media (max-width: 850px) {
+    width: calc(100% - 20px); /* Адаптируем ширину для маленьких экранов с учетом отступов */
+    margin: 10px auto; /* Сохраняем отступы */
+  }
 
   .containerUser {
     // width: 100%;

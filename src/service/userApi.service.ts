@@ -255,6 +255,8 @@ export const usrApi = createApi({
     getCompatibleUsers: build.query({
       query: () => ({
         url: "get_compatible_users/",
+        method: "GET",
+        credentials: "include",
       }),
     }),
     getUser: build.query<IRealUser, number>({

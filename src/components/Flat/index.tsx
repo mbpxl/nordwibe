@@ -21,14 +21,29 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./toast.css";
 import { useAddHouseToFavoriteMutation } from "@/service/favorite.service";
+import { useGetUserQuery } from "@/service/userApi.service";
 const Flat: FC<{ flat: IRealFlat }> = ({ flat }) => {
   const dispatch = useDispatch<AppDispatch>();
   const pathname = usePathname();
   const user = useTypedSelector((selector) => selector.userSlice.user);
   const mapRef = useRef();
   const [district, setDistrict] = useState<string>("");
+  const [currentUser, setCurrentUser] = useState<any>({});
 
   const [addHouseToFavourite] = useAddHouseToFavoriteMutation();
+
+  //* Получаем данные о конкретном пользователи (в свойстве flat из пропсов содержится информация о создателе хаты), чтобы узнать его имя и ещё данные
+  const {
+    data: fetchedCurrentUser,
+    error,
+    isLoading,
+  } = useGetUserQuery(flat.creator_id);
+
+  useEffect(() => {
+    if (fetchedCurrentUser) {
+      setCurrentUser(fetchedCurrentUser);
+    }
+  }, [fetchedCurrentUser]);
 
   const geocode = (ymaps: any) => {
     ymaps.geocode(flat.address).then((res: any) => {
@@ -99,8 +114,8 @@ const Flat: FC<{ flat: IRealFlat }> = ({ flat }) => {
                 />
               </div>
               <div className={styles.userInformation}>
-                <h1>{usersList[flat.creator_id].first_name}</h1>
-                <h4>{usersList[flat.creator_id].my_town}</h4>
+                <h1>{currentUser.first_name}</h1>
+                <h4>{currentUser.my_town}</h4>
               </div>
             </div>
             <h1 className="ml-5">XX%</h1>

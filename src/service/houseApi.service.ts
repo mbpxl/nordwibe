@@ -279,7 +279,7 @@ export const hApi = createApi({
       query: () => ({
         url: "house/",
         credentials: "include",
-        
+        method: "GET",
       }),
     }),
     getHouse: build.query<IRealFlat,number>({
