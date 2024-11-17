@@ -1,24 +1,52 @@
 .neighbors {
+  padding-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 
   .container {
     margin-top: 20px;
     margin-bottom: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    width: 99%;
-    gap: 20px;
-    justify-content: center;
-    align-items: flex-start;
+    display: grid; // Используем CSS Grid вместо flex
+    grid-template-columns: repeat(2, 1fr); // Две карточки в строке
+    max-width: 800px; // Устанавливаем ограничение ширины контейнера
+    width: 100%; // Контейнер занимает всю ширину, но с ограничением
+    gap: 20px 30px;
+    justify-items: center;
+    box-sizing: border-box; // Учет отступов и границ
     .neigh {
       width: 390px;
       height: 100%;
+
+      @media (max-width: 390px) {
+        width: 300px;
+      }
     }
 
-    @media (min-width: 850px) {
-      grid-template-columns: repeat(2, 1fr);
+    @media (max-width: 850px) {
+      grid-template-columns: 1fr; // Одна карточка в строке для мобильных устройств
+      gap: 20px;
     }
+  }
+}
+
+.info_message {
+  margin: 0 auto;
+  width: 800px;
+  padding: 50px 0;
+  text-align: center;
+  background-color: #cc33ff;
+  border-radius: 20px;
+  font-size: 20px;
+  font-weight: 500;
+
+  @media (max-width: 850px) {
+    width: 390px;
+  }
+
+  @media (max-width: 390px) {
+    width: 300px;
+    font-size: 18px;
   }
 }

@@ -12,11 +12,65 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/profile/page": [
+    "/profile/[id]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/profile/page.css",
-      "static/chunks/app/profile/page.js"
+      "static/css/app/profile/[id]/page.css",
+      "static/chunks/app/profile/[id]/page.js"
+    ],
+    "/flats/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/flats/page.css",
+      "static/chunks/app/flats/page.js"
+    ],
+    "/favourites/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/favourites/page.css",
+      "static/chunks/app/favourites/page.js"
+    ],
+    "/favourites/posts/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/favourites/posts/page.css",
+      "static/chunks/app/favourites/posts/page.js"
+    ],
+    "/articles/[id]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/articles/[id]/page.css",
+      "static/chunks/app/articles/[id]/page.js"
+    ],
+    "/articles/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/articles/page.css",
+      "static/chunks/app/articles/page.js"
+    ],
+    "/flats/[id]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/flats/[id]/page.css",
+      "static/chunks/app/flats/[id]/page.js"
+    ],
+    "/sign-in/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/sign-in/page.css",
+      "static/chunks/app/sign-in/page.js"
+    ],
+    "/sign-in/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/sign-in/layout.css",
+      "static/chunks/app/sign-in/layout.js"
+    ],
+    "/neighbors/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/neighbors/page.css",
+      "static/chunks/app/neighbors/page.js"
     ],
     "/not-found": [
       "static/chunks/webpack.js",
