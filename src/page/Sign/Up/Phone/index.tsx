@@ -1,16 +1,15 @@
 "use client";
-import React, { FormHTMLAttributes, useState } from "react";
+import React, { useState } from "react";
 import styles from "../../styles.module.scss";
 import Link from "next/link";
 import SignWith from "../../../../components/SignInSocial";
 import Form from "@/components/Form";
-import FormHeading from "@/components/Form/Heading";
 import TextInput from "@/components/Form/TextInput";
 import Button from "@/components/Button";
 import { SmartCaptcha } from "@yandex/smart-captcha";
 
 import FormMessage from "@/components/Form/Message";
-import { notFound, redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { ICreateUser } from "@/interfaces/user.interface";
 import {
   useCaptchaMutation,
@@ -19,9 +18,6 @@ import {
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/store";
 import { setAuth } from "@/store/slices/auth";
-import { setEmptyUser, setUser, userSlice } from "@/store/slices/user";
-import { useTypedSelector } from "@/hooks/selector.hook";
-import { version } from "os";
 import { YANDEX_API_KEY } from "@/secret";
 
 type RegisterStatus =
@@ -31,15 +27,13 @@ type RegisterStatus =
   | "other";
 
 export default React.memo(function PhoneInput() {
-  const user = useTypedSelector((selector) => selector.userSlice.user);
+  const router = useRouter();
+
   const [token, setToken] = useState("");
-  const [userSecret, setUserSecret] = useState("");
-  const [isSecondStep, setIsSecondStep] = useState(false); //false
+  const [userSecret, setUserSecret] = useState<any>("");
   const [showErrorMessage, setShowErrorMessage] = useState(false);
   const [stage, setStage] = useState<RegisterStatus>("phone");
-  // console.log("kek")
-  // console.log(process.env.REACT_APP_YANDEX_API_KEY)
-  //form data
+
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -64,34 +58,39 @@ export default React.memo(function PhoneInput() {
           username: username.replace(/[^0-9,\+]/g, ""),
           captcha_token: token,
         }).unwrap();
+        //! console.log("Это шо за хуйня?");
         console.log(captchaResponse);
         if (captchaErr) {
           console.log(captchaErr);
           return;
         }
-        setUserSecret(captchaResponse.userSecret);
+        setUserSecret(captchaResponse.user_secret);
         setStage("phone_confirmation");
         break;
       case "phone_confirmation":
         setStage("required data");
         break;
       case "required data":
-        const createUserDTO: ICreateUser = {
-          telephone_code: phoneCode,
-          first_name: name,
-          username: username.replace(/[^0-9,\+]/g, ""), //+7 (XXX) XXX-XX-XX -> +7XXXXXXXXXX
-          email,
-          password: pass,
-          captcha_token: token,
-          user_secret: userSecret,
-        };
-        console.log(createUserDTO);
-        //отправляем запрос на бэк
-        const user = await registration(createUserDTO).unwrap();
-        console.log(user);
-        dispatch(setAuth({ user, token: "" }));
+        try {
+          const createUserDTO: ICreateUser = {
+            telephone_code: phoneCode,
+            first_name: name,
+            username: username.replace(/[^0-9,\+]/g, ""), //+7 (XXX) XXX-XX-XX -> +7XXXXXXXXXX
+            email,
+            password: pass,
+            captcha_token: token,
+            user_secret: userSecret,
+          };
 
-        if (error) console.log(error);
+          //отправляем запрос на бэк
+          const user = await registration(createUserDTO).unwrap();
+          console.log(user);
+          dispatch(setAuth({ user, token: "" }));
+          router.push("/sign-in");
+        } catch (error) {
+          console.error("Ошибка при регистрации:", error);
+          setShowErrorMessage(true);
+        }
 
         break;
 
@@ -100,9 +99,6 @@ export default React.memo(function PhoneInput() {
       default:
         console.log("that doesnt seem to happen bruh");
     }
-
-    //мб поменять логику редиректа?
-    // redirect("/sign-in");
   };
   return (
     <Form action={onSubmit}>
