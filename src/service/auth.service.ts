@@ -10,8 +10,8 @@ export interface LoginRequest {
 }
 
 export interface LoginResponse {
-  token: string; // Предполагается, что сервер возвращает токен
-  user: IRealUserMe; // Допустим, сервер возвращает также информацию о пользователе
+  token: string;
+  user: IRealUserMe;
 }
 
 export interface RegistrationRequest {
@@ -24,7 +24,7 @@ export interface CaptchaRequest {
 }
 
 export interface CaptchaResponse {
-  userSecret: string;
+  user_secret: string;
 }
 
 
@@ -73,7 +73,6 @@ export const authApi = createApi({
           body: credentials,
         }),
       }),
-      
   }),
 
 });
