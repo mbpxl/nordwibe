@@ -101,14 +101,14 @@ const Navigation: FC<IFilter> = ({ filter, setFilter }) => {
   messages = useTypedSelector((selector) => selector.userSlice.user);
   useEffect(() => {
     calcNewMessages.current = 0;
-    messages.notifications.map((n) => {
+    messages?.notifications.map((n) => {
       if (n[0] == 1) {
         calcNewMessages.current += 1;
       }
     });
 
     setResCount(calcNewMessages.current);
-  }, [messages.notifications]);
+  }, [messages?.notifications]);
 
   return (
     <>
@@ -255,7 +255,9 @@ const Navigation: FC<IFilter> = ({ filter, setFilter }) => {
                     )}
                     <Image
                       src={`/icons/like${
-                        user.favourites.users.find((us) => us.id === idUser.id)
+                        user.favourites.users.find(
+                          (us: any) => us.id === idUser.id
+                        )
                           ? "d"
                           : ""
                       }.svg`}
@@ -301,7 +303,7 @@ const Navigation: FC<IFilter> = ({ filter, setFilter }) => {
                   <Image
                     src={`/icons/like${
                       user.favourites.articles.find(
-                        (ar) => ar.id === article.id
+                        (ar: any) => ar.id === article.id
                       )
                         ? "d"
                         : ""
@@ -329,7 +331,7 @@ const Navigation: FC<IFilter> = ({ filter, setFilter }) => {
                   />
                   <Image
                     src={`/icons/like${
-                      user.favourites.flats.find((fl) => fl.id === flat.id)
+                      user.favourites.flats.find((fl: any) => fl.id === flat.id)
                         ? "d"
                         : ""
                     }.svg`}

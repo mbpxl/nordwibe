@@ -3,7 +3,6 @@
 import React, { useContext } from "react";
 import styles from "./styles.module.scss";
 import { QuestionsContext } from "../Provider";
-import { IRealFlat } from "@/interfaces/flat.interface";
 import {
   IHouseGeneral,
   toBuildingType,
@@ -14,9 +13,9 @@ import {
   hApi,
   useCreateHouseMutation,
   useEditHouseMutation,
-  useGetHouseQuery,
   useUploadImagesMutation,
 } from "@/service/houseApi.service";
+import Link from "next/link";
 
 function convertToString(value: string | string[] | null): string {
   if (value === null) {
@@ -70,9 +69,18 @@ export default React.memo(function Results() {
     }
   };
 
-  const { answers, files } = useContext(QuestionsContext);
-  // console.log(answers);
+  const { answers = [], files = [] } = useContext(QuestionsContext);
+  console.log(answers);
   // console.log(files);
+
+  if (!answers || answers.length === 0) {
+    return (
+      <div>
+        <h2>В начале необходимо заполнить анкету!</h2>
+        <Link href={"/add-apartment"}>Заполнить анкету!</Link>
+      </div>
+    );
+  }
 
   const p: IHouseGeneral = {
     address: convertToString(answers[0].content),
