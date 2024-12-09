@@ -17,6 +17,7 @@ const reducer = combineReducers({
   userSlice,
   navigationSlice,
   filtersSlice,
+  storiesSlice,
   [usrApi.reducerPath]: usrApi.reducer,
   [hApi.reducerPath]:hApi.reducer,
   [storiesApi.reducerPath]: storiesApi.reducer,

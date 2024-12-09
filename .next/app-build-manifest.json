@@ -24,23 +24,28 @@
       "static/css/app/sign-in/layout.css",
       "static/chunks/app/sign-in/layout.js"
     ],
-    "/sign-up/page": [
+    "/articles/[id]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/sign-up/page.css",
-      "static/chunks/app/sign-up/page.js"
-    ],
-    "/sign-up/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/sign-up/layout.css",
-      "static/chunks/app/sign-up/layout.js"
+      "static/css/app/articles/[id]/page.css",
+      "static/chunks/app/articles/[id]/page.js"
     ],
     "/profile/[id]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/profile/[id]/page.css",
       "static/chunks/app/profile/[id]/page.js"
+    ],
+    "/chat/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/chat/page.css",
+      "static/chunks/app/chat/page.js"
+    ],
+    "/not-found": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/not-found.js"
     ]
   }
 }

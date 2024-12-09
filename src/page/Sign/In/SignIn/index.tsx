@@ -36,7 +36,7 @@ export default React.memo(function SignIn() {
     const token = btoa(username + ":" + password); // кодируем токен
     console.log(token);
     dispatch(setAuth({ user: username, token })); // Отправляем в state (authSlice) данные
-    const loginResponse = await trigger(); // Запускаем запрос, вызываем функцию login()
+    const loginResponse = await trigger({ username, password }); // Запускаем запрос, вызываем функцию login()
     console.log(loginResponse); // output
 
     if (loginResponse.isSuccess) {
