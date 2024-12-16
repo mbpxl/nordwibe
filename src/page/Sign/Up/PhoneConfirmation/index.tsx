@@ -10,7 +10,7 @@ export default React.memo(function PhoneConfirmation() {
     <Form>
       <FormHeading for="phone-confirm">ПОДТВЕРДИТЕ НОМЕР</FormHeading>
 
-      <FormMessage>Вам поступит звонок, введите последние 4 цифры</FormMessage>
+      <FormMessage>Тебе поступит звонок-сброс. Введи последние 4 цифры номера</FormMessage>
 
       <TextInput
         name="phone-confirm"

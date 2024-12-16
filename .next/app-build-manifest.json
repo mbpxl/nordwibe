@@ -12,17 +12,11 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/sign-in/page": [
+    "/profile/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/sign-in/page.css",
-      "static/chunks/app/sign-in/page.js"
-    ],
-    "/sign-in/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/sign-in/layout.css",
-      "static/chunks/app/sign-in/layout.js"
+      "static/css/app/profile/page.css",
+      "static/chunks/app/profile/page.js"
     ],
     "/articles/[id]/page": [
       "static/chunks/webpack.js",
@@ -30,17 +24,71 @@
       "static/css/app/articles/[id]/page.css",
       "static/chunks/app/articles/[id]/page.js"
     ],
+    "/cities/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/cities/page.css",
+      "static/chunks/app/cities/page.js"
+    ],
+    "/neighbors/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/neighbors/page.css",
+      "static/chunks/app/neighbors/page.js"
+    ],
     "/profile/[id]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/profile/[id]/page.css",
       "static/chunks/app/profile/[id]/page.js"
     ],
+    "/favourites/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/favourites/page.css",
+      "static/chunks/app/favourites/page.js"
+    ],
+    "/favourites/posts/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/favourites/posts/page.css",
+      "static/chunks/app/favourites/posts/page.js"
+    ],
     "/chat/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/chat/page.css",
       "static/chunks/app/chat/page.js"
+    ],
+    "/chat/[id]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/chat/[id]/page.css",
+      "static/chunks/app/chat/[id]/page.js"
+    ],
+    "/flats/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/flats/page.css",
+      "static/chunks/app/flats/page.js"
+    ],
+    "/add-apartment/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/add-apartment/layout.css",
+      "static/chunks/app/add-apartment/layout.js"
+    ],
+    "/add-apartment/[id]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/add-apartment/[id]/page.css",
+      "static/chunks/app/add-apartment/[id]/page.js"
+    ],
+    "/profile/[id]/parameters/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/profile/[id]/parameters/page.css",
+      "static/chunks/app/profile/[id]/parameters/page.js"
     ],
     "/not-found": [
       "static/chunks/webpack.js",

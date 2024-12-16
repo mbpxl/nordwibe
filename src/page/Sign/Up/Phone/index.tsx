@@ -104,11 +104,12 @@ export default React.memo(function PhoneInput() {
     <Form action={onSubmit}>
       {stage == "phone" && (
         <>
+          <FormMessage>Давай начнем! Укажи свой номер для подтверждения аккаунта</FormMessage>
           <TextInput
             name="phone"
             type="tel"
             id="phone"
-            placeholder="Номер"
+            placeholder="+7 912 345 67 89"
             value={username}
             onChange={(v) => {
               setUsername(v);
@@ -137,7 +138,7 @@ export default React.memo(function PhoneInput() {
       {stage == "phone_confirmation" && (
         <>
           <FormMessage>
-            Вам поступит звонок, введите последние 4 цифры
+            Тебе поступит звонок-сброс. Введи последние 4 цифры номера
           </FormMessage>
 
           <TextInput
@@ -153,6 +154,7 @@ export default React.memo(function PhoneInput() {
 
       {stage == "required data" && (
         <div>
+          <FormMessage>Почти закончили!</FormMessage>
           <TextInput
             name="name"
             type="text"

@@ -28,8 +28,7 @@ export default React.memo(function SignIn() {
    * когда это требуется, например, при нажатии кнопки
    */
 
-  const [trigger, result, lastPromiseInfo] =
-    authApi.endpoints.login.useLazyQuery();
+  const [trigger, result, lastPromiseInfo] = authApi.endpoints.login.useLazyQuery() as [any, any, any];
   const [userTrigger, userResult] = usrApi.endpoints.getMe.useLazyQuery();
 
   const handleClick = async () => {
@@ -88,7 +87,6 @@ export default React.memo(function SignIn() {
       <SignWith />
 
       <div className={`${styles.haveAccount} ${styles.mar1}`}>
-        <div>Нет аккаунта?</div>
 
         <Link className={styles.link} href={"/sign-up"}>
           Зарегистрироваться!
