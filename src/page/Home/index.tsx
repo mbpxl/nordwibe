@@ -18,6 +18,8 @@ import { BASE_DOMAIN, useGetStoriesQuery } from "@/service/stories.service";
 import houseApi from "@/service/houseApi.service";
 import { setToken } from "@/store/slices/auth";
 import { useGetPostsQuery } from "@/service/articles.service";
+import {Story} from "react-insta-stories/dist/interfaces";
+import stories from "@/store/slices/stories";
 
 export const Home = () => {
   //* получаем состояние авторизованности пользователя (true/false)
@@ -60,7 +62,9 @@ export const Home = () => {
 
   console.log(storiesIds);
 
-  const storyList = storiesIds.map((story) => BASE_DOMAIN + story);
+  const storyList = storiesIds.map((story) => ({
+    url: BASE_DOMAIN + story,
+  }));
 
   const CloseStoriesWithSwipe = (end: number) => {
     if (end + 150 < swipeStart.current) {
@@ -120,7 +124,7 @@ export const Home = () => {
               setOpenStories(true);
             }}
           >
-            <img src={story} alt="story" />
+            <img src={story.url} alt="story" /> {/* Используем story.url */}
           </div>
         ))}
       </div>

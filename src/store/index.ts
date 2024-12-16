@@ -4,10 +4,10 @@ import navigationSlice from "@/store/slices/navigation";
 import filtersSlice from "@/store/slices/filters";
 import { usrApi } from "@/service/userApi.service";
 import { hApi } from "@/service/houseApi.service";
-import authSlice from "@/store/slices/auth"
+import authSlice from "@/store/slices/auth";
 import { authApi } from "@/service/auth.service";
 import { chatApi } from "@/service/chat.service";
-import { storiesSlice } from "./slices/stories";
+import { storiesSlice } from "./slices/stories"; // Импортируйте storiesSlice
 import { storiesApi } from "@/service/stories.service";
 import { favoriteApi } from "@/service/favorite.service";
 import { postsApi } from "@/service/articles.service";
@@ -19,8 +19,9 @@ const reducer = combineReducers({
   filtersSlice,
   storiesSlice,
   [usrApi.reducerPath]: usrApi.reducer,
-  [hApi.reducerPath]:hApi.reducer,
+  [hApi.reducerPath]: hApi.reducer,
   [storiesApi.reducerPath]: storiesApi.reducer,
+  stories: storiesSlice, // Добавьте storiesSlice здесь,
   [favoriteApi.reducerPath]: favoriteApi.reducer,
   authSlice,
   [authApi.reducerPath]: authApi.reducer,
@@ -32,7 +33,15 @@ const reducer = combineReducers({
 export const store = configureStore({
   reducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(usrApi.middleware).concat(hApi.middleware).concat(authApi.middleware).concat(chatApi.middleware).concat(storiesApi.middleware).concat(favoriteApi.middleware).concat(postsApi.middleware).concat(flatsApi.middleware),
+    getDefaultMiddleware()
+      .concat(usrApi.middleware)
+      .concat(hApi.middleware)
+      .concat(authApi.middleware)
+      .concat(chatApi.middleware)
+      .concat(storiesApi.middleware)
+      .concat(favoriteApi.middleware)
+      .concat(postsApi.middleware)
+      .concat(flatsApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

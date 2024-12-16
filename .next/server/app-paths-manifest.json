@@ -1,9 +1,8 @@
 {
-  "/not-found": "app/not-found.js",
-  "/page": "app/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/articles/[id]/page": "app/articles/[id]/page.js",
-  "/profile/[id]/page": "app/profile/[id]/page.js",
+  "/neighbors/page": "app/neighbors/page.js",
+  "/profile/page": "app/profile/page.js",
+  "/favourites/page": "app/favourites/page.js",
   "/chat/page": "app/chat/page.js",
-  "/sign-in/page": "app/sign-in/page.js"
+  "/chat/[id]/page": "app/chat/[id]/page.js",
+  "/page": "app/page.js"
 }
