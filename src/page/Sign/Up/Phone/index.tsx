@@ -45,15 +45,37 @@ export default React.memo(function PhoneInput() {
   const dispatch = useDispatch<AppDispatch>();
   const [registration, { error }] = useRegistrationMutation();
   const [captcha, { error: captchaErr }] = useCaptchaMutation();
+  const [errorMessage, setErrorMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // состояние видимости пароля
+
+  const validatePhone = (phone: string) => {
+    const phoneRegex = /^\+7\d{10}$/;
+    return phoneRegex.test(phone);
+  };
+
+  const validatePhoneConfirmation = (code: string) => {
+    return code.length === 4 && /^\d+$/.test(code);
+  };
+
+  const validateUserData = (name: string, email: string, pass: string) => {
+    const nameRegex = /^[a-zA-Zа-яА-Я\s]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return (
+      nameRegex.test(name) &&
+      emailRegex.test(email) &&
+      pass.length >= 6 &&
+      pass === confirmPass
+    );
+  };
 
   const onSubmit = async () => {
     switch (stage) {
       case "phone":
-        if (token == "") {
-          setShowErrorMessage(true);
+        if (!validatePhone(username)) {
+          setErrorMessage("Некорректный номер телефона!");
           return;
         }
-        setShowErrorMessage(false);
+        setErrorMessage("");
         const captchaResponse = await captcha({
           username: username.replace(/[^0-9,\+]/g, ""),
           captcha_token: token,
@@ -68,43 +90,49 @@ export default React.memo(function PhoneInput() {
         setStage("phone_confirmation");
         break;
       case "phone_confirmation":
+        if (!validatePhoneConfirmation(phoneCode)) {
+          setErrorMessage("Неправильные данные!");
+          return;
+        }
+        setErrorMessage("");
         setStage("required data");
         break;
       case "required data":
+        if (!validateUserData(name, email, pass)) {
+          setErrorMessage("Введите корректные данные!");
+          return;
+        }
+        setErrorMessage("");
         try {
           const createUserDTO: ICreateUser = {
             telephone_code: phoneCode,
             first_name: name,
-            username: username.replace(/[^0-9,\+]/g, ""), //+7 (XXX) XXX-XX-XX -> +7XXXXXXXXXX
+            username: username.replace(/[^0-9,\+]/g, ""),
             email,
             password: pass,
             captcha_token: token,
             user_secret: userSecret,
           };
-
-          //отправляем запрос на бэк
           const user = await registration(createUserDTO).unwrap();
-          console.log(user);
           dispatch(setAuth({ user, token: "" }));
           router.push("/sign-in");
         } catch (error) {
-          console.error("Ошибка при регистрации:", error);
-          setShowErrorMessage(true);
+          setErrorMessage("Ошибка при регистрации!");
+          console.error(error);
         }
-
         break;
 
-      case "other":
-        break;
       default:
-        console.log("that doesnt seem to happen bruh");
+        console.log("Неизвестный этап регистрации");
     }
   };
   return (
     <Form action={onSubmit}>
       {stage == "phone" && (
         <>
-          <FormMessage>Давай начнем! Укажи свой номер для подтверждения аккаунта</FormMessage>
+          <FormMessage>
+            Давай начнем! Укажи свой номер для подтверждения аккаунта
+          </FormMessage>
           <TextInput
             name="phone"
             type="tel"
@@ -115,6 +143,7 @@ export default React.memo(function PhoneInput() {
               setUsername(v);
             }}
           />
+          {errorMessage && <p className={styles.error}>{errorMessage}</p>}
           <SignWith />
           <div className={`${styles.haveAccount} ${styles.mar1}`}>
             <div>Есть аккаунт?</div>
@@ -149,6 +178,7 @@ export default React.memo(function PhoneInput() {
             value={phoneCode}
             onChange={(v) => setPhoneCode(v)}
           />
+          {errorMessage && <p className={styles.error}>{errorMessage}</p>}
         </>
       )}
 
@@ -175,26 +205,41 @@ export default React.memo(function PhoneInput() {
               setEmail(v);
             }}
           />
-          <TextInput
-            name="pass"
-            type="password"
-            id="pass"
-            placeholder="Пароль"
-            value={pass}
-            onChange={(v) => {
-              setPass(v);
-            }}
-          />
-          <TextInput
-            name="confirmPass"
-            type="password"
-            id="confirmPass"
-            placeholder="Повтори пароль"
-            value={confirmPass}
-            onChange={(v) => {
-              setConfirmPass(v);
-            }}
-          />
+          <div className={styles.passwordWrapper}>
+            <TextInput
+              name="password"
+              type={showPassword ? "text" : "password"}
+              id="password"
+              placeholder="Пароль"
+              value={pass}
+              onChange={(v) => setPass(v)}
+            />
+            <button
+              type="button"
+              className={styles.showPasswordButton}
+              onClick={() => setShowPassword((prev) => !prev)}
+            >
+              {showPassword ? "Скрыть" : "Показать"}
+            </button>
+          </div>
+          <div className={styles.passwordWrapper}>
+            <TextInput
+              name="password"
+              type={showPassword ? "text" : "password"}
+              id="password"
+              placeholder="Пароль"
+              value={confirmPass}
+              onChange={(v) => setConfirmPass(v)}
+            />
+            <button
+              type="button"
+              className={styles.showPasswordButton}
+              onClick={() => setShowPassword((prev) => !prev)}
+            >
+              {showPassword ? "Скрыть" : "Показать"}
+            </button>
+          </div>
+          {errorMessage && <p className={styles.error}>{errorMessage}</p>}
         </div>
       )}
       {stage == "other" && <>{/* some other data, idk */}</>}

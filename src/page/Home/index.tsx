@@ -18,7 +18,7 @@ import { BASE_DOMAIN, useGetStoriesQuery } from "@/service/stories.service";
 import houseApi from "@/service/houseApi.service";
 import { setToken } from "@/store/slices/auth";
 import { useGetPostsQuery } from "@/service/articles.service";
-import {Story} from "react-insta-stories/dist/interfaces";
+import { Story } from "react-insta-stories/dist/interfaces";
 import stories from "@/store/slices/stories";
 
 export const Home = () => {
@@ -195,7 +195,7 @@ export const Home = () => {
         , что нам поправить или добавить🥺
         <br />
       </div>
-      <h1>Журнал</h1>
+      <h1 className={styles.heading}>Журнал</h1>
       <div className={styles.articles}>
         {articles && articles.length > 0 ? (
           articles.map((article: any) => (

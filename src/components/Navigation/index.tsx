@@ -40,8 +40,8 @@ import {
 import { createIUserFromRealUser, IUser } from "@/interfaces/user.interface";
 import { useGetUserQuery, usrApi } from "@/service/userApi.service";
 import React from "react";
-import {IArticle} from "@/interfaces/article.interface";
-import {IFlat} from "@/interfaces/flat.interface";
+import { IArticle } from "@/interfaces/article.interface";
+import { IFlat } from "@/interfaces/flat.interface";
 
 const profileRegex = /^\/profile\/.+/;
 const articlesRegex = /^\/articles\/.+/;
@@ -233,7 +233,6 @@ const Navigation: FC<IFilter> = ({ filter, setFilter }) => {
             )}
 
             {/* Тут был Сталин. Это его говнокод, не мой, честно :( */}
-
             <div className={styles.iconsContainer}>
               {profileRegex.test(pathname) ? (
                 Number(params.id) != user.id ? (
@@ -255,8 +254,8 @@ const Navigation: FC<IFilter> = ({ filter, setFilter }) => {
                     )}
                     <Image
                       src={`/icons/like${
-                        user.favourites.users.find(
-                          user.favourites.users.find((us: IUser) => us.id === idUser.id)
+                        user.favourites.users.some(
+                          (us: IUser) => us.id === idUser.id
                         )
                           ? "d"
                           : ""
@@ -331,7 +330,9 @@ const Navigation: FC<IFilter> = ({ filter, setFilter }) => {
                   />
                   <Image
                     src={`/icons/like${
-                      user.favourites.flats.find((fl: IFlat) => fl.id === flat.id)
+                      user.favourites.flats.find(
+                        (fl: IFlat) => fl.id === flat.id
+                      )
                         ? "d"
                         : ""
                     }.svg`}

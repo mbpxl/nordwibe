@@ -1,5 +1,5 @@
 .header {
-  margin-bottom: .7rem;
+  margin-bottom: 0.7rem;
   text-align: center;
 }
 
@@ -27,4 +27,32 @@
 
 .mar1 {
   margin: 1rem 0;
+}
+
+.error {
+  color: red;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.phone_field {
+  position: relative;
+  width: 100%;
+}
+
+.passwordWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.showPasswordButton {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #fff;
 }

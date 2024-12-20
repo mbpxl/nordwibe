@@ -5,7 +5,7 @@ import styles from "./styles.module.scss";
 
 type FormInputProps = {
   name?: string;
-  type: "tel" | "text" | "password" | "number" | "checkbox";
+  type: "tel" | "text" | "password" | "number" | "checkbox" | "email";
   placeholder: string;
   id: string;
   value?: string;

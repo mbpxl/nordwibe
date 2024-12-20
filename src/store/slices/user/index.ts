@@ -9,8 +9,8 @@ interface UserState {
 }
 
 const initialState: UserState = {
-  user: users.find(user => user.id === 1)!
-}
+  user: users.find(user => user.id === 1) ?? (() => { throw new Error('User not found'); })()
+};
 
 export const userSlice = createSlice({
   name: 'user',

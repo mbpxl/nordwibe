@@ -147,7 +147,7 @@
   .articles {
     display: flex;
     flex-direction: column;
-    gap: 13rem;
+    gap: 5rem;
     padding: 2rem;
     width: 50%;
     max-width: 800px;
@@ -210,4 +210,9 @@
       width: 100%;
     }
   }
+}
+
+.heading {
+  color: #fff;
+  font-size: 2rem;
 }
