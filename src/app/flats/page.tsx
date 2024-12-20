@@ -1,6 +1,7 @@
 import Flats from "@/page/FlatsPage";
 import { Metadata } from "next";
 import React from "react";
+import styles from "./flats.module.scss";
 
 export const metadata: Metadata = {
   title: "Flats | Nordwibe",
@@ -8,7 +9,12 @@ export const metadata: Metadata = {
 };
 
 const FlatsPage = () => {
-  return <Flats />;
+  // return <Flats />;
+  return (
+    <div className={styles.preview}>
+      <h1>Coming soon!</h1>
+    </div>
+  );
 };
 
 export default React.memo(FlatsPage);

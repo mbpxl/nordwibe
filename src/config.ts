@@ -413,7 +413,7 @@ export const users: Array<IUser> = [
       [ENotificationsTypes.read, "Важное уведомление от рассылки", false],
       [ENotificationsTypes.new, "Важное уведомление от пользователей", false],
     ],
-    city: "Москва",
+    city: "Санкт-Петербург",
     contact: {
       telegram: "@vasa",
       vk: "@vasa",

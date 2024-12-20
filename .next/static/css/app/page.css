@@ -262,7 +262,7 @@
   display: flex;
   -ms-flex-direction: column;
       flex-direction: column;
-  gap: 13rem;
+  gap: 5rem;
   padding: 2rem;
   width: 50%;
   max-width: 800px;
@@ -311,4 +311,9 @@
   .styles_home__tNlP3 .styles_articles__snulG {
     width: 100%;
   }
+}
+
+.styles_heading__rokTE {
+  color: #fff;
+  font-size: 2rem;
 }

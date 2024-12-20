@@ -33,6 +33,7 @@ import userApi, { useGetUserQuery, usrApi } from "@/service/userApi.service";
 import { hApi } from "@/service/houseApi.service";
 import React from "react";
 import { ToastContainer } from "react-toastify";
+import { abbreviations } from "@/utils/transform";
 
 const Profile: FC<{ id: string }> = ({ id }) => {
   const profile = useGetUserQuery(Number(id));
@@ -89,7 +90,7 @@ const Profile: FC<{ id: string }> = ({ id }) => {
                   width={100}
                   height={100}
                 />
-                <p>{user.purpose}</p>
+                <p>{abbreviations.purpose[user.purpose]}</p>
               </li>
               <li>
                 <Image
@@ -99,9 +100,9 @@ const Profile: FC<{ id: string }> = ({ id }) => {
                   height={100}
                 />
                 <p>
-                  {user.occupation?.toLowerCase() == "без работы"
-                    ? "Путешествую"
-                    : user.occupation}
+                  {abbreviations.occupation[user.occupation]
+                    ? abbreviations.occupation[user.occupation]
+                    : "Род деятельности не указан"}
                 </p>
               </li>
             </ul>
