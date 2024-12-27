@@ -4,6 +4,7 @@ import VKLOGO from "../../../public/svgs/vk";
 import YandexLogo from "../../../public/svgs/yandex";
 import styles from "./styles.module.scss";
 
+//@ts-ignore
 const Modal = ({ onClose, message }) => {
   return (
     <div className={styles.modalOverlay}>
@@ -18,9 +19,11 @@ const Modal = ({ onClose, message }) => {
 export default React.memo(function SignWith() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
-
+  //@ts-ignore
   const handleLinkClick = (platform) => {
-    setModalMessage(`Что-то пошло не так: вход через ${platform} пока-что не работает`);
+    setModalMessage(
+      `Что-то пошло не так: вход через ${platform} пока-что не работает`
+    );
     setModalOpen(true);
   };
 

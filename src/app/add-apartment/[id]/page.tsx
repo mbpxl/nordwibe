@@ -12,7 +12,7 @@ const AddApartmentQuestionPage = React.memo(function AddApartmentQuestionPage({
 }: {
   params: { id: string };
 }) {
-  return <Question id={params.id} />;
+  return <h1>Coming soon!</h1>;
 });
 
 export default AddApartmentQuestionPage;
