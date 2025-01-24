@@ -23,7 +23,7 @@ const Occupation = () => {
       </div>
       <div className={styles.diagram}>
         <h4>{"Род занятий".toUpperCase()}</h4>
-        <Diagram />
+        <Diagram isSurveyCompleted={true} />
         {isSurveyCompleted ? (<p>На 20% пользователей с вами совместимы</p>)
         : (<p>Для отображения процента совместимости пройдите анкету!</p>)}
       </div>
