@@ -71,6 +71,7 @@ export default React.memo(function PhoneInput() {
   const onSubmit = async () => {
     switch (stage) {
       case "phone":
+        console.log(username);
         if (!validatePhone(username)) {
           setErrorMessage("Некорректный номер телефона!");
           return;
@@ -80,8 +81,7 @@ export default React.memo(function PhoneInput() {
           username: username.replace(/[^0-9,\+]/g, ""),
           captcha_token: token,
         }).unwrap();
-        //! console.log("Это шо за хуйня?");
-        console.log(captchaResponse);
+        alert(captchaResponse);
         if (captchaErr) {
           console.log(captchaErr);
           return;
@@ -115,7 +115,7 @@ export default React.memo(function PhoneInput() {
           };
           const user = await registration(createUserDTO).unwrap();
           dispatch(setAuth({ user, token: "" }));
-          router.push("/sign-in");
+          router.push("/survey");
         } catch (error) {
           setErrorMessage("Ошибка при регистрации!");
           console.error(error);
@@ -144,7 +144,7 @@ export default React.memo(function PhoneInput() {
             }}
           />
           {errorMessage && <p className={styles.error}>{errorMessage}</p>}
-          <SignWith />
+          {/* <SignWith /> */}
           <div className={`${styles.haveAccount} ${styles.mar1}`}>
             <div>Есть аккаунт?</div>
             <Link className={styles.link} href={"/sign-in"}>

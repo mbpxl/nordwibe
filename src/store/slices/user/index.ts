@@ -6,18 +6,20 @@ import { createSlice } from '@reduxjs/toolkit'
 
 interface UserState {
   user: IUser
+  isSurveyCompleted: boolean
 }
 
 const initialState: UserState = {
-  user: users.find(user => user.id === 1) ?? (() => { throw new Error('User not found'); })()
+  user: users.find(user => user.id === 1) ?? (() => { throw new Error('User not found'); })(),
+  isSurveyCompleted: true,
 };
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setEmptyUser: (state)=>{state.user = createEmptyIUser()},
-    setUser: (state, {payload}:{payload:IUser})=>{
+    setEmptyUser: (state) => { state.user = createEmptyIUser() },
+    setUser: (state, { payload }: { payload: IUser }) => {
       state.user = payload;
     },
     setCity: (state, { payload }: { payload: string }) => { state.user.city = payload },
@@ -48,10 +50,11 @@ export const userSlice = createSlice({
         }
       }
     },
-    removeAllFavourites: (state) => { state.user.favourites = { flats: [], users: [], articles: [] } }
+    removeAllFavourites: (state) => { state.user.favourites = { flats: [], users: [], articles: [] } },
+    changeSurveyCompleted: (state) => { state.isSurveyCompleted = false },
   },
 })
 
-export const { setCity, deleteAll, readAll, addToFavourites, removeAllFavourites, setEmptyUser,setUser } = userSlice.actions
+export const { setCity, deleteAll, readAll, addToFavourites, removeAllFavourites, setEmptyUser, setUser, changeSurveyCompleted } = userSlice.actions
 
 export default userSlice.reducer

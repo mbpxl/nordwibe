@@ -95,7 +95,7 @@ export default React.memo(function SignIn() {
       <Button type="submit" onClick={handleClick}>
         Продолжить
       </Button>
-      <SignWith />
+      {/* <SignWith /> */}
       <div className={`${styles.haveAccount} ${styles.mar1}`}>
         <Link className={styles.link} href={"/sign-up"}>
           Зарегистрироваться!

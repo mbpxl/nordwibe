@@ -1,9 +1,13 @@
 import Diagram from "@/components/Diagram";
 import styles from "@/page/Profile/Occupation/styles.module.scss";
+import { RootState } from "@/store";
 import Image from "next/image";
 import React from "react";
+import { useSelector } from "react-redux";
 
 const Occupation = () => {
+  let isSurveyCompleted = useSelector((state: RootState) => state.userSlice.isSurveyCompleted);
+
   return (
     <div className={styles.occupation}>
       <div className={styles.imageContainer}>
@@ -20,7 +24,8 @@ const Occupation = () => {
       <div className={styles.diagram}>
         <h4>{"Род занятий".toUpperCase()}</h4>
         <Diagram />
-        <p>На XX% пользователей с вами совместимы</p>
+        {isSurveyCompleted ? (<p>На 20% пользователей с вами совместимы</p>)
+        : (<p>Для отображения процента совместимости пройдите анкету!</p>)}
       </div>
       <p>
         Описание On the other hand, we denounce with righteous indignation and
