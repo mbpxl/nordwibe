@@ -2,10 +2,10 @@ import styles from "@/components/Diagram/styles.module.scss";
 import { profileCircleProgress } from "@/config";
 import React from "react";
 
-const Diagram = () => {
+const Diagram = (props: {isSurveyCompleted: boolean}) => {
   return (
     <div className={styles.diagram}>
-      <h1>{profileCircleProgress}%</h1>
+      <h1>{props.isSurveyCompleted ? (profileCircleProgress + "%") : ("---")}</h1>
       <svg
         width="250"
         height="250"

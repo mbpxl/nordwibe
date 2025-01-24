@@ -1,6 +1,7 @@
 "use client";
 
 import Button from "@/components/Button";
+import goto from "../../../public/icons/goto.svg"
 import LinkCard from "@/components/LinkCard";
 import { LinkCardsProfile, flats, profileUsersCards, users } from "@/config";
 import styles from "@/page/Profile/styles.module.scss";
@@ -34,15 +35,23 @@ import { hApi } from "@/service/houseApi.service";
 import React from "react";
 import { ToastContainer } from "react-toastify";
 import { abbreviations } from "@/utils/transform";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store";
 
 const Profile: FC<{ id: string }> = ({ id }) => {
+  let isSurveyCompleted = useSelector((state: RootState) => state.userSlice.isSurveyCompleted);
   const profile = useGetUserQuery(Number(id));
 
   console.log(profile);
-
+  const [isEditingMode, setEditinigMode] = useState<boolean>(false);
+  const [description, setDescription] = useState<string>("Описание профиля");
   const { data: yourUser } = usrApi.useGetMeQuery();
   const { data: user } = usrApi.useGetUserQuery(Number(id));
   const { data: flats } = hApi.useListHouseQuery();
+
+  const handleChangeDescription = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setDescription(e.currentTarget?.value);
+  }
 
   const hide = (id: number) => {
     setNeighbors(neighbors.filter((user) => user.id != id));
@@ -79,6 +88,31 @@ const Profile: FC<{ id: string }> = ({ id }) => {
                   {age ? ", " + age : ""}
                 </h1>
                 <h4>из г. {user && user.home_town}</h4>
+                <div className={styles.description}>
+                  {isEditingMode ? (
+                    <textarea
+                      
+                      cols={40}
+                      rows={20}
+                      placeholder="Описание..."
+                      value={description}
+                      onChange={handleChangeDescription}
+                      onBlur={() => {setEditinigMode(!isEditingMode)}}
+                    />
+                  ) : (<h6>{description}</h6>)}
+                  {user.id === yourUser.id ? (
+                    <button onClick={() => {setEditinigMode(!isEditingMode)}}>
+                      {isEditingMode ? ("") : (
+                        <Image
+                        src={`/icons/pencil.svg`}
+                        alt="status"
+                        width={20}
+                        height={20}
+                      />
+                      )}
+                  </button>
+                  ) : ("")}
+                </div>
               </div>
             </div>
 
@@ -91,6 +125,15 @@ const Profile: FC<{ id: string }> = ({ id }) => {
                   height={100}
                 />
                 <p>{abbreviations.purpose[user.purpose]}</p>
+              </li>
+              <li>
+                <Image 
+                  src={goto} //!asdasdsad
+                  alt="purpose"
+                  width={100}
+                  height={100}
+                />
+                <p>Хочу поехать в {user.my_town}</p>
               </li>
               <li>
                 <Image
@@ -167,13 +210,13 @@ const Profile: FC<{ id: string }> = ({ id }) => {
 
           <div className={styles.compatibility}>
             <div className={styles.diagram}>
-              <Diagram />
+              <Diagram isSurveyCompleted={isSurveyCompleted}/>
             </div>
 
             <h4>
               {user.id === yourUser.id
                 ? "пользователей приложения могут стать твоими друзьями"
-                : "Совместимость с тобой"}
+                : isSurveyCompleted ? ("Совместимость с тобой") : ("Для отображения процента совместимости необходимо заполнить анкету!")}
             </h4>
           </div>
 
